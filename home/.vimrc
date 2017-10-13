@@ -105,24 +105,18 @@ function! Hashbang(portable, permission, RemExt)
             \     'tk': "wish",
             \     'hy': "hy"
             \    }
-
     let extension = expand("%:e")
-
     if has_key(shells,extension)
         let fileshell = shells[extension]
-
         if a:portable
             let line =  "#!/usr/bin/env " . fileshell
         else
             let line = "#!" . system("which " . fileshell)
         endif
-
         0put = line
-
         if a:permission
             :autocmd BufWritePost * :autocmd VimLeave * :!chmod u+x %
         endif
-
         if a:RemExt
             :autocmd BufWritePost * :autocmd VimLeave * :!mv % "%:p:r"
         endif
