@@ -73,7 +73,7 @@ set so=5
 "set spell check language and disable. Enable for certain file types
 set spell spelllang=en_gb
 set nospell
-au BufNewFile,BufRead *.txt, *.md :set spell
+au BufNewFile,BufRead *.txt, *.md set spell
 "make buffer modifiable
 set ma
 "set cursorcolumn
