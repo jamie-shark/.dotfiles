@@ -50,8 +50,6 @@ endif
 
 call togglebg#map("<F5>")
 
-let NERDTreeIgnore=['\~$'] "ignore files in NERDTree
-
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
@@ -85,7 +83,6 @@ set lz
 set incsearch
 "highlight searches. nohls to stop highlighting
 set hls
-let NERDTreeShowHidden=1
 "highlight the current cursor line
 set cul
 
@@ -184,6 +181,9 @@ nnoremap <silent><C-Right> :<C-u>call search('\<\<Bar>\U\@<=\u\<Bar>\u\ze\%(\U\&
 inoremap <silent><C-Left> <C-o>:call search('\<\<Bar>\U\@<=\u\<Bar>\u\ze\%(\U\&\>\@!\)\<Bar>\%^','bW')<CR>
 inoremap <silent><C-Right> <C-o>:call search('\<\<Bar>\U\@<=\u\<Bar>\u\ze\%(\U\&\>\@!\)\<Bar>\%$','W')<CR>
 
+" NERDTree config
+let NERDTreeIgnore=['\~$'] "ignore files in NERDTree
+let NERDTreeShowHidden=1
 map <C-n> :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
