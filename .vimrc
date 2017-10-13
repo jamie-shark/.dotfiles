@@ -21,7 +21,6 @@ Plugin 'bitc/vim-bad-whitespace'
 Plugin 'diepm/vim-rest-console'
 Plugin 'itchyny/lightline.vim'
 Plugin 'JamshedVesuna/vim-markdown-preview'
-Plugin 'rkulla/pydiction.git'
 Plugin 'severin-lemaignan/vim-minimap'
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
@@ -144,16 +143,6 @@ au BufNewFile,BufRead *.cake set filetype=cs
 
 au BufNewFile *.* :call Hashbang(1,1,0)
 
-function! NewPyFile()
-    if @% == '*tests.py'
-        0r ~/.vim/default/tests.py
-    else
-        0r ~/.vim/default/src.py
-    endif
-endfunction
-
-au BufNewFile *.py :call NewPyFile()
-
 "shift focus in direction
 nmap <silent> <C-h> :wincmd h<CR>
 nmap <silent> <C-j> :wincmd j<CR>
@@ -200,8 +189,6 @@ inoremap <silent><C-Right> <C-o>:call search('\<\<Bar>\U\@<=\u\<Bar>\u\ze\%(\U\&
 map <C-n> :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
-autocmd FileType python let g:pydiction_location='~/.vim/bundle/pydiction/complete-dict'
-
 function! s:DiffWithSaved()
   let filetype=&ft
   diffthis
@@ -210,8 +197,6 @@ function! s:DiffWithSaved()
   exe "setlocal bt=nofile bh=wipe nobl noswf ro ft=" . filetype
 endfunction
 com! DiffSaved call s:DiffWithSaved()
-
-let python_highlight_all=1
 
 syntax on
 filetype on
