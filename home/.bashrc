@@ -3,12 +3,6 @@ alias l='ls --color=auto'
 alias ll='ls -la --color=auto'
 alias md='mkdir'
 
-# homesick redirect
-alias hs=homeshick
-alias homesick=homeshick
-alias vimrc='vim ~/.homesick/repos/dotfiles-castle/home/.vimrc'
-alias bashrc='vim ~/.homesick/repos/dotfiles-castle/home/.bashrc'
-
 # git alias
 alias gg='git log --decorate --oneline --graph'
 alias gd='git diff'
@@ -23,6 +17,10 @@ alias gap='git add -p'
 alias gc='git commit -m'
 alias gcan='git commit --amend --no-edit'
 
-# source files
+# homesick
+alias hs=homeshick
+alias homesick=homeshick
+alias vimrc='vim ~/.homesick/repos/dotfiles-castle/home/.vimrc'
+alias bashrc='vim ~/.homesick/repos/dotfiles-castle/home/.bashrc'
 source "$HOME/.homesick/repos/homeshick/homeshick.sh"
 
