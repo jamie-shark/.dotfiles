@@ -1,3 +1,6 @@
+# path
+export PATH="$PATH:$HOME/bin"
+
 # alias
 alias l='ls --color=auto'
 alias ll='ls -la --color=auto'
