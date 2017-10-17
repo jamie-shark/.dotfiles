@@ -51,6 +51,8 @@ endif
 
 call togglebg#map("<F5>")
 
+au GUIEnter * simalt ~x
+
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
