@@ -183,6 +183,9 @@ nnoremap <silent><C-Right> :<C-u>call search('\<\<Bar>\U\@<=\u\<Bar>\u\ze\%(\U\&
 inoremap <silent><C-Left> <C-o>:call search('\<\<Bar>\U\@<=\u\<Bar>\u\ze\%(\U\&\>\@!\)\<Bar>\%^','bW')<CR>
 inoremap <silent><C-Right> <C-o>:call search('\<\<Bar>\U\@<=\u\<Bar>\u\ze\%(\U\&\>\@!\)\<Bar>\%$','W')<CR>
 
+"auto Allman
+inoremap {<CR> <CR><BS>{<CR>}<C-o>O
+
 " NERDTree config
 let NERDTreeIgnore=['\~$'] "ignore files in NERDTree
 let NERDTreeShowHidden=1
