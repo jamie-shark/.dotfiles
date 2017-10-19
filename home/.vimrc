@@ -37,6 +37,7 @@ Plugin 'plasticboy/vim-markdown'
 Plugin 'reedes/vim-pencil'
 Plugin 'airblade/vim-gitgutter.git'
 Plugin 'ervandew/supertab.git'
+Plugin 'tpope/vim-abolish.git'
 
 if has('gui_running')
   set background=dark
