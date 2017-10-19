@@ -88,6 +88,10 @@ set incsearch
 set hls
 "highlight the current cursor line
 set cul
+"search for project specific vimrc files in the working dir
+set exrc
+"don't allow unsafe commands to run from these files
+set secure
 
 function! Hashbang(portable, permission, RemExt)
     let shells = {
