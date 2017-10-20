@@ -27,10 +27,3 @@ git config --global core.safecrlf false
 git config --global push.default simple
 alias gh='git h'
 
-# homesick
-alias hs=homeshick
-alias homesick=homeshick
-alias vimrc='vim ~/.homesick/repos/dotfiles-castle/home/.vimrc'
-alias bashrc='vim ~/.homesick/repos/dotfiles-castle/home/.bashrc'
-source "$HOME/.homesick/repos/homeshick/homeshick.sh"
-
