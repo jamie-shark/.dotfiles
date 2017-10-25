@@ -75,10 +75,6 @@ set nu
 set rnu
 "keep rows visible above and below the cursor
 set so=5
-"set spell check language and disable. Enable for certain file types
-set spell spelllang=en_gb
-set nospell
-au BufNewFile,BufRead *.txt, *.md set spell
 "make buffer modifiable
 set ma
 "set cursorcolumn
@@ -89,8 +85,6 @@ set lz
 set incsearch
 "highlight searches. nohls to stop highlighting
 set hls
-"highlight the current cursor line
-set cul
 "search for project specific vimrc files in the working dir
 set exrc
 "don't allow unsafe commands to run from these files
@@ -194,6 +188,12 @@ let NERDTreeShowHidden=1
 map <C-n> :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 let NERDTreeHijackNetrw=1
+
+"spellcheck toggle
+nmap <Leader>s :setlocal spell! spelllang=en_gb<CR>
+
+"highlight search toggle
+nmap <Leader>h :setlocal hls!<CR>
 
 function! s:DiffWithSaved()
   let filetype=&ft
