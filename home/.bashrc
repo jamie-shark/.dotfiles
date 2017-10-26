@@ -4,7 +4,8 @@ export PATH="$PATH:$HOME/bin"
 # alias
 alias l='ls --color=auto'
 alias ll='ls -la --color=auto'
-alias md='mkdir'
+alias md='mkdir -pv'
+alias ..='cd ..'
 
 # git
 alias gg='git log --decorate --oneline --graph'
