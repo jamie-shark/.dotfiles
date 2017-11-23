@@ -40,6 +40,14 @@ Plugin 'ervandew/supertab.git'
 Plugin 'tpope/vim-abolish.git'
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'mhinz/vim-startify.git'
+Plugin 'vim-scripts/utl.vim'
+Plugin 'tpope/vim-repeat'
+Plugin 'majutsushi/tagbar'
+Plugin 'tpope/vim-speeddating'
+Plugin 'chrisbra/NrrwRgn'
+Plugin 'mattn/calendar-vim'
+Plugin 'inkarkat/vim-SyntaxRange'
+Plugin 'jceb/vim-orgmode'
 
 if has('gui_running')
   set background=dark
