@@ -165,6 +165,9 @@ nmap <M->> <C-W>>
 let mapleader = ","
 nmap <leader>v :tabedit $MYVIMRC<CR>
 
+"format JSON
+nmap =j :%!python -m json.tool<CR>
+
 "vim-rest-console
 let g:vrc_trigger = '<C-J>'
 let g:vrc_curl_opts = {
