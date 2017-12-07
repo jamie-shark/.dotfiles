@@ -48,6 +48,7 @@ Plugin 'chrisbra/NrrwRgn'
 Plugin 'mattn/calendar-vim'
 Plugin 'inkarkat/vim-SyntaxRange'
 Plugin 'jceb/vim-orgmode'
+Plugin 'tpope/vim-dispatch.git'
 
 if has('gui_running')
   set background=dark
