@@ -207,6 +207,10 @@ nmap <Leader>s :setlocal spell! spelllang=en_gb<CR>
 "highlight search toggle
 nmap <Leader>h :setlocal hls!<CR>
 
+"disable screen flash and error bell on error (e.g. gvim esc while in normal mode)
+set noeb vb t_vb=
+au GUIEnter * set vb t_vb=
+
 function! s:DiffWithSaved()
   let filetype=&ft
   diffthis
