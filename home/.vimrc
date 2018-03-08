@@ -47,8 +47,9 @@ Plugin 'tpope/vim-speeddating'
 Plugin 'chrisbra/NrrwRgn'
 Plugin 'mattn/calendar-vim'
 Plugin 'inkarkat/vim-SyntaxRange'
-Plugin 'jceb/vim-orgmode'
 Plugin 'tpope/vim-dispatch.git'
+Plugin 'quramy/tsuquyomi.git'
+Plugin 'leafgarland/typescript-vim.git'
 
 if has('gui_running')
   set background=dark
@@ -72,7 +73,6 @@ set shiftwidth=4
 set expandtab
 set autoindent
 set fileformat=unix
-set foldmethod=indent
 set foldlevel=99
 set encoding=utf-8
 "soft wrap. only insert linebreaks when <CR> pressed
@@ -137,9 +137,9 @@ function! Hashbang(portable, permission, RemExt)
 endfunction
 
 au BufNewFile,BufRead *.js, *.html, *.css, *.rb, *.clj
-    \:set tabstop=2
-    \:set softtabstop=2
-    \:set shiftwidth=2
+    \set tabstop=2
+    \set softtabstop=2
+    \set shiftwidth=2
 
 au BufNewFile,BufRead *.cake set filetype=cs
 
