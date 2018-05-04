@@ -6,6 +6,7 @@ alias l='ls --color=auto'
 alias ll='ls -la --color=auto'
 alias md='mkdir -pv'
 alias ..='cd ..'
+alias c='clear'
 
 # git
 git config --global color.ui auto
