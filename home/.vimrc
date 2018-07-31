@@ -1,4 +1,59 @@
+""" Settings
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set expandtab
+set autoindent
+set fileformat=unix
+set foldlevel=99
+set encoding=utf-8
+set wrap
+set linebreak
+set number
+set relativenumber
+set scrolloff=5
+set modifiable
+set mouse=ar
+set lazyredraw
+set incsearch
+set hls
+set exrc
+set secure
 set nocompatible
+
+""" File type specific settings
+au BufNewFile,BufRead *.js, *.html, *.css, *.rb, *.clj, *.scala, *.lua
+    \set tabstop=2
+    \set softtabstop=2
+    \set shiftwidth=2
+au BufNewFile,BufRead *.cake set filetype=cs
+
+""" gVim specific settings
+"disable screen flash and error bell on error (e.g. gvim esc while in normal mode)
+set noeb vb t_vb=
+au GUIEnter * set vb t_vb=
+au GUIEnter * simalt ~x " Fullscreen gvim
+
+""" Keybindings
+let mapleader = ","
+nno <silent> <C-h> :wincmd h<CR>
+nno <silent> <C-j> :wincmd j<CR>
+nno <silent> <C-k> :wincmd k<CR>
+nno <silent> <C-l> :wincmd l<CR>
+nno - <C-W>-
+nno + <C-W>+
+nno <M-<> <C-W><
+nno <M->> <C-W>>
+ino jj <esc>
+cno jj <c-c>
+vno v <esc>
+nno =j :%!python -m json.tool<CR>
+ino {<CR> <CR><BS>{<CR>}<C-o>O
+nno <leader>v :tabedit $MYVIMRC<CR>
+nno <Leader>s :setlocal spell! spelllang=en_gb<CR>
+nno <Leader>h :setlocal hls!<CR>
+
+""" Plugins
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim/
 call vundle#begin('~/.vim/bundle/')
@@ -51,174 +106,15 @@ Plugin 'tpope/vim-dispatch.git'
 Plugin 'quramy/tsuquyomi.git'
 Plugin 'leafgarland/typescript-vim.git'
 
-if has('gui_running')
-  set background=dark
-  colorscheme solarized
-else
-  colorscheme zenburn
-endif
+""" Plugin Configuration
+let g:airline_base16_solarized = 1
 
-if &diff
-    colorscheme evening
-endif
-
-call togglebg#map("<F5>")
-
-au GUIEnter * simalt ~x
-
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
-"set textwidth=79
-set expandtab
-set autoindent
-set fileformat=unix
-set foldlevel=99
-set encoding=utf-8
-"soft wrap. only insert linebreaks when <CR> pressed
-set wrap
-set linebreak
-"show line numbers
-set nu
-"show relative line numbers around the cursor
-set rnu
-"keep rows visible above and below the cursor
-set so=5
-"make buffer modifiable
-set ma
-"set cursorcolumn
-set mouse=a
-"enable lazy redraw
-set lz
-"search while typing
-set incsearch
-"highlight searches. nohls to stop highlighting
-set hls
-"search for project specific vimrc files in the working dir
-set exrc
-"don't allow unsafe commands to run from these files
-set secure
-
-function! Hashbang(portable, permission, RemExt)
-    let shells = {
-            \    'awk': "awk",
-            \     'sh': "bash",
-            \     'hs': "runhaskell",
-            \     'jl': "julia",
-            \    'lua': "lua",
-            \    'mak': "make",
-            \     'js': "node",
-            \      'm': "octave",
-            \     'pl': "perl",
-            \    'php': "php",
-            \      'r': "Rscript",
-            \     'rb': "ruby",
-            \  'scala': "scala",
-            \    'tcl': "tclsh",
-            \     'tk': "wish",
-            \     'hy': "hy"
-            \    }
-    let extension = expand("%:e")
-    if has_key(shells,extension)
-        let fileshell = shells[extension]
-        if a:portable
-            let line =  "#!/usr/bin/env " . fileshell
-        else
-            let line = "#!" . system("which " . fileshell)
-        endif
-        0put = line
-        if a:permission
-            :autocmd BufWritePost * :autocmd VimLeave * :!chmod u+x %
-        endif
-        if a:RemExt
-            :autocmd BufWritePost * :autocmd VimLeave * :!mv % "%:p:r"
-        endif
-    endif
-endfunction
-
-au BufNewFile,BufRead *.js, *.html, *.css, *.rb, *.clj
-    \set tabstop=2
-    \set softtabstop=2
-    \set shiftwidth=2
-
-au BufNewFile,BufRead *.cake set filetype=cs
-
-au BufNewFile *.* :call Hashbang(1,1,0)
-
-"shift focus in direction
-nmap <silent> <C-h> :wincmd h<CR>
-nmap <silent> <C-j> :wincmd j<CR>
-nmap <silent> <C-k> :wincmd k<CR>
-nmap <silent> <C-l> :wincmd l<CR>
-
-"exit insert/visual mode
-ino jj <esc>
-cno jj <c-c>
-vno v <esc>
-
-"resize splits
-nmap - <C-W>-
-nmap + <C-W>+
-nmap <M-<> <C-W><
-nmap <M->> <C-W>>
-
-"open vimrc
-let mapleader = ","
-nmap <leader>v :tabedit $MYVIMRC<CR>
-
-"format JSON
-nmap =j :%!python -m json.tool<CR>
-
-"vim-rest-console
-let g:vrc_trigger = '<C-J>'
-let g:vrc_curl_opts = {
-      \ '--connect-timeout' : 10,
-      \ '-L': '',
-      \ '-i': '',
-      \ '--max-time': 60,
-      \ '--ipv4': '',
-      \ '-k': '',
-\}
-
-"vim-markdown-preview
-let vim_markdown_preview_hotkey='<C-m>'
-
-"fullscreen preview
-map <F11> :Goyo<CR>:GitGutterEnable<CR>
-
-nnoremap <silent><C-Left> :<C-u>call search('\<\<Bar>\U\@<=\u\<Bar>\u\ze\%(\U\&\>\@!\)\<Bar>\%^','bW')<CR>
-nnoremap <silent><C-Right> :<C-u>call search('\<\<Bar>\U\@<=\u\<Bar>\u\ze\%(\U\&\>\@!\)\<Bar>\%$','W')<CR>
-inoremap <silent><C-Left> <C-o>:call search('\<\<Bar>\U\@<=\u\<Bar>\u\ze\%(\U\&\>\@!\)\<Bar>\%^','bW')<CR>
-inoremap <silent><C-Right> <C-o>:call search('\<\<Bar>\U\@<=\u\<Bar>\u\ze\%(\U\&\>\@!\)\<Bar>\%$','W')<CR>
-
-"auto Allman
-inoremap {<CR> <CR><BS>{<CR>}<C-o>O
-
-" NERDTree config
+" nerdtree
 let NERDTreeIgnore=['\~$'] "ignore files in NERDTree
 let NERDTreeShowHidden=1
 map <C-n> :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 let NERDTreeHijackNetrw=1
-
-"spellcheck toggle
-nmap <Leader>s :setlocal spell! spelllang=en_gb<CR>
-
-"highlight search toggle
-nmap <Leader>h :setlocal hls!<CR>
-
-"disable screen flash and error bell on error (e.g. gvim esc while in normal mode)
-set noeb vb t_vb=
-au GUIEnter * set vb t_vb=
-
-function! s:DiffWithSaved()
-  let filetype=&ft
-  diffthis
-  vnew | r # | normal! 1Gdd
-  diffthis
-  exe "setlocal bt=nofile bh=wipe nobl noswf ro ft=" . filetype
-endfunction
-com! DiffSaved call s:DiffWithSaved()
 
 syntax on
 filetype on
