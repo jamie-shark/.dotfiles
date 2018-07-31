@@ -92,12 +92,12 @@ Plugin 'vim-syntastic/syntastic.git'
 
 """ Plugin Configuration
 " airline
-let g:Powerline_symbols='fancy'
 let g:airline_powerline_fonts = 1
-let g:airline_theme='solarized'
+let g:airline_theme='tomorrow'
 let g:airline#extensions#tabline#enabled = 1
-let g:airline_enable_syntatic = 1
+let g:airline#extensions#tabline#show_buffers = 0
 let g:airline_skip_empty_sections = 1
+let g:airline_enable_syntatic = 1
 
 " nerdtree
 let NERDTreeIgnore=['\~$'] "ignore files in NERDTree
