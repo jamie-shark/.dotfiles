@@ -7,6 +7,7 @@ alias ll='ls -la --color=auto'
 alias md='mkdir -pv'
 alias ..='cd ..'
 alias c='clear'
+alias prerelease='powershell ./build.ps1 -Target Create-PreRelease-Packages'
 
 # git
 git config --global color.ui auto
@@ -28,5 +29,7 @@ alias gap='git add -p'
 alias gc='git commit -m'
 alias gca='git commit --amend'
 alias gcan='git commit --amend --no-edit'
+alias gcm='git checkout -'
 alias gni='git diff -G "Compile Include" *.csproj'
-alias grmu=$'git status -s | grep -i \'^??\' | awk \'{system("rm "$2)}\''
+alias grmu=$'git status -s | grep -i \'^??\' | sed \'s/ /\\ /g\' | awk \'{system("rm "$2)}\''
+alias gsn=$'git show --name-status'
