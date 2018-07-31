@@ -20,6 +20,7 @@ set hls
 set exrc
 set secure
 set nocompatible
+set laststatus=2
 
 """ File type specific settings
 au BufNewFile,BufRead *.js, *.html, *.css, *.rb, *.clj, *.scala, *.lua
@@ -33,6 +34,15 @@ au BufNewFile,BufRead *.cake set filetype=cs
 set noeb vb t_vb=
 au GUIEnter * set vb t_vb=
 au GUIEnter * simalt ~x " Fullscreen gvim
+
+""" ConEmu specific settings
+if has('win32') && !has('gui_running') && !empty($CONEMUBUILD)
+    set termencoding=utf8
+    set term=xterm
+    set t_Co=256
+    let &t_AB="\e[48;5;%dm"
+    let &t_AF="\e[38;5;%dm"
+endif
 
 """ Keybindings
 let mapleader = ","
@@ -81,7 +91,13 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'vim-syntastic/syntastic.git'
 
 """ Plugin Configuration
-let g:airline_base16_solarized = 1
+" airline
+let g:Powerline_symbols='fancy'
+let g:airline_powerline_fonts = 1
+let g:airline_theme='solarized'
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_enable_syntatic = 1
+let g:airline_skip_empty_sections = 1
 
 " nerdtree
 let NERDTreeIgnore=['\~$'] "ignore files in NERDTree
