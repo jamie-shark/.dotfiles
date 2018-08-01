@@ -72,6 +72,7 @@ call vundle#end()
 filetype plugin indent on
 
 Plugin 'airblade/vim-gitgutter.git'
+Plugin 'altercation/vim-colors-solarized.git'
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'ervandew/supertab.git'
 Plugin 'kien/ctrlp.vim'
@@ -105,6 +106,13 @@ let NERDTreeShowHidden=1
 map <C-n> :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 let NERDTreeHijackNetrw=1
+
+""" Colour schemes
+set background=dark
+colorscheme solarized
+if &diff
+    colorscheme evening
+endif
 
 syntax on
 filetype on
