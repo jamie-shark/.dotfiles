@@ -44,6 +44,9 @@ if has('win32') && !has('gui_running') && !empty($CONEMUBUILD)
     let &t_AF="\e[38;5;%dm"
 endif
 
+set backupdir=$TEMP//
+set directory=$TEMP//
+
 """ Keybindings
 let mapleader = ","
 nno <silent> <C-h> :wincmd h<CR>
