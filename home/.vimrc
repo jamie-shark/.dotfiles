@@ -21,19 +21,25 @@ set exrc
 set secure
 set nocompatible
 set laststatus=2
+set backspace=2
+set smartcase
+set smartindent
+set showmatch
+set cursorline
 
 """ File type specific settings
-au BufNewFile,BufRead *.js, *.html, *.css, *.rb, *.clj, *.scala, *.lua
+au! BufNewFile,BufRead *.js, *.html, *.css, *.rb, *.clj, *.scala, *.lua
     \set tabstop=2
     \set softtabstop=2
     \set shiftwidth=2
-au BufNewFile,BufRead *.cake set filetype=cs
+au! BufNewFile,BufRead *.cake set filetype=cs
+au! bufwritepost .vimrc source $MYVIMRC
 
 """ gVim specific settings
 "disable screen flash and error bell on error (e.g. gvim esc while in normal mode)
 set noeb vb t_vb=
-au GUIEnter * set vb t_vb=
-au GUIEnter * simalt ~x " Fullscreen gvim
+au! GUIEnter * set vb t_vb=
+au! GUIEnter * simalt ~x " Fullscreen gvim
 
 """ ConEmu specific settings
 if has('win32') && !has('gui_running') && !empty($CONEMUBUILD)
@@ -107,7 +113,7 @@ let g:airline_enable_syntatic = 1
 let NERDTreeIgnore=['\~$'] "ignore files in NERDTree
 let NERDTreeShowHidden=1
 map <C-n> :NERDTreeToggle<CR>
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+au! bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 let NERDTreeHijackNetrw=1
 
 """ Colour schemes
@@ -119,3 +125,10 @@ endif
 
 syntax on
 filetype on
+
+""" Functions
+fu! BCFormat()
+    :execute 'norm ggVG"+p'
+    :v/\d\d:\d\d/d
+    :%norm $F d$
+endf
