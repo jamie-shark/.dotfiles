@@ -13,8 +13,16 @@ alias prerelease='powershell ./build.ps1 -Target Create-PreRelease-Packages'
 git config --global color.ui auto
 git config --global core.autocrlf true
 git config --global core.safecrlf false
+git config --global core.editor vim
 git config --global push.default simple
 git config --global alias.h "log --graph --oneline --all --pretty=format:\"%C(yellow)%h%Creset %C(magenta)(%cr)%Creset %C(blue)%cn%Creset %s %C(auto)%d%Creset\""
+git config --global merge.tool diffconflicts
+git config --global diff.tool vimdiff
+git config --global difftool.prompt false
+git config --global mergetool.diffconflicts.cmd diffconflicts vim $BASE $LOCAL $REMOTE $MERGED
+git config --global mergetool.diffconflicts.trustExitCode true
+git config --global mergetool.keepBackup false
+
 alias gh='git h'
 alias gg='git log --decorate --oneline --graph'
 alias gd='git diff'
