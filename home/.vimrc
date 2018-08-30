@@ -124,3 +124,4 @@ ino {<CR> <CR><BS>{<CR>}<C-o>O
 nno <leader>v :tabedit $MYVIMRC<CR>
 nno <Leader>s :setlocal spell! spelllang=en_gb<CR>
 nno <Leader>h :setlocal hls!<CR>
+nno <Leader>w :setlocal wrap!<CR>
