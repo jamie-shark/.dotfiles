@@ -29,11 +29,11 @@ Plugin 'PProvost/vim-ps1.git'
 Plugin 'bitc/vim-bad-whitespace.git'
 
 """ Plugin Configuration
-" syntastic
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
+" syntastic
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
