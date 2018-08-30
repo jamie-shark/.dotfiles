@@ -125,3 +125,25 @@ nno <leader>v :tabedit $MYVIMRC<CR>
 nno <Leader>s :setlocal spell! spelllang=en_gb<CR>
 nno <Leader>h :setlocal hls!<CR>
 nno <Leader>w :setlocal wrap!<CR>
+
+function! MarkWindowSwap()
+    let g:markedWinNum = winnr()
+endfunction
+
+function! DoWindowSwap()
+    "Mark destination
+    let curNum = winnr()
+    let curBuf = bufnr( "%" )
+    exe g:markedWinNum . "wincmd w"
+    "Switch to source and shuffle dest->source
+    let markedBuf = bufnr( "%" )
+    "Hide and open so that we aren't prompted and keep history
+    exe 'hide buf' curBuf
+    "Switch to dest and shuffle source->dest
+    exe curNum . "wincmd w"
+    "Hide and open so that we aren't prompted and keep history
+    exe 'hide buf' markedBuf
+endfunction
+
+nno <silent> <leader>mw :call MarkWindowSwap()<CR>
+nno <silent> <leader>pw :call DoWindowSwap()<CR>
