@@ -26,6 +26,7 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'vim-syntastic/syntastic.git'
 Plugin 'PProvost/vim-ps1.git'
+Plugin 'bitc/vim-bad-whitespace.git'
 
 """ Plugin Configuration
 " syntastic
