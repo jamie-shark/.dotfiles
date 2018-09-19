@@ -85,7 +85,7 @@ set backupdir=$TEMP//
 set directory=$TEMP//
 
 """ File type specific settings
-au BufNewFile,BufRead *.js,*.html,*.css,*.rb,*.clj,*.scala,*.lua setlocal tabstop=2
+au BufNewFile,BufRead *.js,*.html,*.css,*.rb,*.clj,*.scala,*.lua,*.yaml setlocal tabstop=2
 au BufNewFile,BufRead *.cake set filetype=cs
 au BufNewFile,BufRead *.ps1,*.psd1,*.psm1,*.bat,*.cmd setlocal ft=ps1
 if &diff
