@@ -4,10 +4,12 @@ export PATH="$PATH:$HOME/bin"
 # alias
 alias l='ls --color=auto'
 alias ll='ls -la --color=auto'
+alias grerp='grep --color=auto'
 alias md='mkdir -pv'
 alias ..='cd ..'
 alias c='clear'
-alias prerelease='powershell ./build.ps1 -Target Create-PreRelease-Packages'
+alias prerelease='powershell ./build.ps1 -Target Create-PreRelease-Packages -Debug'
+alias rmswap='rm /tmp/*.sw[o-z]'
 
 # git
 git config --global color.ui auto
@@ -41,4 +43,7 @@ alias gcm='git checkout -'
 alias gni='git diff -G "Compile Include" *.csproj'
 alias grmu=$'git status -s | grep -i \'^??\' | sed \'s/ /\\ /g\' | awk \'{system("rm "$2)}\''
 alias gsn=$'git show --name-status'
-alias gacd=$'ga; clear; gdc' 
+alias gacd=$'ga; clear; gdc'
+
+# function
+urldecode() { : "${*//+/ }"; echo -e "${_//%/\\x}"; }
