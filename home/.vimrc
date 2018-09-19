@@ -27,6 +27,7 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'vim-syntastic/syntastic.git'
 Plugin 'PProvost/vim-ps1.git'
 Plugin 'bitc/vim-bad-whitespace.git'
+Plugin 'pangloss/vim-javascript.git'
 
 """ Plugin Configuration
 set statusline+=%#warningmsg#
@@ -66,7 +67,7 @@ set autoindent
 set fileformat=unix
 set foldlevel=99
 set encoding=utf-8
-set wrap
+set nowrap
 set linebreak
 set number
 set relativenumber
