@@ -28,6 +28,7 @@ Plugin 'vim-syntastic/syntastic.git'
 Plugin 'PProvost/vim-ps1.git'
 Plugin 'bitc/vim-bad-whitespace.git'
 Plugin 'pangloss/vim-javascript.git'
+Plugin 'qpkorr/vim-renamer.git'
 
 """ Plugin Configuration
 set statusline+=%#warningmsg#
