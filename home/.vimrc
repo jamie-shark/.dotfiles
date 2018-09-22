@@ -83,6 +83,8 @@ set nocompatible
 set laststatus=2
 set backupdir=$TEMP//
 set directory=$TEMP//
+set wildmode=longest,list,full
+set wildmenu
 
 """ File type specific settings
 au BufNewFile,BufRead *.js,*.html,*.css,*.rb,*.clj,*.scala,*.lua,*.yaml setlocal tabstop=2
