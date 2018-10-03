@@ -1,6 +1,3 @@
-source ~/.dotfiles/posh-git-sh/git-prompt.sh
-export PROMPT_COMMAND='__posh_git_ps1 "\\[\[\e[0;32m\]\u@\h \[\e[0;33m\]\w" " \[\e[1;34m\]\n\$\[\e[0m\] ";'$PROMPT_COMMAND
-
 # path
 export PATH="$PATH:$HOME/bin"
 
@@ -11,7 +8,7 @@ alias grerp='grep --color=auto'
 alias md='mkdir -pv'
 alias ..='cd ..'
 alias c='clear'
-alias prerelease='powershell ./build.ps1 -Target Create-PreRelease-Packages -Debug'
+alias prerelease='powershell ./build.ps1 -Target Create-PreRelease-Packages -Configuration Debug'
 alias rmswap='rm /tmp/*.sw[o-z]'
 
 # git
@@ -21,10 +18,10 @@ git config --global core.safecrlf false
 git config --global core.editor vim
 git config --global push.default simple
 git config --global alias.h "log --graph --oneline --all --pretty=format:\"%C(yellow)%h%Creset %C(magenta)(%cr)%Creset %C(blue)%cn%Creset %s %C(auto)%d%Creset\""
-git config --global merge.tool diffconflicts
 git config --global diff.tool vimdiff
 git config --global difftool.prompt false
-git config --global mergetool.diffconflicts.cmd diffconflicts vim $BASE $LOCAL $REMOTE $MERGED
+git config --global merge.tool diffconflicts
+git config --global mergetool.diffconflicts.cmd 'diffconflicts vim $BASE $LOCAL $REMOTE $MERGED'
 git config --global mergetool.diffconflicts.trustExitCode true
 git config --global mergetool.keepBackup false
 
@@ -47,6 +44,10 @@ alias gni='git diff -G "Compile Include" *.csproj'
 alias grmu=$'git status -s | grep -i \'^??\' | sed \'s/ /\\ /g\' | awk \'{system("rm "$2)}\''
 alias gsn=$'git show --name-status'
 alias gacd=$'ga; clear; gdc'
+
+# posh git prompt
+source ~/.dotfiles/posh-git-sh/git-prompt.sh
+export PROMPT_COMMAND='__posh_git_ps1 "\\[\[\e[0;32m\]\u@\h \[\e[0;33m\]\w" " \[\e[1;34m\]\n\$\[\e[0m\] ";'$PROMPT_COMMAND
 
 # function
 urldecode() { : "${*//+/ }"; echo -e "${_//%/\\x}"; }
