@@ -1,4 +1,3 @@
-
 """ Plugins
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim/
@@ -29,6 +28,7 @@ Plugin 'PProvost/vim-ps1.git'
 Plugin 'bitc/vim-bad-whitespace.git'
 Plugin 'pangloss/vim-javascript.git'
 Plugin 'qpkorr/vim-renamer.git'
+Plugin 'gregsexton/gitv'
 
 """ Plugin Configuration
 set statusline+=%#warningmsg#

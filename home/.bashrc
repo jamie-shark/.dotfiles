@@ -46,6 +46,7 @@ alias gni='git diff -G "Compile Include" *.csproj'
 alias grmu=$'git status -s | grep -i \'^??\' | sed \'s/ /\\ /g\' | awk \'{system("rm "$2)}\''
 alias gsn=$'git show --name-status'
 alias gacd=$'ga; clear; gdc'
+alias branch='git rev-parse --abbrev-ref HEAD'
 
 # posh git prompt
 source ~/.dotfiles/posh-git-sh/git-prompt.sh
