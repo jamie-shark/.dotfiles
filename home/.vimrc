@@ -73,6 +73,7 @@ set linebreak
 set number
 set relativenumber
 set scrolloff=5
+set nofixeol
 set modifiable
 set mouse=ar
 set lazyredraw
