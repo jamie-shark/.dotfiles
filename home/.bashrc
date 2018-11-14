@@ -47,6 +47,7 @@ alias grmu=$'git status -s | grep -i \'^??\' | sed \'s/ /\\ /g\' | awk \'{system
 alias gsn=$'git show --name-status'
 alias gacd=$'ga; clear; gdc'
 alias branch='git rev-parse --abbrev-ref HEAD'
+alias gv='vi `git rev-parse --show-toplevel` -c "silent Gitv"'
 
 # posh git prompt
 source ~/.dotfiles/posh-git-sh/git-prompt.sh
