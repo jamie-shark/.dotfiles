@@ -66,7 +66,10 @@ set tabstop=4
 set expandtab
 set autoindent
 set fileformat=unix
-set foldlevel=99
+set foldmethod=syntax
+set foldnestmax=10
+set nofoldenable
+set foldlevel=1
 set encoding=utf-8
 set nowrap
 set linebreak
