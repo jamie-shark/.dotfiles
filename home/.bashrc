@@ -48,6 +48,7 @@ alias gsn=$'git show --name-status'
 alias gacd=$'ga; clear; gdc'
 alias branch='git rev-parse --abbrev-ref HEAD'
 alias gv='vi `git rev-parse --show-toplevel` -c "silent Gitv"'
+alias whatadded='git log --follow --diff-filter=A --find-renames=40% --'
 
 # posh git prompt
 source ~/.dotfiles/posh-git-sh/git-prompt.sh
