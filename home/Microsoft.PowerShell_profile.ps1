@@ -55,3 +55,19 @@ alias gsn get-gsn
 alias gcm get-gcm
 alias gp get-gp
 alias gc get-gc
+
+function cddash {
+    if ($args[0] -eq '-') {
+        $pwd = $OLDPWD;
+    } else {
+        $pwd = $args[0];
+    }
+    $tmp = pwd;
+
+    if ($pwd) {
+        Set-Location $pwd;
+    }
+    Set-Variable -Name OLDPWD -Value $tmp -Scope global;
+}
+
+Set-Alias -Name cd -value cddash -Option AllScope
