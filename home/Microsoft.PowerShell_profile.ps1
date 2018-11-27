@@ -7,11 +7,11 @@ function Test-Administrator {
 }
 
 function Write-Separator {
-    Write-Host " : " -NoNewline -ForegroundColor DarkGray
+    Write-Host " " -NoNewline -ForegroundColor DarkGray
 }
 
 function Write-Username {
-    Write-Host "$env:USERNAME@" -NoNewline -ForegroundColor DarkYellow
+    Write-Host "$env:USERNAME@" -NoNewline -ForegroundColor Yellow
     Write-Host "$env:COMPUTERNAME" -NoNewline -ForegroundColor Magenta
 }
 
@@ -20,7 +20,7 @@ function Write-Location {
     if ($curPath.ToLower().StartsWith($Home.ToLower())) {
         $curPath = "~" + $curPath.SubString($Home.Length)
     }
-    Write-Host $curPath -NoNewline -ForegroundColor Blue
+    Write-Host $curPath -NoNewline -ForegroundColor Cyan
 }
 
 function Get-Prompt {
@@ -33,19 +33,18 @@ function Get-Prompt {
 }
 
 function Write-DateTime {
-    Write-Host (Get-Date -Format G) -NoNewline -ForegroundColor DarkMagenta
+    Write-Host (Get-Date -Format G) -NoNewline -ForegroundColor Magenta
 }
 
 function prompt {
     $origLastExitCode = $LastExitCode
 
-    Write-VcsStatus
     Write-Username
     Write-Separator
     Write-Location
+    Write-VcsStatus
     Write-Separator
     Write-DateTime
-    Write-Separator
 
     $LastExitCode = $origLastExitCode
     "`n$(Get-Prompt * ($nestedPromptLevel + 1)) "
@@ -121,3 +120,7 @@ function cddash {
 }
 
 Set-Alias -Name cd -value cddash -Option AllScope
+
+Set-Location C:\Code
+((Get-Host).UI.RawUI).BackgroundColor = "Black"
+Clear-Host
