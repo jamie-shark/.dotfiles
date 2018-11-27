@@ -65,28 +65,28 @@ function Get-Parameters ([string] $command, [string[]]$outputFormat) {
     (Get-Command $command).ParameterSets | Select -Expand Parameters | ft -a $outputFormat
 }
 
-function get-l { ls }
-function get-ll { ls }
-function get-c { clear }
-function get-prerelease { .\build.ps1 -Target Create-PreRelease-Packages }
-function get-gh { git h }
-function get-gg { git log --decorate --oneline --graph }
-function get-gd { git diff }
-function get-gdc { git diff --cached }
-function get-gs { git status -s }
-function get-gf { git fetch origin }
-function get-gr { git rebase origin/master }
-function get-gri { git rebase -i }
-function get-ga { git add -A }
-function get-gap { git add -p }
-function get-gca { git commit --amend }
-function get-gcan { git commit --amend --no-edit }
-function get-gni { git diff -G "Compile Include" *.csproj }
-function get-gsn { git show --name-status }
-function get-gcm { git checkout - }
-function get-gp { git push }
-function get-gc { git commit -m }
-function get-vi { vim }
+function get-l { ls $args }
+function get-ll { ls $args }
+function get-c { clear $args }
+function get-prerelease { .\build.ps1 -Target Create-PreRelease-Packages $args }
+function get-gh { git h $args }
+function get-gg { git log --decorate --oneline --graph $args }
+function get-gd { git diff $args }
+function get-gdc { git diff --cached $args }
+function get-gs { git status -s $args }
+function get-gf { git fetch origin $args }
+function get-gr { git rebase origin/master $args }
+function get-gri { git rebase -i $args }
+function get-ga { git add -A $args }
+function get-gap { git add -p $args }
+function get-gca { git commit --amend $args }
+function get-gcan { git commit --amend --no-edit $args }
+function get-gni { git diff -G "Compile Include" *.csproj $args }
+function get-gsn { git show --name-status $args }
+function get-gcm { git checkout - $args }
+function get-gp { git push $args }
+function get-gc { git commit -m $args }
+function get-vi { vim $args }
 function get-reload {
     $pwd = Get-Location
     . ~\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1
