@@ -23,9 +23,12 @@ function Write-Location {
     Write-Host $curPath -NoNewline -ForegroundColor Blue
 }
 
-function Write-Administrator {
+function Get-Prompt {
     if (Test-Administrator) {
-        Write-Host "(Elevated) " -NoNewline -ForegroundColor White
+        return '#'
+    }
+    else {
+        return '$'
     }
 }
 
@@ -37,7 +40,6 @@ function prompt {
     $origLastExitCode = $LastExitCode
 
     Write-VcsStatus
-    Write-Administrator
     Write-Username
     Write-Separator
     Write-Location
@@ -46,7 +48,7 @@ function prompt {
     Write-Separator
 
     $LastExitCode = $origLastExitCode
-    "`n$('>' * ($nestedPromptLevel + 1)) "
+    "`n$(Get-Prompt * ($nestedPromptLevel + 1)) "
 }
 
 Import-Module posh-git
