@@ -86,6 +86,7 @@ function get-gsn { git show --name-status }
 function get-gcm { git checkout - }
 function get-gp { git push }
 function get-gc { git commit -m }
+function get-vi { vim }
 
 alias l get-l
 alias ll get-ll
@@ -108,6 +109,7 @@ alias gsn get-gsn
 alias gcm get-gcm
 alias gp get-gp
 alias gc get-gc
+alias vi get-vi
 
 function cddash {
     if ($args[0] -eq '-') {
