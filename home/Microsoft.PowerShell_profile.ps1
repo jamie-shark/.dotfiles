@@ -1,3 +1,7 @@
+((Get-Host).UI.RawUI).BackgroundColor = "Black"
+Clear-Host
+Set-Location C:\Code
+
 $env:Path += ";$home\bin"
 Set-Alias vim "C:\Program Files\Git\usr\bin\vim.exe"
 
@@ -120,7 +124,3 @@ function cddash {
 }
 
 Set-Alias -Name cd -value cddash -Option AllScope
-
-Set-Location C:\Code
-((Get-Host).UI.RawUI).BackgroundColor = "Black"
-Clear-Host
