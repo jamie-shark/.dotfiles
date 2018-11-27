@@ -1,6 +1,54 @@
 $env:Path += ";$home\bin"
 Set-Alias vim "C:\Program Files\Git\usr\bin\vim.exe"
 
+function Test-Administrator {
+    $user = [Security.Principal.WindowsIdentity]::GetCurrent();
+    (New-Object Security.Principal.WindowsPrincipal $user).IsInRole([Security.Principal.WindowsBuiltinRole]::Administrator)
+}
+
+function Write-Separator {
+    Write-Host " : " -NoNewline -ForegroundColor DarkGray
+}
+
+function Write-Username {
+    Write-Host "$env:USERNAME@" -NoNewline -ForegroundColor DarkYellow
+    Write-Host "$env:COMPUTERNAME" -NoNewline -ForegroundColor Magenta
+}
+
+function Write-Location {
+    $curPath = $ExecutionContext.SessionState.Path.CurrentLocation.Path
+    if ($curPath.ToLower().StartsWith($Home.ToLower())) {
+        $curPath = "~" + $curPath.SubString($Home.Length)
+    }
+    Write-Host $curPath -NoNewline -ForegroundColor Blue
+}
+
+function Write-Administrator {
+    if (Test-Administrator) {
+        Write-Host "(Elevated) " -NoNewline -ForegroundColor White
+    }
+}
+
+function Write-DateTime {
+    Write-Host (Get-Date -Format G) -NoNewline -ForegroundColor DarkMagenta
+}
+
+function prompt {
+    $origLastExitCode = $LastExitCode
+
+    Write-VcsStatus
+    Write-Administrator
+    Write-Username
+    Write-Separator
+    Write-Location
+    Write-Separator
+    Write-DateTime
+    Write-Separator
+
+    $LastExitCode = $origLastExitCode
+    "`n$('>' * ($nestedPromptLevel + 1)) "
+}
+
 Import-Module posh-git
 
 function alias($name, $value) {
