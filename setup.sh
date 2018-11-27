@@ -18,6 +18,6 @@ curl --url https://raw.githubusercontent.com/whiteinge/dotfiles/master/bin/diffc
 platform=$(uname -s)
 if [[ $platform = CYGWIN* ]] || [[ $platform = MINGW* ]] ; then
     echo "Linking Powershell profile . . ."
-    mkdir ~/WindowsPowerShell
+    mkdir ~/Documents/WindowsPowerShell
     ln ./home/Microsoft.PowerShell_profile.ps1 ~/Documents/WindowsPowerShell/Microsoft.PowerShell_profile.ps1 -f
 fi
