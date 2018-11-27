@@ -66,7 +66,7 @@ function Get-Parameters ([string] $command, [string[]]$outputFormat) {
 }
 
 function get-l { ls }
-function get-ll { ls -la }
+function get-ll { ls }
 function get-c { clear }
 function get-prerelease { .\build.ps1 -Target Create-PreRelease-Packages }
 function get-gh { git h }
@@ -87,6 +87,11 @@ function get-gcm { git checkout - }
 function get-gp { git push }
 function get-gc { git commit -m }
 function get-vi { vim }
+function get-reload {
+    $pwd = Get-Location
+    . ~\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1
+    Set-Location $pwd
+}
 
 alias l get-l
 alias ll get-ll
@@ -110,6 +115,7 @@ alias gcm get-gcm
 alias gp get-gp
 alias gc get-gc
 alias vi get-vi
+alias reload get-reload
 
 function cddash {
     if ($args[0] -eq '-') {
