@@ -30,6 +30,7 @@ Plugin 'pangloss/vim-javascript.git'
 Plugin 'qpkorr/vim-renamer.git'
 Plugin 'gregsexton/gitv'
 Plugin 'terryma/vim-multiple-cursors.git'
+Plugin 'cohama/lexima.vim'
 
 """ Plugin Configuration
 set statusline+=%#warningmsg#
