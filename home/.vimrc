@@ -24,9 +24,11 @@ Plugin 'tpope/vim-unimpaired.git'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'vim-syntastic/syntastic.git'
+Plugin 'w0rp/ale'
 Plugin 'PProvost/vim-ps1.git'
 Plugin 'bitc/vim-bad-whitespace.git'
 Plugin 'pangloss/vim-javascript.git'
+Plugin 'mxw/vim-jsx'
 Plugin 'qpkorr/vim-renamer.git'
 Plugin 'gregsexton/gitv'
 Plugin 'terryma/vim-multiple-cursors.git'
@@ -59,6 +61,10 @@ let NERDTreeShowHidden=1
 map <C-n> :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 let NERDTreeHijackNetrw=1
+
+" javascript
+let g:javascript_plugin_flow = 1
+let g:jsx_ext_required = 0
 
 syntax on
 filetype on
