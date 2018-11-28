@@ -93,6 +93,8 @@ set backupdir=$TEMP//
 set directory=$TEMP//
 set wildmode=longest,list,full
 set wildmenu
+set clipboard^=unnamed,unnamedplus
+set viewoptions=folds,options,cursor,unix,slash
 
 """ File type specific settings
 au BufNewFile,BufRead *.js,*.html,*.css,*.rb,*.clj,*.scala,*.lua,*.yaml setlocal tabstop=2
@@ -115,6 +117,7 @@ if has('win32') && !has('gui_running') && !empty($CONEMUBUILD)
     set t_Co=256
     let &t_AB="\e[48;5;%dm"
     let &t_AF="\e[38;5;%dm"
+    let g:gitgutter_realtime = 0
 endif
 
 " diff specific settings
