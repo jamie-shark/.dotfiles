@@ -62,6 +62,17 @@ map <C-n> :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 let NERDTreeHijackNetrw=1
 
+" multiple cursors
+let g:multi_cursor_use_default_mapping = 0
+let g:multi_cursor_start_word_key      = '<C-q>'
+let g:multi_cursor_select_all_word_key = '<A-q>'
+let g:multi_cursor_start_key           = 'g<C-q>'
+let g:multi_cursor_select_all_key      = 'g<A-q>'
+let g:multi_cursor_next_key            = '<C-q>'
+let g:multi_cursor_prev_key            = '<C-p>'
+let g:multi_cursor_skip_key            = '<C-x>'
+let g:multi_cursor_quit_key            = '<Esc>'
+
 " javascript
 let g:javascript_plugin_flow = 1
 let g:jsx_ext_required = 0
