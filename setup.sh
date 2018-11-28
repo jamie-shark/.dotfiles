@@ -15,6 +15,9 @@ git clone -q https://github.com/lyze/posh-git-sh.git ~/.dotfiles/posh-git-sh
 echo "Installing diffconflicts . . ."
 curl --url https://raw.githubusercontent.com/whiteinge/dotfiles/master/bin/diffconflicts --output ~/bin/diffconflicts --create-dirs
 
+echo "Installing diff-highlight . . ."
+curl https://raw.githubusercontent.com/git/git/fd99e2bda0ca6a361ef03c04d6d7fdc7a9c40b78/contrib/diff-highlight/diff-highlight -o ~/bin/diff-highlight > /dev/null 2>&1 && chmod +x ~/bin/diff-highlight
+
 platform=$(uname -s)
 if [[ $platform = CYGWIN* ]] || [[ $platform = MINGW* ]] ; then
     echo "Linking Powershell profile . . ."
