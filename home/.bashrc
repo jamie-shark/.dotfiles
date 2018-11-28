@@ -10,6 +10,7 @@ alias ..='cd ..'
 alias c='clear'
 alias prerelease='powershell ./build.ps1 -Target Create-PreRelease-Packages -Configuration Debug'
 alias rmswap='rm /tmp/*.sw[o-z]'
+
 alias ga='git add -A'
 alias gacd=$'ga; clear; gdc'
 alias gap='git add -p'
@@ -33,6 +34,7 @@ alias gs='git status -s'
 alias gsn=$'git show --name-status'
 alias gv='vi `git rev-parse --show-toplevel` -c "silent Gitv"'
 alias branch='git rev-parse --abbrev-ref HEAD'
+alias rmmerged='git branch --merged | grep -vE "(^\*|master|dev)" | xargs git branch -d'
 alias whatadded='git log --follow --diff-filter=A --find-renames=40% --'
 
 # posh git prompt
