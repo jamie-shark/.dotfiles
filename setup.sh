@@ -41,6 +41,7 @@ curl https://raw.githubusercontent.com/git/git/fd99e2bda0ca6a361ef03c04d6d7fdc7a
 
 platform=$(uname -s)
 if [[ $platform = CYGWIN* ]] || [[ $platform = MINGW* ]] ; then
+    ln ./home/.vimrc ~/_vimrc -f
     echo "Linking Powershell profile . . ."
     mkdir -p ~/Documents/WindowsPowerShell
     ln ./home/Microsoft.PowerShell_profile.ps1 ~/Documents/WindowsPowerShell/Microsoft.PowerShell_profile.ps1 -f
