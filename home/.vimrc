@@ -83,6 +83,8 @@ set mouse=ar
 set lazyredraw
 set incsearch
 set hls
+set ignorecase
+set smartcase
 set exrc
 set secure
 set nocompatible
