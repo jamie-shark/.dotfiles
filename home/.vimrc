@@ -29,6 +29,7 @@ Plugin 'bitc/vim-bad-whitespace.git'
 Plugin 'pangloss/vim-javascript.git'
 Plugin 'qpkorr/vim-renamer.git'
 Plugin 'gregsexton/gitv'
+Plugin 'terryma/vim-multiple-cursors.git'
 
 """ Plugin Configuration
 set statusline+=%#warningmsg#
