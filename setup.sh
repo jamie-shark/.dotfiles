@@ -39,6 +39,10 @@ curl https://raw.githubusercontent.com/whiteinge/dotfiles/master/bin/diffconflic
 echo "Installing diff-highlight . . ."
 curl https://raw.githubusercontent.com/git/git/fd99e2bda0ca6a361ef03c04d6d7fdc7a9c40b78/contrib/diff-highlight/diff-highlight -o ~/bin/diff-highlight > /dev/null 2>&1 && chmod +x ~/bin/diff-highlight
 
+echo "Installing fonts . . ."
+mkdir -p ~/.fonts
+curl https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/Go-Mono/Regular/complete/Go-Mono-Nerd-Font-Complete-Mono-Windows-Compatible.ttf -o ~/.fonts/Go-Mono-Nerd-Font-Complete-Mono-Windows-Compatible.ttf
+
 platform=$(uname -s)
 if [[ $platform = CYGWIN* ]] || [[ $platform = MINGW* ]] ; then
     ln ./home/.vimrc ~/_vimrc -f
