@@ -64,11 +64,11 @@ let NERDTreeHijackNetrw=1
 
 " multiple cursors
 let g:multi_cursor_use_default_mapping = 0
-let g:multi_cursor_start_word_key      = '<C-q>'
-let g:multi_cursor_select_all_word_key = '<A-q>'
-let g:multi_cursor_start_key           = 'g<C-q>'
-let g:multi_cursor_select_all_key      = 'g<A-q>'
-let g:multi_cursor_next_key            = '<C-q>'
+let g:multi_cursor_start_word_key      = '<C-d>'
+let g:multi_cursor_select_all_word_key = '<A-d>'
+let g:multi_cursor_start_key           = 'g<C-d>'
+let g:multi_cursor_select_all_key      = 'g<A-d>'
+let g:multi_cursor_next_key            = '<C-d>'
 let g:multi_cursor_prev_key            = '<C-p>'
 let g:multi_cursor_skip_key            = '<C-x>'
 let g:multi_cursor_quit_key            = '<Esc>'
@@ -76,6 +76,11 @@ let g:multi_cursor_quit_key            = '<Esc>'
 " javascript
 let g:javascript_plugin_flow = 1
 let g:jsx_ext_required = 0
+
+" ALE
+let g:ale_completion_enabled = 1
+nno <F12> :ALEGoToDefinition<CR>
+nno <leader><F12> :ALEFindReferences<CR>
 
 syntax on
 filetype on
@@ -164,6 +169,8 @@ nno <leader>v :tabedit $MYVIMRC<CR>
 nno <Leader>s :setlocal spell! spelllang=en_gb<CR>
 nno <Leader>h :setlocal hls!<CR>
 nno <Leader>w :setlocal wrap!<CR>
+nno <M-LEFT> <C-O>
+nno <M-RIGHT> <C-I>
 
 function! MarkWindowSwap()
     let g:markedWinNum = winnr()
