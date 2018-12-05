@@ -171,6 +171,7 @@ nno <Leader>h :setlocal hls!<CR>
 nno <Leader>w :setlocal wrap!<CR>
 nno <M-LEFT> <C-O>
 nno <M-RIGHT> <C-I>
+vno // y/\V<C-r>=escape(@",'/\')<CR><CR>
 
 function! MarkWindowSwap()
     let g:markedWinNum = winnr()
