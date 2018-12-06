@@ -90,7 +90,6 @@ set shiftwidth=0
 set softtabstop=-1
 set tabstop=4
 set expandtab
-set autoindent
 set fileformat=unix
 set foldmethod=syntax
 set foldnestmax=10
@@ -164,14 +163,18 @@ ino jj <esc>
 cno jj <c-c>
 vno v <esc>
 nno =j :%!python -m json.tool<CR>
-ino {<CR> <CR><BS>{<CR>}<C-o>O
+ino {<CR> <CR>{<CR>}<C-o>O
+ino <Space>{<CR> <Space>{<CR>}<C-o>O
 nno <leader>v :tabedit $MYVIMRC<CR>
 nno <Leader>s :setlocal spell! spelllang=en_gb<CR>
 nno <Leader>h :setlocal hls!<CR>
 nno <Leader>w :setlocal wrap!<CR>
 nno <M-LEFT> <C-O>
 nno <M-RIGHT> <C-I>
+xno <LeftMouse> m'<LeftMouse>
 vno // y/\V<C-r>=escape(@",'/\')<CR><CR>
+vno <C-C> "+y
+ino <C-V> <ESC>"+pa
 
 function! MarkWindowSwap()
     let g:markedWinNum = winnr()
@@ -194,3 +197,20 @@ endfunction
 
 nno <silent> <leader>mw :call MarkWindowSwap()<CR>
 nno <silent> <leader>pw :call DoWindowSwap()<CR>
+
+fun! CountWordFunction()
+    try
+        let l:win_view = winsaveview()
+        let l:old_query = getreg('/')
+        let var = expand("<cword>")
+        exec "%s/" . var . "//gn"
+    finally
+        call winrestview(l:win_view)
+        call setreg('/', l:old_query)
+    endtry
+endf
+" Bellow we set a command "CountWord" and a mapping to count word
+" change as you like it
+command! -nargs=0 CountWord :call CountWordFunction()
+nnoremap <f3> :CountWord<CR>
+nnoremap <silent> <2-LeftMouse> :let @/='\V\<'.escape(expand('<cword>'), '\').'\>'<cr>:set hls<cr>:CountWord<cr>
