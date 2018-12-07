@@ -33,6 +33,7 @@ alias grmu=$'git status -s | grep -i \'^??\' | sed \'s/ /\\ /g\' | awk \'{system
 alias gs='git status -s'
 alias gsn=$'git show --name-status'
 alias gv='vi `git rev-parse --show-toplevel` -c "silent Gitv"'
+alias gx='git reset . ; git checkout .'
 alias branch='git rev-parse --abbrev-ref HEAD'
 alias rmmerged='git branch --merged | grep -vE "(^\*|master|dev)" | xargs git branch -d'
 alias whatadded='git log --follow --diff-filter=A --find-renames=40% --'
