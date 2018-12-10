@@ -4,7 +4,7 @@ export PATH="$PATH:$HOME/bin"
 # alias
 alias l='ls --color=auto'
 alias ll='ls -la --color=auto'
-alias grerp='grep --color=auto'
+alias grep='grep --color=auto'
 alias md='mkdir -pv'
 alias ..='cd ..'
 alias c='clear'
