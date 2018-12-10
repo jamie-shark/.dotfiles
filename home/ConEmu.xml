@@ -262,8 +262,8 @@
 			<value name="Cascaded" type="hex" data="01"/>
 			<value name="IntegralSize" type="hex" data="00"/>
 			<value name="WindowMode" type="dword" data="00000520"/>
-			<value name="ConWnd X" type="long" data="354"/>
-			<value name="ConWnd Y" type="long" data="-2"/>
+			<value name="ConWnd X" type="long" data="362"/>
+			<value name="ConWnd Y" type="long" data="6"/>
 			<value name="LastMonitor" type="string" data="0,0,1920,1050"/>
 			<value name="ConWnd Width" type="dword" data="000000ef"/>
 			<value name="ConWnd Height" type="dword" data="00000039"/>
@@ -340,9 +340,9 @@
 			<value name="FontName" type="string" data="GoMono NF"/>
 			<value name="FontName2" type="string" data="GoMono NF"/>
 			<value name="FontAutoSize" type="hex" data="00"/>
-			<value name="FontSizeX" type="ulong" data="10"/>
+			<value name="FontSizeX" type="ulong" data="9"/>
 			<value name="FontSizeX2" type="ulong" data="0"/>
-			<value name="FontSizeX3" type="ulong" data="11"/>
+			<value name="FontSizeX3" type="ulong" data="9"/>
 			<value name="FontCharSet" type="hex" data="01"/>
 			<value name="Anti-aliasing" type="ulong" data="6"/>
 			<value name="FontBold" type="hex" data="00"/>
