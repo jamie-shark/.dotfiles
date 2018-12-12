@@ -32,7 +32,6 @@ Plugin 'mxw/vim-jsx'
 Plugin 'qpkorr/vim-renamer.git'
 Plugin 'gregsexton/gitv'
 Plugin 'terryma/vim-multiple-cursors.git'
-Plugin 'cohama/lexima.vim'
 " Load devicons last!
 Plugin 'ryanoasis/vim-devicons'
 
