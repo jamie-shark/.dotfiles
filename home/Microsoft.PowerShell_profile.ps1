@@ -1,6 +1,5 @@
 ((Get-Host).UI.RawUI).BackgroundColor = "Black"
 Clear-Host
-Set-Location C:\Code
 
 $env:Path += ";$home\bin"
 Set-Alias vim "C:\Program Files\Git\usr\bin\vim.exe"
