@@ -91,6 +91,7 @@ function get-reload {
     . ~\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1
     Set-Location $pwd
 }
+function get-cenv { rundll32 sysdm.cpl,EditEnvironmentVariables }
 
 alias l get-l
 alias ll get-ll
@@ -115,6 +116,7 @@ alias gp get-gp
 alias gc get-gc
 alias vi get-vi
 alias reload get-reload
+alias cenv get-cenv
 
 function cddash {
     if ($args[0] -eq '-') {

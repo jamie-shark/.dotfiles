@@ -11,6 +11,7 @@ alias c='clear'
 alias prerelease='powershell ./build.ps1 -Target Create-PreRelease-Packages -Configuration Debug'
 alias rmswap='rm /tmp/*.sw[o-z]'
 alias ps1='winpty powershell -c'
+alias cenv='rundll32 sysdm.cpl,EditEnvironmentVariables &'
 
 alias ga='git add -A'
 alias gacd=$'ga; clear; gdc'
