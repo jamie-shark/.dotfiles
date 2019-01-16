@@ -1,4 +1,14 @@
 #!/usr/bin/env sh
+
+pluginInstall=false
+
+while getopts ":p" opt; do
+    case $opt in
+        p) pluginInstall=true ;;
+        \?) ;;
+    esac
+done
+
 echo "Setting git configs . . ."
 git config --global color.ui auto
 git config --global core.autocrlf true
@@ -51,3 +61,5 @@ if [[ $platform = CYGWIN* ]] || [[ $platform = MINGW* ]] ; then
     ln ./home/Microsoft.PowerShell_profile.ps1 ~/Documents/WindowsPowerShell/Microsoft.PowerShell_profile.ps1 -f
     ln ./home/ConEmu.xml ~/AppData/Roaming/ConEmu.xml -f
 fi
+
+$pluginInstall && echo "Installing Vim plugins . . ." && vim -c 'PluginInstall' -c 'qa!'
