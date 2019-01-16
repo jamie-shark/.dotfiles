@@ -7,7 +7,6 @@ call vundle#end()
 filetype plugin indent on
 
 Plugin 'airblade/vim-gitgutter.git'
-Plugin 'editorconfig/editorconfig-vim'
 Plugin 'ervandew/supertab.git'
 Plugin 'kien/ctrlp.vim'
 Plugin 'majutsushi/tagbar'
@@ -176,6 +175,7 @@ xno <LeftMouse> m'<LeftMouse>
 vno // y/\V<C-r>=escape(@",'/\')<CR><CR>
 vno <C-C> "+y
 ino <C-V> <ESC>"+pa
+nno <F4> :noautocmd execute "vimgrep /" . expand("<cword>") . "/j **" <Bar> cw<CR>
 
 function! MarkWindowSwap()
     let g:markedWinNum = winnr()
@@ -215,3 +215,8 @@ endf
 command! -nargs=0 CountWord :call CountWordFunction()
 nnoremap <f3> :CountWord<CR>
 nnoremap <silent> <2-LeftMouse> :let @/='\V\<'.escape(expand('<cword>'), '\').'\>'<cr>:set hls<cr>:CountWord<cr>
+
+aug AutoCloseWhenQuickFixIsOnlyWindow
+  au!
+  au WinEnter * if winnr('$') == 1 && getbufvar(winbufnr(winnr()), "&buftype") == "quickfix"|q|endif
+aug END
