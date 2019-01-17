@@ -119,6 +119,7 @@ set wildmenu
 set clipboard^=unnamed,unnamedplus
 set viewoptions=folds,options,cursor,unix,slash
 set completeopt=menu,menuone,preview,noselect,noinsert
+set cursorline
 
 """ File type specific settings
 au BufNewFile,BufRead *.js,*.html,*.css,*.rb,*.clj,*.scala,*.lua,*.yaml setlocal tabstop=2
