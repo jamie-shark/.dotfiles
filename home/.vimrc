@@ -4,6 +4,7 @@ set rtp+=~/.vim/bundle/Vundle.vim/
 call vundle#begin('~/.vim/bundle/')
 Plugin 'gmarik/Vundle.vim'
 call vundle#end()
+execute pathogen#infect('pathogenbundle/{}')
 filetype plugin indent on
 
 Plugin 'airblade/vim-gitgutter.git'

@@ -62,4 +62,10 @@ if [[ $platform = CYGWIN* ]] || [[ $platform = MINGW* ]] ; then
     ln ./home/ConEmu.xml ~/AppData/Roaming/ConEmu.xml -f
 fi
 
-$pluginInstall && echo "Installing Vim plugins . . ." && vim -c 'PluginInstall' -c 'qa!'
+if $pluginInstall ; then
+    echo "Installing Vim plugins . . ."
+    mkdir -p ~/.vim/autoload ~/.vim/pathogenbundle
+    curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
+    git clone -q https://github.com/DrTom/fsharp-vim.git ~/.vim/pathogenbundle/fsharp > /dev/null 2>&1
+    vim -c 'PluginInstall' -c 'qa!'
+fi
