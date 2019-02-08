@@ -14,6 +14,9 @@ git config --global color.ui auto
 git config --global core.autocrlf true
 git config --global core.safecrlf false
 git config --global core.editor vim
+git config --global core.preloadindex true
+git config --global core.fscache true
+git config --global gc.auto 256
 git config --global push.default simple
 git config --global alias.h "log --graph --oneline --all --pretty=format:\"%C(yellow)%h%Creset %C(magenta)(%cr)%Creset %C(blue)%cn%Creset %s %C(auto)%d%Creset\""
 git config --global diff.tool vimdiff
