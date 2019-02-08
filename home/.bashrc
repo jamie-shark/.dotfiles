@@ -16,6 +16,7 @@ alias vi.='vim . `find . -type f | grep -vE "(\.git|\.vs|node_modules)/"`'
 alias cenv='rundll32 sysdm.cpl,EditEnvironmentVariables &'
 
 alias ga='git add -A'
+alias gaw='git diff -w --no-color | git apply --cached --ignore-whitespace'
 alias gacd=$'ga; clear; gdc'
 alias gap='git add -p'
 alias gc='git commit -m'
