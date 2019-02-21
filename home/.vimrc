@@ -19,6 +19,7 @@ Plug 'w0rp/ale'
 Plug 'bitc/vim-bad-whitespace'
 Plug 'qpkorr/vim-renamer'
 Plug 'terryma/vim-multiple-cursors'
+Plug 'osyo-manga/vim-over'
 Plug 'ryanoasis/vim-devicons'
 Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
 Plug 'PProvost/vim-ps1', { 'for': 'ps1' }
@@ -77,6 +78,10 @@ let g:jsx_ext_required = 0
 let g:ale_completion_enabled = 1
 nno <F12> :ALEGoToDefinition<CR>
 nno <leader><F12> :ALEFindReferences<CR>
+
+" Over
+nno <C-h> :OverCommandLine<CR>:%s/
+vno <C-h> :OverCommandLine<CR>:'<,'>s/
 
 syntax on
 filetype on
