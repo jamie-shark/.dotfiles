@@ -3,6 +3,7 @@ Font=GoMono NF
 FontHeight=11
 RightClickAction=paste
 BellType=0
+WindowShortcuts=no
 
 BackgroundColour=46,52,64
 ForegroundColour=216,222,233
