@@ -39,9 +39,9 @@ ln ./home/.minttyrc ~/.minttyrc -f
 echo "Sourcing bashrc . . ."
 source ~/.bashrc
 
-echo "Installing Vundle . . ."
-mkdir -p ~/.vim/bundle
-git clone -q https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim > /dev/null 2>&1
+echo "Installing VimPlug . . ."
+curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim > /dev/null 2>&1 
 
 echo "Installing Posh Git . . ."
 git clone -q https://github.com/lyze/posh-git-sh.git ~/.dotfiles/posh-git-sh > /dev/null 2>&1
@@ -67,8 +67,5 @@ fi
 
 if $pluginInstall ; then
     echo "Installing Vim plugins . . ."
-    mkdir -p ~/.vim/autoload ~/.vim/pathogenbundle
-    curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
-    git clone -q https://github.com/DrTom/fsharp-vim.git ~/.vim/pathogenbundle/fsharp > /dev/null 2>&1
-    vim -c 'PluginInstall' -c 'qa!'
+    vim -c 'call InstallPlugins()' -c 'qa!'
 fi

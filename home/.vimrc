@@ -1,44 +1,39 @@
 """ Plugins
-filetype off
-set rtp+=~/.vim/bundle/Vundle.vim/
-call vundle#begin('~/.vim/bundle/')
-Plugin 'gmarik/Vundle.vim'
-call vundle#end()
-execute pathogen#infect('pathogenbundle/{}')
-filetype plugin indent on
-
-Plugin 'airblade/vim-gitgutter.git'
-Plugin 'ervandew/supertab.git'
-Plugin 'kien/ctrlp.vim'
-Plugin 'majutsushi/tagbar'
-Plugin 'mattn/emmet-vim'
-Plugin 'mhinz/vim-startify.git'
-Plugin 'plasticboy/vim-markdown'
-Plugin 'reedes/vim-pencil'
-Plugin 'scrooloose/nerdtree'
-Plugin 'tpope/vim-abolish.git'
-Plugin 'tpope/vim-dispatch.git'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-surround.git'
-Plugin 'tpope/vim-unimpaired.git'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'vim-syntastic/syntastic.git'
-Plugin 'w0rp/ale'
-Plugin 'PProvost/vim-ps1.git'
-Plugin 'bitc/vim-bad-whitespace.git'
-Plugin 'pangloss/vim-javascript.git'
-Plugin 'mxw/vim-jsx'
-Plugin 'qpkorr/vim-renamer.git'
-Plugin 'gregsexton/gitv'
-Plugin 'terryma/vim-multiple-cursors.git'
-" Load devicons last!
-Plugin 'ryanoasis/vim-devicons'
+call plug#begin('~/.vim/plugged')
+Plug 'airblade/vim-gitgutter'
+Plug 'ervandew/supertab'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'majutsushi/tagbar'
+Plug 'mattn/emmet-vim', { 'for': ['html', 'jsx'] }
+Plug 'mhinz/vim-startify'
+Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
+Plug 'reedes/vim-pencil'
+Plug 'scrooloose/nerdtree'
+Plug 'tpope/vim-abolish'
+Plug 'tpope/vim-dispatch'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-unimpaired'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'vim-syntastic/syntastic'
+Plug 'w0rp/ale'
+Plug 'PProvost/vim-ps1', { 'for': 'ps1' }
+Plug 'bitc/vim-bad-whitespace'
+Plug 'pangloss/vim-javascript', { 'for': ['js', 'jsx'] }
+Plug 'mxw/vim-jsx', { 'for': 'jsx' }
+Plug 'qpkorr/vim-renamer'
+Plug 'gregsexton/gitv'
+Plug 'terryma/vim-multiple-cursors'
+Plug '1tgr/fsharp-vim', { 'for': 'fsharp' }
+Plug 'ryanoasis/vim-devicons'
+call plug#end()
 
 """ Plugin Configuration
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
+
+let g:ctrlp_map = '<c-p>'
 
 " syntastic
 let g:syntastic_always_populate_loc_list = 1
@@ -221,3 +216,7 @@ aug AutoCloseWhenQuickFixIsOnlyWindow
   au!
   au WinEnter * if winnr('$') == 1 && getbufvar(winbufnr(winnr()), "&buftype") == "quickfix"|q|endif
 aug END
+
+fun! InstallPlugins()
+    PlugInstall
+endf
