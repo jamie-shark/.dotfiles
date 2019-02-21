@@ -1,12 +1,11 @@
 """ Plugins
 call plug#begin('~/.vim/plugged')
 Plug 'airblade/vim-gitgutter'
+Plug 'gregsexton/gitv'
 Plug 'ervandew/supertab'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'majutsushi/tagbar'
-Plug 'mattn/emmet-vim', { 'for': ['html', 'jsx'] }
 Plug 'mhinz/vim-startify'
-Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
 Plug 'reedes/vim-pencil'
 Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-abolish'
@@ -17,15 +16,17 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-syntastic/syntastic'
 Plug 'w0rp/ale'
-Plug 'PProvost/vim-ps1', { 'for': 'ps1' }
 Plug 'bitc/vim-bad-whitespace'
+Plug 'qpkorr/vim-renamer'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'ryanoasis/vim-devicons'
+Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
+Plug 'PProvost/vim-ps1', { 'for': 'ps1' }
+Plug '1tgr/fsharp-vim', { 'for': 'fsharp' }
+Plug 'mattn/emmet-vim', { 'for': ['html', 'jsx'] }
 Plug 'pangloss/vim-javascript', { 'for': ['js', 'jsx'] }
 Plug 'mxw/vim-jsx', { 'for': 'jsx' }
-Plug 'qpkorr/vim-renamer'
-Plug 'gregsexton/gitv'
-Plug 'terryma/vim-multiple-cursors'
-Plug '1tgr/fsharp-vim', { 'for': 'fsharp' }
-Plug 'ryanoasis/vim-devicons'
+Plug 'leafgarland/typescript-vim', { 'for': 'ts' }
 call plug#end()
 
 """ Plugin Configuration
@@ -33,6 +34,7 @@ set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
+" CtrlP
 let g:ctrlp_map = '<c-p>'
 
 " syntastic
@@ -220,3 +222,4 @@ aug END
 fun! InstallPlugins()
     PlugInstall
 endf
+nno <leader>p :w<Bar>so %<Bar>call InstallPlugins()<CR>
