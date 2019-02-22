@@ -40,8 +40,7 @@ echo "Sourcing bashrc . . ."
 source ~/.bashrc
 
 echo "Installing VimPlug . . ."
-curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim > /dev/null 2>&1 
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim > /dev/null 2>&1 && chmod +x ~/.local/share/nvim/site/autoload/plug.vim
 
 echo "Installing Posh Git . . ."
 git clone -q https://github.com/lyze/posh-git-sh.git ~/.dotfiles/posh-git-sh > /dev/null 2>&1
