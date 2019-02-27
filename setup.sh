@@ -28,6 +28,7 @@ ln -fs ~/.dotfiles/home/.bashrc ~/.bashrc
 ln -fs ~/.dotfiles/home/.inputrc ~/.inputrc
 ln -fs ~/.dotfiles/home/.minttyrc ~/.minttyrc
 ln -fs ~/.dotfiles/home/terminator ~/.config/terminator/config
+sudo ln -fs /mnt/c /
 
 echo "### Installing VimPlug ###"
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
