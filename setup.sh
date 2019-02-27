@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 
 echo "### Setting git configs ###"
 git config --global color.ui auto
