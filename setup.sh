@@ -27,9 +27,6 @@ ln ./home/.bashrc ~/.bashrc -fs
 ln ./home/.inputrc ~/.inputrc -fs
 ln ./home/.minttyrc ~/.minttyrc -fs
 
-echo "### Sourcing bashrc ###"
-source ~/.bashrc
-
 echo "### Installing VimPlug ###"
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
