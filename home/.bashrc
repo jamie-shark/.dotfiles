@@ -1,5 +1,5 @@
 export TERM=xterm-256color
-export PATH="$PATH:$HOME/bin"
+export PATH="$HOME/bin:$PATH"
 export TEMP=/tmp
 
 # alias
