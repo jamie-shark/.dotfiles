@@ -20,6 +20,8 @@ Plug 'bitc/vim-bad-whitespace'
 Plug 'qpkorr/vim-renamer'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'osyo-manga/vim-over'
+Plug 'junegunn/limelight.vim'
+Plug 'junegunn/goyo.vim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
 Plug 'PProvost/vim-ps1', { 'for': 'ps1' }
@@ -82,6 +84,28 @@ nno <leader><F12> :ALEFindReferences<CR>
 " Over
 nno <C-h> :OverCommandLine<CR>:%s/
 vno <C-h> :OverCommandLine<CR>:'<,'>s/
+
+" Goyo
+function! s:goyo_enter()
+  set noshowmode
+  set noshowcmd
+  set scrolloff=999
+  Limelight
+  Pencil
+  " ...
+endfunction
+
+function! s:goyo_leave()
+  set showmode
+  set showcmd
+  set scrolloff=5
+  Limelight!
+  NoPencil
+endfunction
+
+autocmd! User GoyoEnter nested call <SID>goyo_enter()
+autocmd! User GoyoLeave nested call <SID>goyo_leave()
+nno <silent> <F11> :Goyo<CR>
 
 syntax on
 filetype on
