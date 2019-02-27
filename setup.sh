@@ -30,9 +30,6 @@ ln -fs ~/.dotfiles/home/.minttyrc ~/.minttyrc
 echo "### Installing VimPlug ###"
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
-echo "### Installing Posh Git ###"
-git clone https://github.com/lyze/posh-git-sh.git ~/.dotfiles/posh-git-sh
-
 echo "### Installing diffconflicts ###"
 curl -fLo ~/bin/diffconflicts --create-dirs https://raw.githubusercontent.com/whiteinge/dotfiles/master/bin/diffconflicts && sudo chmod +x ~/bin/diffconflicts
 
