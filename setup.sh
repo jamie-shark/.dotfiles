@@ -34,10 +34,10 @@ echo "### Installing Posh Git ###"
 git clone https://github.com/lyze/posh-git-sh.git ~/.dotfiles/posh-git-sh
 
 echo "### Installing diffconflicts ###"
-curl -fLo ~/bin/diffconflicts --create-dirs https://raw.githubusercontent.com/whiteinge/dotfiles/master/bin/diffconflicts
+curl -fLo ~/bin/diffconflicts --create-dirs https://raw.githubusercontent.com/whiteinge/dotfiles/master/bin/diffconflicts && sudo chmod +x ~/bin/diffconflicts
 
 echo "### Installing diff-highlight ###"
-curl -fLo ~/bin/diff-highlight --create-dirs https://raw.githubusercontent.com/git/git/fd99e2bda0ca6a361ef03c04d6d7fdc7a9c40b78/contrib/diff-highlight/diff-highlight
+curl -fLo ~/bin/diff-highlight --create-dirs https://raw.githubusercontent.com/git/git/fd99e2bda0ca6a361ef03c04d6d7fdc7a9c40b78/contrib/diff-highlight/diff-highlight && sudo chmod +x ~/bin/diff-highlight
 
 echo "### Installing fonts ###"
 mkdir -p ~/.fonts
