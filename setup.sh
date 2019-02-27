@@ -22,10 +22,10 @@ git config --global pager.diff 'diff-highlight | less'
 git config --global interactive.diffFilter diff-highlight
 
 echo "### Linking dotfiles ###"
-ln ./home/.vimrc ~/.vimrc -fs
-ln ./home/.bashrc ~/.bashrc -fs
-ln ./home/.inputrc ~/.inputrc -fs
-ln ./home/.minttyrc ~/.minttyrc -fs
+ln -fs ~/.dotfiles/home/.vimrc ~/.vimrc
+ln -fs ~/.dotfiles/home/.bashrc ~/.bashrc
+ln -fs ~/.dotfiles/home/.inputrc ~/.inputrc
+ln -fs ~/.dotfiles/home/.minttyrc ~/.minttyrc
 
 echo "### Installing VimPlug ###"
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -45,11 +45,11 @@ cp GoMono-NF.ttf ~/.fonts/
 
 platform=$(uname -s)
 if [[ $platform = CYGWIN* ]] || [[ $platform = MINGW* ]] ; then
-    ln ./home/.vimrc ~/_vimrc -fs
+    ln -fs ~/.dotfiles/home/.vimrc ~/_vimrc
     echo "### Linking Powershell profile ###"
     mkdir -p ~/Documents/WindowsPowerShell
-    ln ./home/Microsoft.PowerShell_profile.ps1 ~/Documents/WindowsPowerShell/Microsoft.PowerShell_profile.ps1 -fs
-    ln ./home/ConEmu.xml ~/AppData/Roaming/ConEmu.xml -fs
+    ln -fs ~/.dotfiles/home/Microsoft.PowerShell_profile.ps1 ~/Documents/WindowsPowerShell/Microsoft.PowerShell_profile.ps1
+    ln -fs ~/.dotfiles/home/ConEmu.xml ~/AppData/Roaming/ConEmu.xml
 fi
 
 echo "### Installing Vim plugins ###"
