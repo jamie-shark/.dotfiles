@@ -14,7 +14,8 @@ choco install wcxsrv -y
 * Launch bash.exe and setup root user, then:
 ```
 sudo apt update && sudo apt install git
-git clone https://github.com/jon-campbell/.dotfiles.git
+ln -s /mnt/c/Users/jonathan.campbell/.dotfiles/ ~/
+ln -s /mnt/c/Users/jonathan.campbell/.ssh/ ~/
 cd .dotfiles
 sh ./wsl-setup.sh
 ```
