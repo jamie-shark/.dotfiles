@@ -16,6 +16,7 @@ alias ps1='winpty powershell -c'
 alias vi='vim'
 alias vi.='vim . `find . -type f | grep -vE "(\.git|\.vs|node_modules)/"`'
 alias cenv='rundll32 sysdm.cpl,EditEnvironmentVariables &'
+alias start='cmd.exe /c start'
 
 alias ga='git add -A'
 alias gaw='git diff -w --no-color | git apply --cached --ignore-whitespace'
