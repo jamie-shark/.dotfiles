@@ -1,3 +1,4 @@
+export DISPLAY=:0.0
 export TERM=xterm-256color
 export PATH="$HOME/bin:$PATH"
 export TEMP=/tmp
