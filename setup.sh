@@ -22,7 +22,6 @@ git config --global pager.diff 'diff-highlight | less'
 git config --global interactive.diffFilter diff-highlight
 
 echo "### Linking dotfiles ###"
-mkdir -p ~/.config
 ln -fs ~/.dotfiles/home/.vimrc ~/.vimrc
 ln -fs ~/.dotfiles/home/.bashrc ~/.bashrc
 ln -fs ~/.dotfiles/home/.zshrc ~/.zshrc
