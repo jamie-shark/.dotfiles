@@ -22,10 +22,10 @@ git config --global pager.diff 'diff-highlight | less'
 git config --global interactive.diffFilter diff-highlight
 
 echo "### Linking dotfiles ###"
-ln ./home/.vimrc ~/.vimrc -f
-ln ./home/.bashrc ~/.bashrc -f
-ln ./home/.inputrc ~/.inputrc -f
-ln ./home/.minttyrc ~/.minttyrc -f
+ln ./home/.vimrc ~/.vimrc -fs
+ln ./home/.bashrc ~/.bashrc -fs
+ln ./home/.inputrc ~/.inputrc -fs
+ln ./home/.minttyrc ~/.minttyrc -fs
 
 echo "### Sourcing bashrc ###"
 source ~/.bashrc
@@ -48,11 +48,11 @@ cp GoMono-NF.ttf ~/.fonts/
 
 platform=$(uname -s)
 if [[ $platform = CYGWIN* ]] || [[ $platform = MINGW* ]] ; then
-    ln ./home/.vimrc ~/_vimrc -f
+    ln ./home/.vimrc ~/_vimrc -fs
     echo "### Linking Powershell profile ###"
     mkdir -p ~/Documents/WindowsPowerShell
-    ln ./home/Microsoft.PowerShell_profile.ps1 ~/Documents/WindowsPowerShell/Microsoft.PowerShell_profile.ps1 -f
-    ln ./home/ConEmu.xml ~/AppData/Roaming/ConEmu.xml -f
+    ln ./home/Microsoft.PowerShell_profile.ps1 ~/Documents/WindowsPowerShell/Microsoft.PowerShell_profile.ps1 -fs
+    ln ./home/ConEmu.xml ~/AppData/Roaming/ConEmu.xml -fs
 fi
 
 echo "### Installing Vim plugins ###"
