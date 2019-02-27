@@ -2,7 +2,7 @@
 
 echo "### Setting git configs ###"
 git config --global color.ui auto
-git config --global core.autocrlf true
+git config --global core.autocrlf false
 git config --global core.safecrlf false
 git config --global core.editor vim
 git config --global core.preloadindex true
