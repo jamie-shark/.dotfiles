@@ -3,7 +3,8 @@ export TERM=xterm-256color
 export PATH="$HOME/bin:$PATH"
 export TEMP=/tmp
 
-# alias
+eval `dircolors ~/.dir_colors`
+
 alias l='ls --color=auto'
 alias ll='ls -la --color=auto'
 alias grep='grep --color=auto'

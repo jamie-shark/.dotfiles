@@ -53,3 +53,5 @@ fi
 
 echo "### Installing Vim plugins ###"
 vim -c 'call InstallPlugins()' -c 'qa!'
+
+curl -fLo ~/.dir_colors https://raw.githubusercontent.com/seebi/dircolors-solarized/master/dircolors.256dark
