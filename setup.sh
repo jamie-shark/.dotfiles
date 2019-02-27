@@ -22,10 +22,12 @@ git config --global pager.diff 'diff-highlight | less'
 git config --global interactive.diffFilter diff-highlight
 
 echo "### Linking dotfiles ###"
+mkdir -p ~/.config
 ln -fs ~/.dotfiles/home/.vimrc ~/.vimrc
 ln -fs ~/.dotfiles/home/.bashrc ~/.bashrc
 ln -fs ~/.dotfiles/home/.inputrc ~/.inputrc
 ln -fs ~/.dotfiles/home/.minttyrc ~/.minttyrc
+ln -fs ~/.dotfiles/home/terminator ~/.config/terminator/config
 
 echo "### Installing VimPlug ###"
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
