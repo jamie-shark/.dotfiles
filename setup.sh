@@ -25,6 +25,7 @@ echo "### Linking dotfiles ###"
 mkdir -p ~/.config
 ln -fs ~/.dotfiles/home/.vimrc ~/.vimrc
 ln -fs ~/.dotfiles/home/.bashrc ~/.bashrc
+ln -fs ~/.dotfiles/home/.zshrc ~/.zshrc
 ln -fs ~/.dotfiles/home/.inputrc ~/.inputrc
 ln -fs ~/.dotfiles/home/.minttyrc ~/.minttyrc
 ln -fs ~/.dotfiles/home/terminator ~/.config/terminator/config
