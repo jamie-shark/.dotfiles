@@ -1,4 +1,6 @@
-# path
+export TERM=xterm-256color
+
+ #path
 export PATH="$PATH:$HOME/bin"
 
 # alias
