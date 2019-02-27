@@ -1,7 +1,6 @@
 export TERM=xterm-256color
-
- #path
 export PATH="$PATH:$HOME/bin"
+export TEMP=/tmp
 
 # alias
 alias l='ls --color=auto'
