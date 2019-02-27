@@ -11,3 +11,7 @@ eval `dircolors ~/.dir_colors`
 export PROMPT_COMMAND='__posh_git_ps1 "\\[\[\e[0;32m\]\u@\h \[\e[0;33m\]\w" " \[\e[1;34m\]\n\$\[\e[0m\] ";'$PROMPT_COMMAND
 
 urldecode() { : "${*//+/ }"; echo -e "${_//%/\\x}"; }
+
+if [ -t 1 ]; then
+  cd ~
+fi
