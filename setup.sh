@@ -27,6 +27,7 @@ ln -fs ~/.dotfiles/home/.bashrc ~/.bashrc
 ln -fs ~/.dotfiles/home/.zshrc ~/.zshrc
 ln -fs ~/.dotfiles/home/.inputrc ~/.inputrc
 ln -fs ~/.dotfiles/home/.minttyrc ~/.minttyrc
+mkdir -p ~/.config/terminator
 ln -fs ~/.dotfiles/home/terminator ~/.config/terminator/config
 
 echo "### Installing VimPlug ###"

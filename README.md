@@ -4,7 +4,7 @@ ___
 * Enable linux subsystem windows feature
 * In powershell (use install-chocolatey.ps1 if needed):
 ```
-choco install wcxsrv -y
+choco install vcxsrc -y
 ```
 * Install bash on Ubuntu for Windows through the app store
 * Launch bash.exe and setup root user, then:
