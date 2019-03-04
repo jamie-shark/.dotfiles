@@ -14,4 +14,5 @@ urldecode() { : "${*//+/ }"; echo -e "${_//%/\\x}"; }
 
 if [ -t 1 ]; then
   cd ~
+  exec zsh
 fi
