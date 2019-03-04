@@ -9,7 +9,7 @@ choco install vcxsrc -y
 * Install bash on Ubuntu for Windows through the app store
 * Launch bash.exe and setup root user, then:
 ```
-sudo apt update && sudo apt install git xclip
+sudo apt update && sudo apt install git xclip -y
 ln -s /mnt/c/Users/jonathan.campbell/.dotfiles/ ~/
 ln -s /mnt/c/Users/jonathan.campbell/.ssh/ ~/
 sudo ln -fs /mnt/c /
