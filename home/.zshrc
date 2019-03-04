@@ -94,4 +94,9 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+export TERM=xterm-256color
+export PATH="$HOME/bin:$PATH"
+export TEMP=/tmp
 . ~/.dotfiles/alias.sh
+eval `dircolors ~/.dir_colors`
