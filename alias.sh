@@ -8,7 +8,6 @@ alias ..='cd ..'
 alias c='clear'
 alias prerelease='powershell ./build.ps1 -Target Create-PreRelease-Packages -Configuration Debug'
 alias rmswap='rm /tmp/*.sw[o-z]'
-alias ps1='winpty powershell -c'
 alias vi='vim'
 alias vi.='vim . `find . -type f | grep -vE "(\.git|\.vs|node_modules)/"`'
 alias cenv='rundll32 sysdm.cpl,EditEnvironmentVariables &'
@@ -41,3 +40,4 @@ alias branch='git rev-parse --abbrev-ref HEAD'
 alias rmmerged='git branch --merged | grep -vE "(^\*|master|dev)" | xargs git branch -d'
 alias whatadded='git log --follow --diff-filter=A --find-renames=40% --'
 
+ps1() { start powershell -NoProfile -c "$@ ; pause" ; }
