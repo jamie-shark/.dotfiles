@@ -2,8 +2,8 @@
 
 echo "### Setting git configs ###"
 git config --global color.ui auto
-git config --global core.autocrlf false
-git config --global core.safecrlf false
+git config --global core.autocrlf input
+git config --global core.safecrlf true
 git config --global core.editor vim
 git config --global core.preloadindex true
 git config --global core.fscache true
@@ -19,6 +19,8 @@ git config --global mergetool.keepBackup false
 git config --global pager.log 'diff-highlight | less -XF'
 git config --global pager.show 'diff-highlight | less -XF'
 git config --global pager.diff 'diff-highlight | less -XF'
+git config --global pager.branch 'less -XF'
+git config --global pager.tag 'less -XF'
 git config --global interactive.diffFilter diff-highlight
 
 echo "### Linking dotfiles ###"
