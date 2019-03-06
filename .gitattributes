@@ -1,5 +1,4 @@
 * text=auto
-*.ps1 eol=crlf
 *.ttf binary
 *.lnk binary
 *.ico binary
