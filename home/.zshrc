@@ -100,3 +100,4 @@ export PATH="$HOME/bin:$PATH"
 export TEMP=/tmp
 . ~/.dotfiles/alias.sh
 eval `dircolors ~/.dir_colors`
+cd ~
