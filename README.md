@@ -2,7 +2,7 @@
 ___
 ## Setup
 * Enable linux subsystem windows feature
-* In powershell (use install-chocolatey.ps1 if needed):
+* In powershell (use install-powershell-utils.cmd if needed):
 ```
 choco install vcxsrc -y
 ```
