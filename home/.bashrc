@@ -12,7 +12,7 @@ export PROMPT_COMMAND='__posh_git_ps1 "\\[\[\e[0;32m\]\u@\h \[\e[0;33m\]\w" " \[
 
 urldecode() { : "${*//+/ }"; echo -e "${_//%/\\x}"; }
 
-if [ -t 1 ]; then
-  cd ~
-  exec zsh
-fi
+# if [ -t 1 ]; then
+#   cd ~
+#   exec zsh
+# fi
