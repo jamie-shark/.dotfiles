@@ -101,3 +101,4 @@ export TEMP=/tmp
 . ~/.dotfiles/alias.sh
 eval `dircolors ~/.dir_colors`
 cd ~
+stty -ixon
