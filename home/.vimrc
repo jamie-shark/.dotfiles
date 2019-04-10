@@ -134,7 +134,7 @@ nmap <Leader>s :Filetypes<CR>
 
 let g:rg_command = '
   \ rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --color "always"
-  \ -g "!**/{.git,node_modules,vendor}/*" '
+  \ -g "!**/{.git,node_modules,vendor,bin,obj,packages,.vs,lib}/*" '
 
 command! -bang -nargs=* F call fzf#vim#grep(g:rg_command .shellescape(<q-args>), 1, <bang>0)
 
@@ -288,8 +288,9 @@ endf
 nno <leader>p :w<Bar>so %<Bar>call InstallPlugins()<CR>
 
 if executable('rg')
-  set grepprg=rg\ --color=never
-  let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'
+  set grepprg=rg\ --color=never\ -g "!**/{.git,node_modules,vendor,bin,obj,packages,.vs}/*"
+  let g:ctrlp_user_command = 'rg %s --files --color=never -g "!**/{.git,node_modules,vendor,bin,obj,packages,.vs}/*" '
+
   let g:ctrlp_use_caching = 0
 endif
 set wildignore+=*/.git/*,*/.vs/*,*/node_modules/*

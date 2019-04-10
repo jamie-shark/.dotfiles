@@ -104,3 +104,5 @@ cd ~
 stty -ixon
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+bindkey -s '^p' 'vim $(fzf);\n'
