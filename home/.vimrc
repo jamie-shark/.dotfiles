@@ -93,7 +93,6 @@ function! s:goyo_enter()
   set scrolloff=999
   Limelight
   Pencil
-  " ...
 endfunction
 
 function! s:goyo_leave()
@@ -106,7 +105,7 @@ endfunction
 
 autocmd! User GoyoEnter nested call <SID>goyo_enter()
 autocmd! User GoyoLeave nested call <SID>goyo_leave()
-nno <silent> <F11> :Goyo<CR>
+nno <silent> <leader>f :Goyo<CR>
 
 " fzf
 let g:fzf_action = {
