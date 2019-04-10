@@ -102,3 +102,5 @@ export TEMP=/tmp
 eval `dircolors ~/.dir_colors`
 cd ~
 stty -ixon
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

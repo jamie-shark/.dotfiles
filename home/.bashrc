@@ -16,3 +16,5 @@ urldecode() { : "${*//+/ }"; echo -e "${_//%/\\x}"; }
 #   cd ~
 #   exec zsh
 # fi
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
