@@ -27,11 +27,13 @@ Plug 'junegunn/goyo.vim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
 Plug 'PProvost/vim-ps1', { 'for': 'ps1' }
-Plug '1tgr/fsharp-vim', { 'for': 'fsharp' }
 Plug 'mattn/emmet-vim', { 'for': ['html', 'jsx'] }
 Plug 'pangloss/vim-javascript', { 'for': ['js', 'jsx'] }
 Plug 'mxw/vim-jsx', { 'for': 'jsx' }
 Plug 'leafgarland/typescript-vim', { 'for': 'ts' }
+Plug 'OmniSharp/omnisharp-vim'
+Plug 'Shougo/vimproc.vim', {'do' : 'make'}
+
 call plug#end()
 
 """ Plugin Configuration
@@ -82,6 +84,9 @@ let g:jsx_ext_required = 0
 let g:ale_completion_enabled = 1
 nno <F12> :ALEGoToDefinition<CR>
 nno <leader><F12> :ALEFindReferences<CR>
+let g:ale_linters = {
+            \ 'cs': ['OmniSharp']
+            \}
 
 " Over
 nno <C-h> :OverCommandLine<CR>:%s/
@@ -113,6 +118,33 @@ let g:fzf_action = {
   \ 'ctrl-t': 'tab split',
   \ 'ctrl-x': 'split',
   \ 'ctrl-v': 'vsplit' }
+
+
+" Omnisharp
+let g:OmniSharp_selector_ui = 'fzf'
+let g:OmniSharp_highlight_types = 1
+augroup omnisharp_commands
+    autocmd!
+    autocmd CursorHold *.cs call OmniSharp#TypeLookupWithoutDocumentation()
+    autocmd InsertLeave *.cs call OmniSharp#HighlightBuffer()
+    autocmd FileType cs nnoremap <buffer> gd :OmniSharpGotoDefinition<CR>
+    autocmd FileType cs nnoremap <buffer> <Leader>fi :OmniSharpFindImplementations<CR>
+    autocmd FileType cs nnoremap <buffer> <Leader>fs :OmniSharpFindSymbol<CR>
+    autocmd FileType cs nnoremap <buffer> <Leader>fu :OmniSharpFindUsages<CR>
+    autocmd FileType cs nnoremap <buffer> <Leader>fm :OmniSharpFindMembers<CR>
+    autocmd FileType cs nnoremap <buffer> <Leader>fx :OmniSharpFixUsings<CR>
+    autocmd FileType cs nnoremap <buffer> <Leader>tt :OmniSharpTypeLookup<CR>
+    autocmd FileType cs nnoremap <buffer> <Leader>dc :OmniSharpDocumentation<CR>
+    autocmd FileType cs nnoremap <buffer> <C-\> :OmniSharpSignatureHelp<CR>
+    autocmd FileType cs inoremap <buffer> <C-\> <C-o>:OmniSharpSignatureHelp<CR>
+    autocmd FileType cs nnoremap <buffer> <C-k> :OmniSharpNavigateUp<CR>
+    autocmd FileType cs nnoremap <buffer> <C-j> :OmniSharpNavigateDown<CR>
+augroup END
+nnoremap <Leader><Space> :OmniSharpGetCodeActions<CR>
+xnoremap <Leader><Space> :call OmniSharp#GetCodeActions('visual')<CR>
+nnoremap <Leader>nm :OmniSharpRename<CR>
+nnoremap <F2> :OmniSharpRename<CR>
+nnoremap <Leader>cf :OmniSharpCodeFormat<CR>
 
 nmap <leader><tab> <plug>(fzf-maps-n)
 xmap <leader><tab> <plug>(fzf-maps-x)
