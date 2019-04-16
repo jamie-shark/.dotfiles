@@ -1,3 +1,5 @@
+let mapleader = ","
+
 """ Plugins
 call plug#begin('~/.vim/plugged')
 Plug 'airblade/vim-gitgutter'
@@ -121,6 +123,9 @@ let g:fzf_action = {
 
 
 " Omnisharp
+let g:OmniSharp_server_type = 'roslyn'
+let g:OmniSharp_prefer_global_sln = 1
+let g:OmniSharp_timeout = 5
 let g:OmniSharp_selector_ui = 'fzf'
 let g:OmniSharp_highlight_types = 1
 augroup omnisharp_commands
@@ -145,6 +150,8 @@ xnoremap <Leader><Space> :call OmniSharp#GetCodeActions('visual')<CR>
 nnoremap <Leader>nm :OmniSharpRename<CR>
 nnoremap <F2> :OmniSharpRename<CR>
 nnoremap <Leader>cf :OmniSharpCodeFormat<CR>
+nnoremap <Leader>ss :OmniSharpStartServer<CR>
+nnoremap <Leader>sp :OmniSharpStopServer<CR>
 
 nmap <leader><tab> <plug>(fzf-maps-n)
 xmap <leader><tab> <plug>(fzf-maps-x)
@@ -243,7 +250,6 @@ if &diff
 endif
 
 """ Keybindings
-let mapleader = ","
 nno <silent> <C-h> :wincmd h<CR>
 nno <silent> <C-j> :wincmd j<CR>
 nno <silent> <C-k> :wincmd k<CR>
