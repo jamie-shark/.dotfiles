@@ -22,6 +22,7 @@ git config --global pager.diff 'diff-highlight | less -XF'
 git config --global pager.branch 'less -XF'
 git config --global pager.tag 'less -XF'
 git config --global interactive.diffFilter diff-highlight
+git config --global core.excludesfile ~/.gitignore_global
 
 echo "### Linking dotfiles ###"
 ln -fs ~/.dotfiles/home/.vimrc ~/.vimrc
@@ -32,6 +33,9 @@ ln -fs ~/.dotfiles/home/.minttyrc ~/.minttyrc
 ln -fs ~/.dotfiles/home/.hyper.js ~/.hyper.js
 mkdir -p ~/.config/terminator
 ln -fs ~/.dotfiles/home/terminator ~/.config/terminator/config
+ln -fs ~/.dotfiles/home/.ctags ~/
+ln -fs ~/.dotfiles/home/.gitignore_global ~/
+
 
 echo "### Installing VimPlug ###"
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -71,3 +75,6 @@ git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 
 echo "### Installing zsh plugins"
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+
+echo "### Installing ctags"
+apt install ctags -y

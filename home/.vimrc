@@ -35,6 +35,7 @@ Plug 'mxw/vim-jsx', { 'for': 'jsx' }
 Plug 'leafgarland/typescript-vim', { 'for': 'ts' }
 Plug 'OmniSharp/omnisharp-vim'
 Plug 'Shougo/vimproc.vim', {'do' : 'make'}
+Plug 'juliosueiras/cakebuild.vim', { 'for' : 'cake' }
 
 call plug#end()
 
@@ -153,6 +154,33 @@ nnoremap <Leader>cf :OmniSharpCodeFormat<CR>
 nnoremap <Leader>ss :OmniSharpStartServer<CR>
 nnoremap <Leader>sp :OmniSharpStopServer<CR>
 
+" Tagbar
+let g:tagbar_type_cake = {
+    \ 'ctagstype' : 'cakebuild',
+    \ 'kinds' : [
+        \ 't:Task'
+    \ ]
+\ }
+
+let g:tagbar_type_markdown = {
+    \ 'ctagstype' : 'markdown',
+    \ 'kinds' : [
+        \ 'h:Heading_L1',
+        \ 'i:Heading_L2',
+        \ 'k:Heading_L3'
+    \ ]
+\ }
+
+let g:tagbar_type_xsd = {
+    \ 'ctagstype' : 'XSD',
+    \ 'kinds'     : [
+        \ 'e:elements',
+        \ 'c:complexTypes',
+        \ 's:simpleTypes'
+    \ ]
+\ }
+
+
 nmap <leader><tab> <plug>(fzf-maps-n)
 xmap <leader><tab> <plug>(fzf-maps-x)
 omap <leader><tab> <plug>(fzf-maps-o)
@@ -222,7 +250,6 @@ set list
 
 """ File type specific settings
 au BufNewFile,BufRead *.js,*.html,*.css,*.rb,*.clj,*.scala,*.lua,*.yaml setlocal tabstop=2
-au BufNewFile,BufRead *.cake set filetype=cs
 au BufNewFile,BufRead *.ps1,*.psd1,*.psm1,*.bat,*.cmd setlocal ft=ps1
 if &diff
     highlight! link DiffText MatchParen
