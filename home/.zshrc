@@ -106,3 +106,5 @@ stty -ixon
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 bindkey -s '^p' 'vim $(fzf);\n'
+
+export PULSE_SERVER=tcp:localhost

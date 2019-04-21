@@ -1,0 +1,11 @@
+--- src/pulsecore/mutex-posix.c	2019-04-20 23:44:03.001541400 +0100
++++ src/pulsecore/mutex-posix.c	2019-04-20 23:44:09.351646600 +0100
+@@ -21,6 +21,8 @@
+ #include <config.h>
+ #endif
+ 
++#undef HAVE_PTHREAD_PRIO_INHERIT
++
+ #include <pthread.h>
+ #include <errno.h>
+ 

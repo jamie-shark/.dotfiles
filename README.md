@@ -23,6 +23,7 @@ cd .dotfiles
 #### wsl-setup.sh
 * Updates the ubuntu system
 * Installs the terminal emulator and multiplexer 'terminator'
+* install-pulseaudio.sh installs the windows and linux parts required for audio to work. Will need the pulseaudio-1.1 folder copying to the C drive once run.
 
 #### setup.sh
 * Sets global git configs
