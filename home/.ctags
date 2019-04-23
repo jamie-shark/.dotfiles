@@ -1,3 +1,11 @@
+--exclude=.git
+--exclude=.vs
+--exclude=packages
+--exclude=vendor
+--exclude=node_modules
+--exclude=bin
+--exclude=obj
+
 --langmap=Lisp:+.clj
 
 --langdef=cakebuild
