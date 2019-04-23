@@ -155,6 +155,8 @@ nnoremap <Leader>ss :OmniSharpStartServer<CR>
 nnoremap <Leader>sp :OmniSharpStopServer<CR>
 
 " Tagbar
+nnoremap <silent> <F9> :TagbarToggle<CR>
+
 let g:tagbar_type_cake = {
     \ 'ctagstype' : 'cakebuild',
     \ 'kinds' : [
