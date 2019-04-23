@@ -369,3 +369,10 @@ if executable('rg')
   nnoremap <C-g> :Rg!<Cr>
 endif
 
+" Preserve undo history in single file
+if has('persistent_undo')
+    set undodir=$HOME/.vim_undo_files
+    set undolevels=5000
+    set undofile
+endif
+
