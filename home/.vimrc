@@ -249,7 +249,7 @@ set cursorline
 set tw=0
 set listchars=tab:>~,nbsp:_,trail:.
 set list
-set wildignore+=*/.git/*,*/.vs/*,*/node_modules/*,*/bin/*,*/obj/*,*/packages/*,*/vendor/*
+set wildignore+=*/.git/*,*/.vs/*,*/node_modules/*,*/bin/*,*/obj/*,*/packages/*,*/vendor/*,*/tags,*/*.min.js,*.log,*.xml
 
 """ File type specific settings
 au BufNewFile,BufRead *.js,*.html,*.css,*.rb,*.clj,*.scala,*.lua,*.yaml setlocal tabstop=2
