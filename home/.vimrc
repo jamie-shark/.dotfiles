@@ -249,6 +249,7 @@ set cursorline
 set tw=0
 set listchars=tab:>~,nbsp:_,trail:.
 set list
+set wildignore+=*/.git/*,*/.vs/*,*/node_modules/*,*/bin/*,*/obj/*,*/packages/*,*/vendor/*
 
 """ File type specific settings
 au BufNewFile,BufRead *.js,*.html,*.css,*.rb,*.clj,*.scala,*.lua,*.yaml setlocal tabstop=2
@@ -357,7 +358,14 @@ nno <leader>p :w<Bar>so %<Bar>call InstallPlugins()<CR>
 if executable('rg')
   set grepprg=rg\ --color=never\ -g "!**/{.git,node_modules,vendor,bin,obj,packages,.vs}/*"
   let g:ctrlp_user_command = 'rg %s --files --color=never -g "!**/{.git,node_modules,vendor,bin,obj,packages,.vs}/*" '
-
   let g:ctrlp_use_caching = 0
+
+  command! -bang -nargs=* Rg
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --hidden --ignore-case --no-heading --color=always '.shellescape(<q-args>), 1,
+  \   <bang>0 ? fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}, 'up:60%')
+  \           : fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}, 'right:50%:hidden', '?'),
+  \ <bang>0)
+  nnoremap <C-g> :Rg!<Cr>
 endif
-set wildignore+=*/.git/*,*/.vs/*,*/node_modules/*
+
