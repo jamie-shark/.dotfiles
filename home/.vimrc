@@ -36,6 +36,7 @@ Plug 'leafgarland/typescript-vim', { 'for': 'ts' }
 Plug 'OmniSharp/omnisharp-vim'
 Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 Plug 'juliosueiras/cakebuild.vim', { 'for' : 'cake' }
+Plug 'mtth/scratch.vim'
 
 call plug#end()
 
@@ -154,6 +155,9 @@ nnoremap <Leader>cf :OmniSharpCodeFormat<CR>
 nnoremap <Leader>ss :OmniSharpStartServer<CR>
 nnoremap <Leader>sp :OmniSharpStopServer<CR>
 
+let g:scratch_persistence_file = '~/.scratch'
+let g:scratch_autohide = 1
+
 " Tagbar
 nnoremap <silent> <F9> :TagbarToggle<CR>
 
@@ -250,6 +254,10 @@ set tw=0
 set listchars=tab:>~,nbsp:_,trail:.
 set list
 set wildignore+=*/.git/*,*/.vs/*,*/node_modules/*,*/bin/*,*/obj/*,*/packages/*,*/vendor/*,*/tags,*/*.min.js,*.log,*.xml
+set hidden
+set title
+set titleold=
+set titlestring=%t%(\ %M%)%(\ (%{expand(\"%:~:.:h\")})%)%(\ %a%)
 
 """ File type specific settings
 au BufNewFile,BufRead *.js,*.html,*.css,*.rb,*.clj,*.scala,*.lua,*.yaml setlocal tabstop=2
