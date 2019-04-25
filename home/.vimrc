@@ -384,3 +384,8 @@ if has('persistent_undo')
     set undofile
 endif
 
+"Goto last location in non-empty files
+autocmd BufReadPost *  if line("'\"") > 1 && line("'\"") <= line("$")
+                   \|     exe "normal! g`\""
+                   \|  endif
+
