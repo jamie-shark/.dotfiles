@@ -108,3 +108,12 @@ stty -ixon
 bindkey -s '^p' 'vim $(fzf);\n'
 
 export PULSE_SERVER=tcp:localhost
+
+PATH="/home/jon/perl5/bin${PATH:+:${PATH}}"; export PATH;
+PERL5LIB="/home/jon/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
+PERL_LOCAL_LIB_ROOT="/home/jon/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
+PERL_MB_OPT="--install_base \"/home/jon/perl5\""; export PERL_MB_OPT;
+PERL_MM_OPT="INSTALL_BASE=/home/jon/perl5"; export PERL_MM_OPT;
+
+function dirsizes() { du -chx -d2 | sort -rn | perl -lane 'print "@F[0]\t@F[1..$#F]"' | sed 's,\([][() ]\),\\\1,g' | awk -F '\t' '{printf "%-8s%s\n", $1, $2}' }
+
