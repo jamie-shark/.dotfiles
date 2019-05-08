@@ -95,11 +95,17 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+eval `dircolors ~/.dir_colors`
+zstyle ':completion:*' list-colors "${(@s.:.)LS_COLORS}"
+autoload -Uz compinit
+compinit
+
 export TERM=xterm-256color
 export PATH="$HOME/bin:$PATH"
 export TEMP=/tmp
+export PULSE_SERVER=tcp:localhost
+
 . ~/.dotfiles/alias.sh
-eval `dircolors ~/.dir_colors`
 cd ~
 stty -ixon
 
