@@ -94,7 +94,7 @@ let g:ale_linters = {
 
 " Over
 nno <C-h> :OverCommandLine<CR>:%s/
-vno <C-h> :OverCommandLine<CR>:'<,'>s/
+vno <C-h> :OverCommandLine<CR>s/
 
 " Goyo
 function! s:goyo_enter()
