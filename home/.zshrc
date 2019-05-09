@@ -104,6 +104,7 @@ export TERM=xterm-256color
 export PATH="$HOME/bin:$PATH"
 export TEMP=/tmp
 export PULSE_SERVER=tcp:localhost
+export BROWSER=/usr/bin/firefox
 
 . ~/.dotfiles/alias.sh
 cd ~
