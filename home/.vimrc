@@ -29,7 +29,7 @@ Plug 'junegunn/goyo.vim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
 Plug 'PProvost/vim-ps1', { 'for': 'ps1' }
-Plug 'mattn/emmet-vim', { 'for': ['html', 'jsx'] }
+Plug 'mattn/emmet-vim', { 'for': ['html', 'jsx', 'erb', 'cshtml'] }
 Plug 'pangloss/vim-javascript', { 'for': ['js', 'jsx'] }
 Plug 'mxw/vim-jsx', { 'for': 'jsx' }
 Plug 'leafgarland/typescript-vim', { 'for': 'ts' }
@@ -210,6 +210,8 @@ let g:rg_command = '
   \ -g "!**/{.git,node_modules,vendor,bin,obj,packages,.vs,lib}/*" '
 
 command! -bang -nargs=* F call fzf#vim#grep(g:rg_command .shellescape(<q-args>), 1, <bang>0)
+
+let g:user_emmet_leader_key='<C-E>'
 
 syntax on
 filetype on
