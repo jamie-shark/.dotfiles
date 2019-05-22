@@ -1,12 +1,12 @@
 #!/usr/bin/env sh
-alias l='ls --color=auto'
 
+alias l='ls --color=auto'
 alias ll='ls -la --color=auto'
+alias ..='cd ..'
+alias xit='exit'
 alias grep='grep --color=auto'
 alias md='mkdir -pv'
-alias ..='cd ..'
 alias c='clear'
-alias prerelease='powershell ./build.ps1 -Target Create-PreRelease-Packages -Configuration Debug'
 alias rmswap='rm /tmp/*.sw[o-z]'
 alias vi='vim'
 alias vi.='vim . `find . -type f | grep -vE "(\.git|\.vs|node_modules)/"`'
@@ -40,4 +40,5 @@ alias branch='git rev-parse --abbrev-ref HEAD'
 alias rmmerged='git branch --merged | grep -vE "(^\*|master|dev)" | xargs git branch -d'
 alias whatadded='git log --follow --diff-filter=A --find-renames=40% --'
 
+alias prerelease='start powershell -NoProfile -c sudo ./build.ps1 -Target Create-PreRelease-Packages -Configuration Debug ; pause'
 ps1() { start powershell -NoProfile -c "$@ ; pause" ; }
