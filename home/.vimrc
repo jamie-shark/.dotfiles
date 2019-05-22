@@ -37,6 +37,8 @@ Plug 'OmniSharp/omnisharp-vim'
 Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 Plug 'juliosueiras/cakebuild.vim', { 'for' : 'cake' }
 Plug 'mtth/scratch.vim'
+Plug 'mechatroner/rainbow_csv'
+Plug 'editorconfig/editorconfig-vim'
 
 call plug#end()
 
