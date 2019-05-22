@@ -87,7 +87,9 @@ let g:javascript_plugin_flow = 1
 let g:jsx_ext_required = 0
 
 " ALE
-let g:ale_completion_enabled = 1
+let g:ale_completion_enabled = 0
+let g:ale_lint_on_text_changed = 'never'
+let g:ale_lint_on_enter = 0
 nno <F12> :ALEGoToDefinition<CR>
 nno <leader><F12> :ALEFindReferences<CR>
 let g:ale_linters = {
