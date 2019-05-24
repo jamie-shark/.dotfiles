@@ -1,5 +1,7 @@
 #!/usr/bin/env sh
 
+sudo apt install wget unzip -y
+
 wget http://bosmans.ch/pulseaudio/pulseaudio-1.1.zip
 unzip pulseaudio-1.1 -d pulseaudio-1.1
 patch -p0 -i pulseaudio-windows-patch.diff
@@ -12,7 +14,7 @@ sudo apt install build-essential \
                  intltool \
                  libtool \
                  libsndfile1-dev \
-                 libjson-c-dev
+                 libjson-c-dev -y
 
 wget https://www.freedesktop.org/software/pulseaudio/releases/pulseaudio-12.2.tar.xz
 
