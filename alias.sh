@@ -39,6 +39,8 @@ alias gx='git reset . ; git checkout .'
 alias branch='git rev-parse --abbrev-ref HEAD'
 alias rmmerged='git branch --merged | grep -vE "(^\*|master|dev)" | xargs git branch -d'
 alias whatadded='git log --follow --diff-filter=A --find-renames=40% --'
+alias docker='docker.exe'
+alias dotnet='dotnet.exe'
 
 alias prerelease='start powershell -NoProfile -c sudo ./build.ps1 -Target Create-PreRelease-Packages -Configuration Debug ; pause'
 ps1() { start powershell -NoProfile -c "$@ ; pause" ; }
