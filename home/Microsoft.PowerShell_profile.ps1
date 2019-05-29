@@ -1,4 +1,5 @@
 cd C:
+cd ~
 
 $env:Path += ";$home\bin"
 Set-Alias vim "C:\Program Files\Git\usr\bin\vim.exe"
@@ -34,10 +35,6 @@ function Get-Prompt {
     }
 }
 
-function Write-DateTime {
-    Write-Host (Get-Date -Format G) -NoNewline -ForegroundColor Magenta
-}
-
 function prompt {
     $origLastExitCode = $LastExitCode
 
@@ -45,8 +42,6 @@ function prompt {
     Write-Separator
     Write-Location
     Write-VcsStatus
-    Write-Separator
-    Write-DateTime
 
     $LastExitCode = $origLastExitCode
     "`n$(Get-Prompt * ($nestedPromptLevel + 1)) "
