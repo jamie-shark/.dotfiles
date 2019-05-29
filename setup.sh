@@ -49,7 +49,7 @@ curl -fLo ~/bin/diff-highlight --create-dirs https://raw.githubusercontent.com/g
 
 echo "### Installing fonts ###"
 mkdir -p ~/.fonts
-cp *.ttf ~/.fonts/
+cp fonts/* ~/.fonts/
 
 platform=$(uname -s)
 if [[ $platform = CYGWIN* ]] || [[ $platform = MINGW* ]] ; then
