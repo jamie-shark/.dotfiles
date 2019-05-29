@@ -56,8 +56,8 @@ if [[ $platform = CYGWIN* ]] || [[ $platform = MINGW* ]] ; then
     ln -fs ~/.dotfiles/home/.vimrc ~/_vimrc
     echo "### Linking Powershell profile ###"
     mkdir -p ~/Documents/WindowsPowerShell
-    ln -fs ~/.dotfiles/home/Microsoft.PowerShell_profile.ps1 ~/Documents/WindowsPowerShell/Microsoft.PowerShell_profile.ps1
-    ln -fs ~/.dotfiles/home/ConEmu.xml ~/AppData/Roaming/ConEmu.xml
+    ln -f ~/.dotfiles/home/Microsoft.PowerShell_profile.ps1 ~/Documents/WindowsPowerShell/Microsoft.PowerShell_profile.ps1
+    ln -f ~/.dotfiles/home/ConEmu.xml ~/AppData/Roaming/ConEmu.xml
 fi
 
 echo "### Installing Vim plugins ###"
