@@ -25,6 +25,7 @@ git config --global interactive.diffFilter diff-highlight
 git config --global core.excludesfile ~/.gitignore_global
 
 echo "### Linking dotfiles ###"
+sudo ln -fs /mnt/c /
 ln -fs ~/.dotfiles/home/.vimrc ~/.vimrc
 ln -fs ~/.dotfiles/home/.bashrc ~/.bashrc
 ln -fs ~/.dotfiles/home/.zshrc ~/.zshrc
