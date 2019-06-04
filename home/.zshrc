@@ -106,7 +106,8 @@ export TEMP=/tmp
 export PULSE_SERVER=tcp:localhost
 export BROWSER=/usr/bin/firefox
 
-. ~/.dotfiles/alias.sh
+source ~/.dotfiles/alias.sh
+
 cd ~
 stty -ixon
 

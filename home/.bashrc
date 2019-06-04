@@ -5,7 +5,7 @@ export TEMP=/tmp
 
 eval `dircolors ~/.dir_colors`
 
-. ~/.dotfiles/alias.sh
+source ~/.dotfiles/alias.sh
 
 urldecode() { : "${*//+/ }"; echo -e "${_//%/\\x}"; }
 
