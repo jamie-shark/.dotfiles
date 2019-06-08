@@ -115,6 +115,7 @@ stty -ixon
 bindkey -s '^p' 'vim $(fzf);\n'
 
 export PULSE_SERVER=tcp:localhost
+export WINHOME=/mnt/c/Users/$(powershell.exe -c '[Console]::Out.Write($env:username)')
 
 PATH="/home/jon/perl5/bin${PATH:+:${PATH}}"; export PATH;
 PERL5LIB="/home/jon/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
