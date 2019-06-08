@@ -126,7 +126,7 @@ PERL_MM_OPT="INSTALL_BASE=/home/jon/perl5"; export PERL_MM_OPT;
 function dirsizes() {
     depth=${1:-1}
     du -chx "-d$depth" \
-    | sort -rn \
+    | sort -rh \
     | perl -lane 'print "@F[0]\t@F[1..$#F]"' \
     | sed 's,\([][() ]\),\\\1,g' \
     | awk -F '\t' '{printf "%-8s%s\n", $1, $2}'
