@@ -41,6 +41,7 @@ alias rmmerged='git branch --merged | grep -vE "(^\*|master|dev)" | xargs git br
 alias whatadded='git log --follow --diff-filter=A --find-renames=40% --'
 alias docker='docker.exe'
 alias dotnet='dotnet.exe'
+alias ren='vim -c Ren'
 
 alias prerelease='start powershell -NoProfile -c sudo ./build.ps1 -Target Create-PreRelease-Packages -Configuration Debug ; pause'
 ps1() { start powershell -NoProfile -c "$@ ; pause" ; }
