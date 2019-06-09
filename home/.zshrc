@@ -125,10 +125,14 @@ PERL_MM_OPT="INSTALL_BASE=/home/jon/perl5"; export PERL_MM_OPT;
 
 function dirsizes() {
     depth=${1:-1}
+    perl_splitSizeAndPath='print "@F[0]\t@F[1..$#F]"'
+    sed_escapePath='s,\([][() ]\),\\\1,g'
+    awk_rightPadSize='{printf "%-8s%s\n", $1, $2}'
+
     du -chx "-d$depth" \
     | sort -rh \
-    | perl -lane 'print "@F[0]\t@F[1..$#F]"' \
-    | sed 's,\([][() ]\),\\\1,g' \
-    | awk -F '\t' '{printf "%-8s%s\n", $1, $2}'
+    | perl -lane  $perl_splitSizeAndPath \
+    | sed         $sed_escapePath \
+    | awk -F '\t' $awk_rightPadSize
 }
 
