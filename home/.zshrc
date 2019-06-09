@@ -130,7 +130,7 @@ function dirsizes() {
     sed_escapePath='s,\([][() ]\),\\\1,g'
     awk_rightPadSize='{printf "%-8s%s\n", $1, $2}'
 
-    du -chx "-d$depth" "$dir/" \
+    du -hx "-d$depth" "$dir/" \
     | sort -rh \
     | perl -lane  $perl_splitSizeAndPath \
     | sed         $sed_escapePath \
