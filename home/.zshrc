@@ -124,12 +124,13 @@ PERL_MB_OPT="--install_base \"/home/jon/perl5\""; export PERL_MB_OPT;
 PERL_MM_OPT="INSTALL_BASE=/home/jon/perl5"; export PERL_MM_OPT;
 
 function dirsizes() {
-    depth=${1:-1}
+    dir=${1:-.}
+    depth=${2:-1}
     perl_splitSizeAndPath='print "@F[0]\t@F[1..$#F]"'
     sed_escapePath='s,\([][() ]\),\\\1,g'
     awk_rightPadSize='{printf "%-8s%s\n", $1, $2}'
 
-    du -chx "-d$depth" \
+    du -chx "-d$depth" "$dir/" \
     | sort -rh \
     | perl -lane  $perl_splitSizeAndPath \
     | sed         $sed_escapePath \
