@@ -1,8 +1,8 @@
 # If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$HOME/bin:/usr/local/bin:/usr/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-  export ZSH="/home/jon/.oh-my-zsh"
+export ZSH="/home/jon/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -101,7 +101,6 @@ autoload -Uz compinit
 compinit
 
 export TERM=xterm-256color
-export PATH="$HOME/bin:$PATH"
 export TEMP=/tmp
 export PULSE_SERVER=tcp:localhost
 export BROWSER=/usr/bin/firefox
