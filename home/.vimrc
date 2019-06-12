@@ -39,6 +39,7 @@ Plug 'juliosueiras/cakebuild.vim', { 'for' : 'cake' }
 Plug 'mtth/scratch.vim'
 Plug 'mechatroner/rainbow_csv'
 Plug 'editorconfig/editorconfig-vim'
+Plug 'posva/vim-vue'
 
 call plug#end()
 
