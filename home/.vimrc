@@ -68,7 +68,8 @@ let g:airline_enable_syntatic = 1
 " nerdtree
 let NERDTreeIgnore=['\~$'] "ignore files in NERDTree
 let NERDTreeShowHidden=1
-map <C-n> :NERDTreeToggle<CR>
+nno <C-n> :NERDTreeToggle<CR>
+nno ,n :NERDTreeFind<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 let NERDTreeHijackNetrw=1
 
