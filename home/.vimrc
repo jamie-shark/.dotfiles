@@ -347,6 +347,7 @@ vno // y/\V<C-r>=escape(@",'/\')<CR><CR>
 vno <C-C> "+y
 ino <C-V> <ESC>"+pa
 nno <F4> :noautocmd execute "vimgrep /" . expand("<cword>") . "/j **" <Bar> cw<CR>
+nno <C-L> <C-L>:!clear<CR><CR>
 
 function! MarkWindowSwap()
     let g:markedWinNum = winnr()
