@@ -65,6 +65,9 @@ vim -c 'call InstallPlugins()' -c 'qa!'
 
 curl -fLo ~/.dir_colors https://raw.githubusercontent.com/seebi/dircolors-solarized/master/dircolors.256dark
 
+echo "### Installiung xclip ###"
+sudo apt update && sudo apt install xclip -y
+
 echo "### Installing ripgrep ###"
 curl -LO https://github.com/BurntSushi/ripgrep/releases/download/0.10.0/ripgrep_0.10.0_amd64.deb
 sudo dpkg -i ripgrep_0.10.0_amd64.deb
