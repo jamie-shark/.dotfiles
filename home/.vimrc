@@ -294,7 +294,7 @@ set titleold=
 set titlestring=%t%(\ %M%)%(\ (%{expand(\"%:~:.:h\")})%)%(\ %a%)
 
 """ File type specific settings
-au BufNewFile,BufRead *.js,*.html,*.css,*.rb,*.clj,*.scala,*.lua,*.yaml setlocal tabstop=2
+au BufNewFile,BufRead *.js,*.html,*.css,*.vue,*.scss,*.hbs,*.jsx,*.ts,*.tsx,*.rb,*.clj,*.scala,*.lua,*.yaml setlocal tabstop=2
 au BufNewFile,BufRead *.ps1,*.psd1,*.psm1,*.bat,*.cmd setlocal ft=ps1
 if &diff
     highlight! link DiffText MatchParen
