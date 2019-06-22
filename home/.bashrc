@@ -10,7 +10,13 @@ source ~/.dotfiles/alias.sh
 urldecode() { : "${*//+/ }"; echo -e "${_//%/\\x}"; }
 
 platform=$(uname -s)
-if ! (( [[ $platform = CYGWIN* ]] || [[ $platform = MINGW* ]] )); then
+if [[ $platform = CYGWIN* ]] || [[ $platform = MINGW* ]]; then
+
+    ln -sf ~/.dotfiles/home/.vimrc.simple ~/.vimrc
+
+else
+
+    ln -sf ~/.dotfiles/home/.vimrc ~/
 
     [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
