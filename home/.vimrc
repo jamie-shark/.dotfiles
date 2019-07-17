@@ -300,6 +300,7 @@ au BufNewFile,BufRead *.ps1,*.psd1,*.psm1,*.bat,*.cmd setlocal ft=ps1
 if &diff
     highlight! link DiffText MatchParen
 endif
+au FileType gitcommit setlocal spell
 
 """ gVim specific settings
 "disable screen flash and error bell on error (e.g. gvim esc while in normal mode)
