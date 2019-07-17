@@ -47,5 +47,10 @@ alias docker='docker.exe'
 alias dotnet='dotnet.exe'
 alias ren='vim -c Ren'
 
-alias prerelease='start powershell -NoProfile -c sudo ./build.ps1 -Target Create-PreRelease-Packages -Configuration Debug ; pause'
-ps1() { start powershell -NoProfile -c "$@ ; pause" ; }
+ps1() {
+    disableProxy='Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Internet Settings" -Name ProxyEnable -Value 0'
+    start powershell -NoProfile -c "$disableProxy; $@ ; pause" ;
+}
+
+prerelease() { ps1 'sudo ./build.ps1 -Target Create-PreRelease-Packages -Configuration Debug' }
+
