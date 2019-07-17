@@ -127,3 +127,9 @@ function cddash {
 }
 
 Set-Alias -Name cd -value cddash -Option AllScope
+
+# Chocolatey profile
+$ChocolateyProfile = "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
+if (Test-Path($ChocolateyProfile)) {
+  Import-Module "$ChocolateyProfile"
+}
