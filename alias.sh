@@ -52,6 +52,7 @@ alias whatadded='git log --follow --diff-filter=A --find-renames=40% --'
 alias docker='docker.exe'
 alias dotnet='dotnet.exe'
 alias ren='vim -c Ren'
+alias ii='start explorer'
 
 ps1() {
     disableProxy='Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Internet Settings" -Name ProxyEnable -Value 0'
