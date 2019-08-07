@@ -351,7 +351,7 @@ vno // y/\V<C-r>=escape(@",'/\')<CR><CR>
 vno <C-C> "+y
 ino <C-V> <ESC>"+pa
 nno <F4> :noautocmd execute "vimgrep /" . expand("<cword>") . "/j **" <Bar> cw<CR>
-nno <C-L> <C-L>:!clear<CR><CR>
+nno <M-L> <C-L>:!clear<CR><CR>
 vno <C-c> y:new ~/.vimbuffer<CR>VGp:x<CR> \| :!cat ~/.vimbuffer \| xclip <CR><CR>
 
 function! MarkWindowSwap()

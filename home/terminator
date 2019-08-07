@@ -1,6 +1,7 @@
 [global_config]
   dbus = False
 [keybindings]
+  layout_launcher = <Shift><Alt>l
 [layouts]
   [[default]]
     [[[child1]]]
