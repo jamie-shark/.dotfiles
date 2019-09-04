@@ -36,7 +36,7 @@ mkdir -p ~/.config/terminator
 ln -fs ~/.dotfiles/home/terminator ~/.config/terminator/config
 ln -fs ~/.dotfiles/home/.ctags ~/
 ln -fs ~/.dotfiles/home/.gitignore_global ~/
-
+ln -fs ~/.dotfiles/home/.gitk ~/
 
 echo "### Installing VimPlug ###"
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -65,7 +65,7 @@ vim -c 'call InstallPlugins()' -c 'qa!'
 
 curl -fLo ~/.dir_colors https://raw.githubusercontent.com/seebi/dircolors-solarized/master/dircolors.256dark
 
-echo "### Installiung xclip ###"
+echo "### Installing xclip ###"
 sudo apt update && sudo apt install xclip -y
 
 echo "### Installing ripgrep ###"
