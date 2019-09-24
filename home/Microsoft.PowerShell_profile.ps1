@@ -72,8 +72,10 @@ function get-gr { git rebase origin/master $args }
 function get-gri { git rebase -i $args }
 function get-ga { git add -A $args }
 function get-gap { git add -p $args }
+function get-gacd { ga; cls; gdc }
 function get-gca { git commit --amend $args }
 function get-gcan { git commit --amend --no-edit $args }
+function get-gco { git commit -m $args }
 function get-gni { git diff -G "Compile Include" *.csproj $args }
 function get-gsn { git show --name-status $args }
 function get-gcm { git checkout - $args }
@@ -101,8 +103,10 @@ alias gr get-gr
 alias gri get-gri
 alias ga get-ga
 alias gap get-gap
+alias gacd get-gacd
 alias gca get-gca
 alias gcan get-gcan
+alias gco get-gco
 alias gni get-gni
 alias gsn get-gsn
 alias gcm get-gcm
