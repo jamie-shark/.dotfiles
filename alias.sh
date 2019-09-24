@@ -41,6 +41,11 @@ alias gsn='git show --name-status'
 alias gv='vi `git rev-parse --show-toplevel` -c "silent Gitv"'
 alias gx='git reset . ; git checkout .'
 
+alias gaf='git add $(git status -s | cut -c4- | fzf -m)'
+alias gcf='git checkout $(git status -s | cut -c4- | fzf -m)'
+alias gdf='git diff $(git status -s | cut -c4- | fzf -m)'
+alias grf='git reset $(git status -s | cut -c4- | fzf -m)'
+
 alias branch='git rev-parse --abbrev-ref HEAD'
 alias rmmerged='git branch --merged | grep -vE "(^\*|master|dev)" | xargs git branch -d'
 alias whatadded='git log --follow --diff-filter=A --find-renames=40% --'
