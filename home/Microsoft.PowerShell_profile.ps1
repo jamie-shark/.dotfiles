@@ -116,6 +116,17 @@ alias vi get-vi
 alias reload get-reload
 alias cenv get-cenv
 
+function Invoke-OnStatusSelection { param([ScriptBlock]$action) $action $(git status -s | % { $_.substring(3) } | fzf -m) }
+function get-gaf { Invoke-OnStatusSelection {git add} }
+function get-gcf { Invoke-OnStatusSelection {git checkout} }
+function get-gdf { Invoke-OnStatusSelection {git diff} }
+function get-grf { Invoke-OnStatusSelection {git reset} }
+
+alias gaf get-gaf
+alias gcf get-gcf
+alias gdf get-gdf
+alias grf get-grf
+
 function cddash {
     if ($args[0] -eq '-') {
         $pwd = $OLDPWD;
