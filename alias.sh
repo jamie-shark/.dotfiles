@@ -63,3 +63,6 @@ prerelease() { ps1 'sudo ./build.ps1 -Target Create-PreRelease-Packages -Configu
 gitfind () {
     xdg-open "https://github.com/search?type=Code&q=org%3Aenergyhelpline+$1" & > /dev/null 2>&1
 }
+
+gi() { curl -sL "https://www.gitignore.io/api/$@" ;}
+
