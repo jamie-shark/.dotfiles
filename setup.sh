@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 echo "### Setting git configs ###"
-git config --global color.ui auto
+git config --global color.ui always
 git config --global core.autocrlf input
 git config --global core.safecrlf warn
 git config --global core.editor vim
