@@ -100,6 +100,8 @@ zstyle ':completion:*' list-colors "${(@s.:.)LS_COLORS}"
 autoload -Uz compinit
 compinit
 
+unsetopt BG_NICE
+
 export TERM=xterm-256color
 export TEMP=/tmp
 export PULSE_SERVER=tcp:localhost
