@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+#set -x
+#trap read debug
+
 alias l='ls --color=auto'
 alias ll='ls -la --color=auto'
 alias ..='cd ..'
