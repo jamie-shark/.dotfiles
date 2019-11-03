@@ -131,9 +131,11 @@ function dirsizes() {
     awk_rightPadSize='{printf "%-8s%s\n", $1, $2}'
 
     du -hx "-d$depth" "$dir/" \
-    | sort -rh \
+    | sort -h \
     | perl -lane  $perl_splitSizeAndPath \
     | sed         $sed_escapePath \
     | awk -F '\t' $awk_rightPadSize
 }
+
+alias deldir='dirsizes | fzf -m | cut -c9- | xargs -p rm -rd'
 
