@@ -41,11 +41,6 @@ alias gsn='git show --name-status'
 alias gv='vi `git rev-parse --show-toplevel` -c "silent Gitv"'
 alias gx='git reset . ; git checkout .'
 
-alias gaf=$'git add $(git status -s | cut -c4- | fzf -m --preview \'git diff {}\')'
-alias gcf=$'git checkout $(git status -s | cut -c4- | fzf -m --preview \'git diff {}\')'
-alias gdf=$'git diff $(git status -s | cut -c4- | fzf -m --preview \'git diff {}\')'
-alias grf=$'git reset $(git status -s | cut -c4- | fzf -m --preview \'git diff --cached {}\')'
-
 alias branch='git rev-parse --abbrev-ref HEAD'
 alias rmmerged='git branch --merged | grep -vE "(^\*|master|dev)" | xargs git branch -d'
 alias whatadded='git log --follow --diff-filter=A --find-renames=40% --'
@@ -94,3 +89,44 @@ dirsizes() {
 }
 
 alias deldir=$'dirsizes | fzf -m --preview \'echo {} | cut -c9- | xargs ls -la\' | cut -c9- | xargs -rp rm -rd'
+
+gcb() {
+  result=$(git branch -a --color=always \
+      | grep -v '/HEAD\s' \
+      | sort \
+      | fzf --height 50% \
+            --border \
+            --ansi \
+            --tac \
+            --preview-window right:70% \
+            --preview 'git log --oneline --graph --date=short --pretty="format:%C(auto)%cd %h%d %s" $(sed s/^..// <<< {} | cut -d" " -f1) | head -'$LINES \
+      | sed 's/^..//' \
+      | cut -d' ' -f1)
+
+  if [[ $result != "" ]]; then
+    if [[ $result == remotes/* ]]; then
+      git checkout --track $(echo $result | sed 's#remotes/##')
+    else
+      git checkout "$result"
+    fi
+  fi
+}
+
+gitselect() {
+    preview=$1
+    git -c color.status=always status --short \
+        | fzf --height 50% \
+              --border \
+              --ansi \
+              --multi \
+              --ansi \
+              --nth 2..,.. \
+              --preview "(git $preview --color=always -- {-1} | sed 1,4d; cat {-1}) | head -500" \
+        | cut -c4- \
+        | sed 's/.* -> //'
+}
+
+gaf() { git add $(gitselect "diff") ;}
+gcf() { git checkout $(gitselect "diff") ;}
+gdf() { git diff $(gitselect "diff") ;}
+grf() { git reset $(gitselect "diff --cached") ;}
