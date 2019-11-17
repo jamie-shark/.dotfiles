@@ -59,11 +59,6 @@ ps1() {
     start powershell -NoProfile -c "$disableProxy; $@ ; pause" ;
 }
 
-prerelease() { ps1 'sudo ./build.ps1 -Target Create-PreRelease-Packages -Configuration Debug' }
-
-gitfind () {
-    xdg-open "https://github.com/search?type=Code&q=org%3Aenergyhelpline+$1" & > /dev/null 2>&1
+prerelease() {
+    ps1 'sudo ./build.ps1 -Target Create-PreRelease-Packages -Configuration Debug'
 }
-
-gi() { curl -sL "https://www.gitignore.io/api/$@" ;}
-
