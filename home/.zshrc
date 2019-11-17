@@ -137,5 +137,5 @@ function dirsizes() {
     | awk -F '\t' $awk_rightPadSize
 }
 
-alias deldir='dirsizes | fzf -m | cut -c9- | xargs -p rm -rd'
+alias deldir=$'dirsizes | fzf -m --preview \'echo {} | cut -c9- | xargs ls -la\' | cut -c9- | xargs -rp rm -rd'
 
