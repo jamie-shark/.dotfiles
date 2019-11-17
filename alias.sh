@@ -78,7 +78,7 @@ dirsizes() {
     dir=${1:-.}
     depth=${2:-1}
     perl_splitSizeAndPath='print "@F[0]\t@F[1..$#F]"'
-    sed_escapePath='s,\([][() ]\),\\\1,g'
+    sed_escapePath="s,\\([][() ']\\),\\\\\1,g"
     awk_rightPadSize='{printf "%-8s%s\n", $1, $2}'
 
     du -hx "-d$depth" "$dir/" \
