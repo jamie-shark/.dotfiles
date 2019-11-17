@@ -58,6 +58,13 @@ prerelease() {
     ps1 'sudo ./build.ps1 -Target Create-PreRelease-Packages -Configuration Debug'
 }
 
+fd() {
+  local dir
+  dir=$(find ${1:-.} -path '*/\.*' -prune \
+                  -o -type d -print 2> /dev/null | fzf +m) &&
+  cd "$dir"
+}
+
 chooseimages() {
    find . -name '*' -exec file {} \; | grep -o -P '^.+: \w+ image' | sed 's/:.*$//' | fim -
 }
