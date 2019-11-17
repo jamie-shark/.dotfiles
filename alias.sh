@@ -59,10 +59,16 @@ prerelease() {
 }
 
 fd() {
-  local dir
-  dir=$(find ${1:-.} -path '*/\.*' -prune \
-                  -o -type d -print 2> /dev/null | fzf +m) &&
-  cd "$dir"
+    local dir
+    dir=$(find ${1:-.} -path '*/\.*' -prune -o -type d -print 2> /dev/null \
+      | fzf --height 50% \
+            --border \
+            --ansi \
+            --tac \
+            --preview-window right:50% \
+            +m \
+            --preview "ls -la {}") &&
+    cd "$dir"
 }
 
 chooseimages() {
