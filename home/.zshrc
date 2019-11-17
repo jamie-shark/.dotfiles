@@ -123,19 +123,3 @@ PERL_LOCAL_LIB_ROOT="/home/jon/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROO
 PERL_MB_OPT="--install_base \"/home/jon/perl5\""; export PERL_MB_OPT;
 PERL_MM_OPT="INSTALL_BASE=/home/jon/perl5"; export PERL_MM_OPT;
 
-function dirsizes() {
-    dir=${1:-.}
-    depth=${2:-1}
-    perl_splitSizeAndPath='print "@F[0]\t@F[1..$#F]"'
-    sed_escapePath='s,\([][() ]\),\\\1,g'
-    awk_rightPadSize='{printf "%-8s%s\n", $1, $2}'
-
-    du -hx "-d$depth" "$dir/" \
-    | sort -h \
-    | perl -lane  $perl_splitSizeAndPath \
-    | sed         $sed_escapePath \
-    | awk -F '\t' $awk_rightPadSize
-}
-
-alias deldir=$'dirsizes | fzf -m --preview \'echo {} | cut -c9- | xargs ls -la\' | cut -c9- | xargs -rp rm -rd'
-
