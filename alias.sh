@@ -62,3 +62,19 @@ ps1() {
 prerelease() {
     ps1 'sudo ./build.ps1 -Target Create-PreRelease-Packages -Configuration Debug'
 }
+
+chooseimages() {
+   find . -name '*' -exec file {} \; | grep -o -P '^.+: \w+ image' | sed 's/:.*$//' | fim -
+}
+
+convertcovers() {
+    echo "Select images to convert (y/n/q)"
+    chooseimages | xargs -i sh -c $'convert "{}" -resize 500x500 "./$(dirname \'{}\')/cover.jpg"'
+}
+
+delimgs() {
+    echo "Select images to delete (y/n/q)"
+    chooseimages | xargs -i rm "{}"
+}
+
+alias imgs='convertcovers && delimgs'

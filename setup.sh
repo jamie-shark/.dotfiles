@@ -37,6 +37,7 @@ ln -fs ~/.dotfiles/home/terminator ~/.config/terminator/config
 ln -fs ~/.dotfiles/home/.ctags ~/
 ln -fs ~/.dotfiles/home/.gitignore_global ~/
 ln -fs ~/.dotfiles/home/.gitk ~/
+ln -fs ~/.dotfiles/home/.fimrc ~/
 
 echo "### Installing VimPlug ###"
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
