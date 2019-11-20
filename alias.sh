@@ -146,3 +146,6 @@ gaf() { git add $(gitselect "diff") ;}
 gcf() { git checkout $(gitselect "diff") ;}
 gdf() { git diff $(gitselect "diff") ;}
 grf() { git reset $(gitselect "diff --cached") ;}
+
+alias gi="curl -LSso .gitignore http://gitignore.io/api/vim,jetbrains,dotnetcore,visualstudio,visualstudiocode"
+
