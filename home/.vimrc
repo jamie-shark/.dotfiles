@@ -295,6 +295,8 @@ set hidden
 set title
 set titleold=
 set titlestring=%t%(\ %M%)%(\ (%{expand(\"%:~:.:h\")})%)%(\ %a%)
+set splitbelow
+set splitright
 
 """ File type specific settings
 au BufNewFile,BufRead *.js,*.html,*.css,*.vue,*.scss,*.hbs,*.jsx,*.ts,*.tsx,*.rb,*.clj,*.scala,*.lua,*.yaml setlocal tabstop=2
@@ -327,10 +329,10 @@ if &diff
 endif
 
 """ Keybindings
-nno <silent> <C-h> :wincmd h<CR>
-nno <silent> <C-j> :wincmd j<CR>
-nno <silent> <C-k> :wincmd k<CR>
-nno <silent> <C-l> :wincmd l<CR>
+nno <C-J> <C-W><C-J>
+nno <C-K> <C-W><C-K>
+nno <C-L> <C-W><C-L>
+nno <C-H> <C-W><C-H>
 nno - <C-W>-
 nno + <C-W>+
 nno <M-<> <C-W><
