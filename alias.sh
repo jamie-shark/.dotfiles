@@ -41,6 +41,7 @@ alias gri='git rebase -i'
 alias grmu=$'git status -s | grep -i \'^??\' | sed \'s/ /\\ /g\' | awk \'{system("rm "$2)}\''
 alias gs='git status -s'
 alias gsn='git show --name-status'
+alias gst='git status --short --branch'
 alias gv='vi `git rev-parse --show-toplevel` -c "silent Gitv"'
 alias gx='git reset . ; git checkout .'
 
