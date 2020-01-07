@@ -19,7 +19,6 @@ Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-fugitive'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'vim-syntastic/syntastic'
 Plug 'w0rp/ale'
 Plug 'bitc/vim-bad-whitespace'
 Plug 'qpkorr/vim-renamer'
@@ -43,22 +42,16 @@ Plug 'mtth/scratch.vim'
 Plug 'mechatroner/rainbow_csv'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'posva/vim-vue'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 call plug#end()
 
 """ Plugin Configuration
 set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
 " CtrlP
 let g:ctrlp_map = '<c-p>'
-
-" syntastic
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
 
 " airline
 let g:airline_powerline_fonts = 1
@@ -247,6 +240,46 @@ let g:rg_command = '
 command! -bang -nargs=* F call fzf#vim#grep(g:rg_command .shellescape(<q-args>), 1, <bang>0)
 
 let g:user_emmet_leader_key='<C-E>'
+let g:user_emmet_settings = {
+  \  'javascript.jsx' : {
+    \      'extends' : 'jsx',
+    \  },
+  \}
+
+" CoC
+let g:coc_global_extensions=[ 'coc-json', 'coc-tsserver', 'coc-html', 'coc-css', 'coc-yaml', 'coc-python', 'coc-solargraph', 'coc-snippets', 'coc-fsharp', 'coc-angular', 'coc-powershell', 'coc-omnisharp', 'coc-markdownlint' ]
+set updatetime=300
+set signcolumn=yes
+set cmdheight=2
+set nobackup
+set nowritebackup
+set hidden
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+autocmd CursorHold * silent call CocActionAsync('highlight')
+nmap <leader>rn <Plug>(coc-rename)
+xmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
+set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
 syntax on
 filetype on
