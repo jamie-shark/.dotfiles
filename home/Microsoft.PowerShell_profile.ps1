@@ -1,4 +1,3 @@
-cd C:
 cd ~
 
 $env:Path += ";$home\bin"
