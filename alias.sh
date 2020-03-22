@@ -75,21 +75,27 @@ fd() {
     cd "$dir"
 }
 
-chooseimages() {
+choose-images() {
    find . -name '*' -exec file {} \; | grep -o -P '^.+: \w+ image' | sed 's/:.*$//' | fim -
 }
 
-convertcovers() {
+convert-covers() {
     echo "Select images to convert (y/n/q)"
-    chooseimages | xargs -i sh -c $'convert "{}" -resize 500x500 "./$(dirname \'{}\')/cover.jpg"'
+    choose-images | xargs -i sh -c $'convert "{}" -resize 500x500 "./$(dirname \'{}\')/cover.jpg"'
 }
 
-delimgs() {
+delete-images() {
     echo "Select images to delete (y/n/q)"
-    chooseimages | xargs -i rm "{}"
+    choose-images | xargs -i rm "{}"
 }
 
-alias imgs='convertcovers && delimgs'
+function chop-images() {
+    echo "Select images to chop (y/n/q)"
+    choose-images | xargs -i sh -c $'convert "{}" -scale x500 -gravity East -crop 500x500+2+0 "./$(dirname \'{}\')/cover.jpg"'
+}
+
+alias scale='convert-covers && delete-images'
+alias chop='chop-images && delete-images'
 
 dirsizes() {
     dir=${1:-.}
