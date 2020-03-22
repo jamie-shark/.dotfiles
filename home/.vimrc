@@ -2,7 +2,7 @@ let mapleader = ","
 
 """ Plugins
 call plug#begin('~/.vim/plugged')
-Plug 'airblade/vim-gitgutter'
+Plug 'mhinz/vim-signify'
 Plug 'gregsexton/gitv'
 Plug 'ervandew/supertab'
 Plug 'ctrlpvim/ctrlp.vim'
@@ -281,6 +281,13 @@ xmap <leader>f  <Plug>(coc-format-selected)
 nmap <leader>f  <Plug>(coc-format-selected)
 set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
+let g:signify_sign_show_text = 0
+set updatetime=100
+highlight SignifySignAdd                  ctermbg=green                guibg=#00ff00
+highlight SignifySignDelete ctermfg=black ctermbg=red    guifg=#ffffff guibg=#ff0000
+highlight SignifySignChange ctermfg=black ctermbg=yellow guifg=#000000 guibg=#ffff00
+highlight SignColumn        ctermbg=NONE  cterm=NONE     guibg=NONE    gui=NONE
+
 syntax on
 filetype on
 
@@ -353,7 +360,6 @@ if has('win32') && !has('gui_running') && !empty($CONEMUBUILD)
     set t_Co=256
     let &t_AB="\e[48;5;%dm"
     let &t_AF="\e[38;5;%dm"
-    let g:gitgutter_realtime = 0
 endif
 
 " diff specific settings
