@@ -11,7 +11,7 @@ choco install vcxsrc -y
 ```
 sudo apt update && sudo apt install git xclip -y
 ln -s /mnt/c/Users/jonathan.campbell/.dotfiles/ ~/
-ln -s /mnt/c/Users/jonathan.campbell/.ssh/ ~/
+cp -r /mnt/c/Users/jonathan.campbell/.ssh ~/
 sudo ln -fs /mnt/c /
 cd .dotfiles
 ./wsl-setup.sh
