@@ -38,6 +38,7 @@ ln -fs ~/.dotfiles/home/.ctags ~/
 ln -fs ~/.dotfiles/home/.gitignore_global ~/
 ln -fs ~/.dotfiles/home/.gitk ~/
 ln -fs ~/.dotfiles/home/.fimrc ~/
+mkdir -p ~/.config/bat && ln -sf ~/.dotfiles/home/bat.config ~/.config/bat/config
 
 echo "### Installing VimPlug ###"
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -83,3 +84,12 @@ git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-m
 
 echo "### Installing ctags"
 sudo apt install ctags -y
+
+if ! command -v bat > /dev/null ; then
+    echo "### Installing bat"
+    wget https://github.com/sharkdp/bat/releases/download/v0.15.4/bat-v0.15.4-x86_64-unknown-linux-gnu.tar.gz
+    tar -xzf bat-v0.15.4-x86_64-unknown-linux-gnu.tar.gz
+    mv bat-v0.15.4-x86_64-unknown-linux-gnu ~/bin
+    ln ~/bin/bat-v0.15.4-x86_64-unknown-linux-gnu/bat ~/bin
+    rm bat-v0.15.4-x86_64-unknown-linux-gnu.tar.gz
+fi
