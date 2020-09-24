@@ -15,11 +15,13 @@ alias vi='vim'
 alias vi.='vim . `find . -type f | grep -vE "(\.git|\.vs|node_modules)/"`'
 alias cenv='rundll32 sysdm.cpl,EditEnvironmentVariables &'
 alias start='cmd.exe /c start'
+alias rg='rg -j1'
+alias fzfi='rg --files --hidden --follow --no-ignore-vcs -g "!{node_modules,.git}" | fzf'
 
 alias ga='git add -A'
 alias gacd='ga; clear; gdc'
 alias gap='git add -p'
-alias gaw='git diff -w --no-color | git apply --cached --ignore-whitespace'
+alias gaw='git diff -U0 -w --no-color | git apply --cached --ignore-whitespace --unidiff-zero -'
 alias gc='git commit -m'
 alias gca='git commit --amend'
 alias gcan='git commit --amend --no-edit'
@@ -52,10 +54,28 @@ alias docker='docker.exe'
 alias dotnet='dotnet.exe'
 alias ren='vim -c Ren'
 alias ii='start explorer'
+alias bank='echo sort code: 309323 acc no:  01312164'
 
 ps1() {
+    while getopts ":c:e" opt; do
+        case $opt in
+            c)  close=true ;;
+            e)  elevate=true ;;
+            \?) ;;
+        esac
+    done
+    shift $(($OPTIND - 1))
+
     disableProxy='Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Internet Settings" -Name ProxyEnable -Value 0'
-    start powershell -NoProfile -c "$disableProxy; $@ ; pause" ;
+    here=$(pwd | cut -c3-)
+    psCommand="$disableProxy ; cd $here ; $@"
+    if ! [ "$close" = "true" ] ; then
+        psCommand="$psCommand ; pause"
+    fi
+    if [ "$elevate" = "true" ] ; then
+        psCommand="sudo $psCommand"
+    fi
+    start powershell -c $psCommand
 }
 
 prerelease() {
@@ -152,7 +172,11 @@ gitselect() {
 gaf() { git add $(gitselect "diff") ;}
 gcf() { git checkout $(gitselect "diff") ;}
 gdf() { git diff $(gitselect "diff") ;}
+gdcf() { git diff --cached $(gitselect "diff --cached") ;}
 grf() { git reset $(gitselect "diff --cached") ;}
+rmf() { rm $(gitselect "diff") ;}
 
 alias gi="curl -LSso .gitignore http://gitignore.io/api/vim,jetbrains,dotnetcore,visualstudio,visualstudiocode"
+
+alias copydiff="gdf --color=never | xclip"
 

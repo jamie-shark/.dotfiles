@@ -21,8 +21,11 @@
 ehthumbs.db
 Thumbs.db
 tags
+tags.lock
+tags.temp
 .vs/
 .vscode/
 .idea/
 .ionide/
 TODO
+TODO.md

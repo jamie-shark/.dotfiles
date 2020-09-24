@@ -20,7 +20,11 @@ Plug 'tpope/vim-fugitive'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-syntastic/syntastic'
-Plug 'w0rp/ale'
+Plug 'sheerun/vim-polyglot'
+Plug 'dense-analysis/ale'
+Plug 'universal-ctags/ctags'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'ludovicchabant/vim-gutentags'
 Plug 'bitc/vim-bad-whitespace'
 Plug 'qpkorr/vim-renamer'
 Plug 'terryma/vim-multiple-cursors'
@@ -35,7 +39,7 @@ Plug 'PProvost/vim-ps1', { 'for': 'ps1' }
 Plug 'mattn/emmet-vim', { 'for': ['html', 'jsx', 'erb', 'cshtml'] }
 Plug 'pangloss/vim-javascript', { 'for': ['js', 'jsx'] }
 Plug 'mxw/vim-jsx', { 'for': 'jsx' }
-Plug 'leafgarland/typescript-vim', { 'for': 'ts' }
+Plug 'leafgarland/typescript-vim', { 'for': ['ts', 'tsx'] }
 Plug 'OmniSharp/omnisharp-vim'
 Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 Plug 'juliosueiras/cakebuild.vim', { 'for' : 'cake' }
@@ -43,6 +47,7 @@ Plug 'mtth/scratch.vim'
 Plug 'mechatroner/rainbow_csv'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'posva/vim-vue'
+Plug 'mfukar/robotframework-vim', { 'for': 'robot' }
 
 call plug#end()
 
@@ -95,10 +100,16 @@ let g:jsx_ext_required = 0
 let g:ale_completion_enabled = 0
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_lint_on_enter = 0
+let g:ale_fix_on_save = 1
 nno <F12> :ALEGoToDefinition<CR>
 nno <leader><F12> :ALEFindReferences<CR>
 let g:ale_linters = {
+            \ 'javascript': ['eslint'],
             \ 'cs': ['OmniSharp']
+            \}
+let g:ale_fixers = {
+            \ '*': ['remove_trailing_lines', 'trim_whitespace'],
+            \ 'javascript': ['eslint']
             \}
 
 " Over
@@ -127,11 +138,19 @@ autocmd! User GoyoLeave nested call <SID>goyo_leave()
 nno <silent> <leader>f :Goyo<CR>
 
 " fzf
+let g:fzf_preview_window = 'right:60%'
+let g:fzf_tags_command = 'ctags -R'
 let g:fzf_action = {
   \ 'ctrl-t': 'tab split',
   \ 'ctrl-x': 'split',
   \ 'ctrl-v': 'vsplit' }
+command! -bang -nargs=? -complete=dir Files
+    \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
 
+command! -bang -nargs=*  All
+  \ call fzf#run(fzf#wrap({'source': 'rg --files --hidden --no-ignore-vcs --glob "!{node_modules/*,.git/*}"', 'down': '40%', 'options': '--expect=ctrl-t,ctrl-x,ctrl-v --multi' }))
+
+nmap <silent> <leader>o :All<cr>
 
 " Omnisharp
 let g:OmniSharp_server_type = 'roslyn'
@@ -306,7 +325,7 @@ set splitbelow
 set splitright
 
 """ File type specific settings
-au BufNewFile,BufRead *.js,*.html,*.css,*.vue,*.scss,*.hbs,*.jsx,*.ts,*.tsx,*.rb,*.clj,*.scala,*.lua,*.yaml setlocal tabstop=2
+au BufNewFile,BufRead *.js,*.html,*.css,*.vue,*.scss,*.hbs,*.jsx,*.ts,*.tsx,*.rb,*.clj,*.scala,*.lua,*.yaml,*.yml setlocal tabstop=2
 au BufNewFile,BufRead *.ps1,*.psd1,*.psm1,*.bat,*.cmd setlocal ft=ps1
 au BufNewFile,BufRead *.pde setlocal ft=java | let g:airline#extensions#tagbar#enabled = 0
 if &diff
@@ -437,4 +456,3 @@ endif
 autocmd BufReadPost *  if line("'\"") > 1 && line("'\"") <= line("$")
                    \|     exe "normal! g`\""
                    \|  endif
-

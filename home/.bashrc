@@ -1,4 +1,5 @@
 export DISPLAY=:0
+export LIBGL_ALWAYS_INDIRECT=1
 export TERM=xterm-256color
 export PATH="$HOME/bin:$PATH"
 export TEMP=/tmp
@@ -27,4 +28,3 @@ else
     PERL_MM_OPT="INSTALL_BASE=/home/jon/perl5"; export PERL_MM_OPT;
 
 fi
-

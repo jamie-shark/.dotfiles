@@ -2,7 +2,7 @@
 export PATH=$HOME/bin:/usr/local/bin:/usr/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/jon/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -106,6 +106,7 @@ export TERM=xterm-256color
 export TEMP=/tmp
 export PULSE_SERVER=tcp:localhost
 export BROWSER=/usr/bin/firefox
+export LIBGL_ALWAYS_INDIRECT=1
 
 source ~/.dotfiles/alias.sh
 
@@ -114,14 +115,15 @@ stty -ixon
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-bindkey -s '^p' 'vim $(fzf);\n'
+bindkey -s '^p' 'vim $(fzfi);\n'
+export FZF_DEFAULT_OPTS="--preview 'bat --color=always {}'"
 
 export PULSE_SERVER=tcp:localhost
 export WINHOME=/mnt/c/Users/$(powershell.exe -c '[Console]::Out.Write($env:username)')
 
-PATH="/home/jon/perl5/bin${PATH:+:${PATH}}"; export PATH;
-PERL5LIB="/home/jon/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
-PERL_LOCAL_LIB_ROOT="/home/jon/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
-PERL_MB_OPT="--install_base \"/home/jon/perl5\""; export PERL_MB_OPT;
-PERL_MM_OPT="INSTALL_BASE=/home/jon/perl5"; export PERL_MM_OPT;
+PATH="~/perl5/bin${PATH:+:${PATH}}"; export PATH;
+PERL5LIB="~/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
+PERL_LOCAL_LIB_ROOT="~/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
+PERL_MB_OPT="--install_base \"~/perl5\""; export PERL_MB_OPT;
+PERL_MM_OPT="INSTALL_BASE=~/perl5"; export PERL_MM_OPT;
 
