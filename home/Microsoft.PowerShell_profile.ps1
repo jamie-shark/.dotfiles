@@ -1,5 +1,3 @@
-cd ~
-
 $env:Path += ";$home\bin"
 Set-Alias vim "C:\Program Files\Git\usr\bin\vim.exe"
 
