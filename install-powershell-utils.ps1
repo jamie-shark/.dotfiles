@@ -1,4 +1,6 @@
-&"$SystemRoot\System32\WindowsPowerShell\v1.0\powershell.exe" -NoProfile -InputFormat None -ExecutionPolicy Bypass -Command "iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))"
-$env:PATHi+="$ALLUSERSPROFILE\chocolatey\bin"
-iex (new-object net.webclient).downloadstring('https://get.scoop.sh')
+Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
+$env:PATHi += "$ALLUSERSPROFILE\chocolatey\bin"
+choco install git microsoft-windows-terminal ripgrep fzf choco-cleaner -y
+Install-Module posh-git
+Invoke-Expression (New-Object net.webclient).DownloadString('https://get.scoop.sh')
 scoop install psutils

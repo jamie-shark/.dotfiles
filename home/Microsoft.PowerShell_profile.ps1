@@ -1,5 +1,6 @@
 $env:Path += ";$home\bin"
 Set-Alias vim "C:\Program Files\Git\usr\bin\vim.exe"
+Set-Alias git "C:\Program Files\Git\bin\git.exe"
 
 function Test-Administrator {
     $user = [Security.Principal.WindowsIdentity]::GetCurrent();
@@ -32,7 +33,7 @@ function Get-Prompt {
     }
 }
 
-function prompt {
+function prompt-old {
     $origLastExitCode = $LastExitCode
 
     Write-Username
@@ -113,7 +114,10 @@ alias vi get-vi
 alias reload get-reload
 alias cenv get-cenv
 
-function Invoke-OnStatusSelection { param([ScriptBlock]$action) $action $(git status -s | % { $_.substring(3) } | fzf -m) }
+function Invoke-OnStatusSelection {
+    param([ScriptBlock]$action)
+    Invoke-Command $action $(git status -s | % { $_.substring(3) } | fzf -m)
+}
 function get-gaf { Invoke-OnStatusSelection {git add} }
 function get-gcf { Invoke-OnStatusSelection {git checkout} }
 function get-gdf { Invoke-OnStatusSelection {git diff} }
