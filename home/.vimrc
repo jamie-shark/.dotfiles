@@ -4,7 +4,6 @@ let mapleader = ","
 call plug#begin('~/.vim/plugged')
 Plug 'mhinz/vim-signify'
 Plug 'gregsexton/gitv'
-Plug 'ervandew/supertab'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -268,7 +267,6 @@ command! -bang -nargs=* F call fzf#vim#grep(g:rg_command .shellescape(<q-args>),
 let g:user_emmet_leader_key='<C-E>'
 
 let g:signify_sign_show_text = 0
-set updatetime=100
 highlight SignifySignAdd                  ctermbg=green                guibg=#00ff00
 highlight SignifySignDelete ctermfg=black ctermbg=red    guifg=#ffffff guibg=#ff0000
 highlight SignifySignChange ctermfg=black ctermbg=yellow guifg=#000000 guibg=#ffff00
@@ -323,6 +321,58 @@ set titleold=
 set titlestring=%t%(\ %M%)%(\ (%{expand(\"%:~:.:h\")})%)%(\ %a%)
 set splitbelow
 set splitright
+set bg=dark
+set cmdheight=2
+set updatetime=100
+set shortmess+=c
+set signcolumn=yes
+
+""" CoC Settings
+inoremap <silent><expr> <TAB>
+    \ pumvisible() ? "\<C-n>" :
+    \ <SID>check_back_space() ? "\<TAB>" :
+    \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+    let col = col('.') - 1
+    return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+inoremap <silent><expr> <c-@> coc#refresh()
+
+if exists('*complete_info')
+    inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+else
+    inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+endif
+
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+nmap <leader>rn <Plug>(coc-rename)
+xmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
+xmap <leader>a  <Plug>(coc-codeaction-selected)
+nmap <leader>a  <Plug>(coc-codeaction-selected)
+
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+    if (index(['vim','help'], &filetype) >= 0)
+        execute 'h '.expand('<cword>')
+    else
+        call CocActionAsync('doHover')
+    endif
+endfunction
+
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+command! -nargs=0 Prettier :CocCommand prettier.formatFile
 
 """ File type specific settings
 au BufNewFile,BufRead *.js,*.html,*.css,*.vue,*.scss,*.hbs,*.jsx,*.ts,*.tsx,*.rb,*.clj,*.scala,*.lua,*.yaml,*.yml setlocal tabstop=2
