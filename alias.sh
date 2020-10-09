@@ -180,3 +180,13 @@ alias gi="curl -LSso .gitignore http://gitignore.io/api/vim,jetbrains,dotnetcore
 
 alias copydiff="gdf --color=never | xclip"
 
+ineach() {
+    cmd=${1:-pwd}
+    dir=${2:-.}
+    for d in "$dir/*/"
+    do
+        cd "$d"
+        $($cmd)
+        cd -
+    done
+}
