@@ -47,6 +47,7 @@ Plug 'mechatroner/rainbow_csv'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'posva/vim-vue'
 Plug 'mfukar/robotframework-vim', { 'for': 'robot' }
+Plug 'sophacles/vim-processing', { 'for': 'pde' }
 
 call plug#end()
 
