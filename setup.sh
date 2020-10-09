@@ -60,6 +60,8 @@ if [[ $platform = CYGWIN* ]] || [[ $platform = MINGW* ]] ; then
     mkdir -p ~/Documents/WindowsPowerShell
     ln -f ~/.dotfiles/home/Microsoft.PowerShell_profile.ps1 ~/Documents/WindowsPowerShell/Microsoft.PowerShell_profile.ps1
     ln -f ~/.dotfiles/home/ConEmu.xml ~/AppData/Roaming/ConEmu.xml
+    mkdir -p ~/AppData/Local/Packages/Microsoft.WindowsTerminal_8wekyb3d8bbwe/LocalState/
+    ln -f ~/.dotfiles/home/windows-terminal-settings.json ~/AppData/Local/Packages/Microsoft.WindowsTerminal_8wekyb3d8bbwe/LocalState/settings.json
 fi
 
 echo "### Installing Vim plugins ###"
@@ -93,3 +95,4 @@ if ! command -v bat > /dev/null ; then
     ln ~/bin/bat-v0.15.4-x86_64-unknown-linux-gnu/bat ~/bin
     rm bat-v0.15.4-x86_64-unknown-linux-gnu.tar.gz
 fi
+

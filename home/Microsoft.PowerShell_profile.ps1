@@ -1,6 +1,8 @@
 $env:Path += ";$home\bin"
-Set-Alias vim "C:\Program Files\Git\usr\bin\vim.exe"
-Set-Alias git "C:\Program Files\Git\bin\git.exe"
+$env:Path += ";C:\Program Files\Git\bin\"
+$env:Path += ";C:\Program Files\Git\usr\bin\"
+
+Set-Alias python "C:\Python38\python.exe"
 
 function Test-Administrator {
     $user = [Security.Principal.WindowsIdentity]::GetCurrent();
@@ -85,7 +87,7 @@ function get-reload {
     . ~\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1
     Set-Location $pwd
 }
-function get-cenv { rundll32 sysdm.cpl,EditEnvironmentVariables }
+function get-cenv { rundll32 sysdm.cpl, EditEnvironmentVariables }
 
 alias l get-l
 alias ll get-ll
@@ -118,10 +120,10 @@ function Invoke-OnStatusSelection {
     param([ScriptBlock]$action)
     Invoke-Command $action $(git status -s | % { $_.substring(3) } | fzf -m)
 }
-function get-gaf { Invoke-OnStatusSelection {git add} }
-function get-gcf { Invoke-OnStatusSelection {git checkout} }
-function get-gdf { Invoke-OnStatusSelection {git diff} }
-function get-grf { Invoke-OnStatusSelection {git reset} }
+function get-gaf { Invoke-OnStatusSelection { git add } }
+function get-gcf { Invoke-OnStatusSelection { git checkout } }
+function get-gdf { Invoke-OnStatusSelection { git diff } }
+function get-grf { Invoke-OnStatusSelection { git reset } }
 
 alias gaf get-gaf
 alias gcf get-gcf
@@ -131,7 +133,8 @@ alias grf get-grf
 function cddash {
     if ($args[0] -eq '-') {
         $pwd = $OLDPWD;
-    } else {
+    }
+    else {
         $pwd = $args[0];
     }
     $tmp = pwd;
@@ -147,5 +150,5 @@ Set-Alias -Name cd -value cddash -Option AllScope
 # Chocolatey profile
 $ChocolateyProfile = "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
 if (Test-Path($ChocolateyProfile)) {
-  Import-Module "$ChocolateyProfile"
+    Import-Module "$ChocolateyProfile"
 }
