@@ -21,7 +21,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-syntastic/syntastic'
 Plug 'sheerun/vim-polyglot'
 Plug 'dense-analysis/ale'
-Plug 'universal-ctags/ctags'
+" Plug 'universal-ctags/ctags'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'bitc/vim-bad-whitespace'
@@ -34,7 +34,7 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
 Plug 'godlygeek/tabular'
-Plug 'PProvost/vim-ps1', { 'for': 'ps1' }
+"Plug 'PProvost/vim-ps1', { 'for': 'ps1' }
 Plug 'mattn/emmet-vim', { 'for': ['html', 'jsx', 'erb', 'cshtml'] }
 Plug 'pangloss/vim-javascript', { 'for': ['js', 'jsx'] }
 Plug 'mxw/vim-jsx', { 'for': 'jsx' }
@@ -48,6 +48,7 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'posva/vim-vue'
 Plug 'mfukar/robotframework-vim', { 'for': 'robot' }
 Plug 'sophacles/vim-processing', { 'for': 'pde' }
+Plug 'liuchengxu/vim-clap'
 
 call plug#end()
 
@@ -139,7 +140,7 @@ nno <silent> <leader>f :Goyo<CR>
 
 " fzf
 let g:fzf_preview_window = 'right:60%'
-let g:fzf_tags_command = 'ctags -R'
+" let g:fzf_tags_command = 'ctags -R'
 let g:fzf_action = {
   \ 'ctrl-t': 'tab split',
   \ 'ctrl-x': 'split',
@@ -329,6 +330,7 @@ set shortmess+=c
 set signcolumn=yes
 
 """ CoC Settings
+let g:coc_global_extensions=[ 'coc-json', 'coc-tsserver', 'coc-react-refactor', 'coc-prettier', 'coc-powershell', 'coc-angular', 'coc-fsharp' ]
 inoremap <silent><expr> <TAB>
     \ pumvisible() ? "\<C-n>" :
     \ <SID>check_back_space() ? "\<TAB>" :

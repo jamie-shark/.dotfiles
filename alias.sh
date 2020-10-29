@@ -52,6 +52,7 @@ alias rmmerged='git branch --no-color --merged | grep -vE "(^\*|master|dev)" | x
 alias whatadded='git log --follow --diff-filter=A --find-renames=40% --'
 alias docker='docker.exe'
 alias dotnet='dotnet.exe'
+alias yarn='yarnpkg'
 alias ren='vim -c Ren'
 alias ii='start explorer'
 alias bank='echo sort code: 309323 acc no:  01312164'

@@ -95,11 +95,12 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+source ~/.dotfiles/alias.sh
+
 eval `dircolors ~/.dir_colors`
 zstyle ':completion:*' list-colors "${(@s.:.)LS_COLORS}"
 autoload -Uz compinit
 compinit
-
 unsetopt BG_NICE
 
 export TERM=xterm-256color
@@ -107,10 +108,8 @@ export TEMP=/tmp
 export PULSE_SERVER=tcp:localhost
 export BROWSER=/usr/bin/firefox
 export LIBGL_ALWAYS_INDIRECT=1
+export WINHOME=/mnt/c/Users/$(powershell.exe -c '[Console]::Out.Write($env:username)')
 
-source ~/.dotfiles/alias.sh
-
-cd ~
 stty -ixon
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -118,8 +117,7 @@ stty -ixon
 bindkey -s '^p' 'vim $(fzfi);\n'
 export FZF_DEFAULT_OPTS="--preview 'bat --color=always {}'"
 
-export PULSE_SERVER=tcp:localhost
-export WINHOME=/mnt/c/Users/$(powershell.exe -c '[Console]::Out.Write($env:username)')
+cd ~
 
 PATH="~/perl5/bin${PATH:+:${PATH}}"; export PATH;
 PERL5LIB="~/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;

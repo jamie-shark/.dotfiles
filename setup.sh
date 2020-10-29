@@ -25,7 +25,6 @@ git config --global interactive.diffFilter diff-highlight
 git config --global core.excludesfile ~/.gitignore_global
 
 echo "### Linking dotfiles ###"
-sudo ln -fs /mnt/c /
 ln -fs ~/.dotfiles/home/.vimrc ~/.vimrc
 ln -fs ~/.dotfiles/home/.bashrc ~/.bashrc
 ln -fs ~/.dotfiles/home/.zshrc ~/.zshrc
@@ -44,30 +43,37 @@ echo "### Installing VimPlug ###"
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 echo "### Installing diffconflicts ###"
-curl -fLo ~/bin/diffconflicts --create-dirs https://raw.githubusercontent.com/whiteinge/dotfiles/master/bin/diffconflicts && sudo chmod +x ~/bin/diffconflicts
+curl -fLo ~/bin/diffconflicts --create-dirs https://raw.githubusercontent.com/whiteinge/dotfiles/master/bin/diffconflicts && chmod +x ~/bin/diffconflicts
 
 echo "### Installing diff-highlight ###"
-curl -fLo ~/bin/diff-highlight --create-dirs https://raw.githubusercontent.com/git/git/fd99e2bda0ca6a361ef03c04d6d7fdc7a9c40b78/contrib/diff-highlight/diff-highlight && sudo chmod +x ~/bin/diff-highlight
+curl -fLo ~/bin/diff-highlight --create-dirs https://raw.githubusercontent.com/git/git/fd99e2bda0ca6a361ef03c04d6d7fdc7a9c40b78/contrib/diff-highlight/diff-highlight && chmod +x ~/bin/diff-highlight
 
 echo "### Installing fonts ###"
 mkdir -p ~/.fonts
 cp fonts/* ~/.fonts/
+
+echo "### Installing Vim plugins ###"
+vim -c 'call InstallPlugins()' -c 'qa!'
+
+curl -fLo ~/.dir_colors https://raw.githubusercontent.com/seebi/dircolors-solarized/master/dircolors.256dark
+
+echo "### Installing fzf"
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+~/.fzf/install --key-bindings --completion --no-update-rc
 
 platform=$(uname -s)
 if [[ $platform = CYGWIN* ]] || [[ $platform = MINGW* ]] ; then
     ln -fs ~/.dotfiles/home/.vimrc ~/_vimrc
     echo "### Linking Powershell profile ###"
     mkdir -p ~/Documents/WindowsPowerShell
-    ln -f ~/.dotfiles/home/Microsoft.PowerShell_profile.ps1 ~/Documents/WindowsPowerShell/Microsoft.PowerShell_profile.ps1
-    ln -f ~/.dotfiles/home/ConEmu.xml ~/AppData/Roaming/ConEmu.xml
+    ln -sf ~/.dotfiles/home/Microsoft.PowerShell_profile.ps1 ~/Documents/WindowsPowerShell/Microsoft.PowerShell_profile.ps1
+    ln -sf ~/.dotfiles/home/ConEmu.xml ~/AppData/Roaming/ConEmu.xml
     mkdir -p ~/AppData/Local/Packages/Microsoft.WindowsTerminal_8wekyb3d8bbwe/LocalState/
-    ln -f ~/.dotfiles/home/windows-terminal-settings.json ~/AppData/Local/Packages/Microsoft.WindowsTerminal_8wekyb3d8bbwe/LocalState/settings.json
+    ln -sf ~/.dotfiles/home/windows-terminal-settings.json ~/AppData/Local/Packages/Microsoft.WindowsTerminal_8wekyb3d8bbwe/LocalState/settings.json
+    exit 0
 fi
 
-echo "### Installing Vim plugins ###"
-vim -c 'call InstallPlugins()' -c 'qa!'
-
-curl -fLo ~/.dir_colors https://raw.githubusercontent.com/seebi/dircolors-solarized/master/dircolors.256dark
+sudo ln -fs /mnt/c /
 
 echo "### Installing xclip ###"
 sudo apt update && sudo apt install xclip -y
@@ -76,10 +82,6 @@ echo "### Installing ripgrep ###"
 curl -LO https://github.com/BurntSushi/ripgrep/releases/download/0.10.0/ripgrep_0.10.0_amd64.deb
 sudo dpkg -i ripgrep_0.10.0_amd64.deb
 rm ripgrep_0.10.0_amd64.deb
-
-echo "### Installing fzf"
-git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-~/.fzf/install --key-bindings --completion --no-update-rc
 
 echo "### Installing zsh plugins"
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
