@@ -49,6 +49,7 @@ Plug 'posva/vim-vue'
 Plug 'mfukar/robotframework-vim', { 'for': 'robot' }
 Plug 'sophacles/vim-processing', { 'for': 'pde' }
 Plug 'liuchengxu/vim-clap'
+Plug 'arcticicestudio/nord-vim'
 
 call plug#end()
 
@@ -328,6 +329,7 @@ set cmdheight=2
 set updatetime=100
 set shortmess+=c
 set signcolumn=yes
+colorscheme nord
 
 """ CoC Settings
 let g:coc_global_extensions=[ 'coc-json', 'coc-tsserver', 'coc-react-refactor', 'coc-prettier', 'coc-powershell', 'coc-angular', 'coc-fsharp' ]
