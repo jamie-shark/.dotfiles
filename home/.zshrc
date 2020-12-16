@@ -1,5 +1,5 @@
 # If you come from bash you might have to change your $PATH.
-export PATH=$HOME/bin:/usr/local/bin:/usr/bin:$PATH
+export PATH=$HOME/bin:/usr/local/bin:/usr/bin:$HOME/.local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
@@ -125,3 +125,4 @@ PERL_LOCAL_LIB_ROOT="~/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; ex
 PERL_MB_OPT="--install_base \"~/perl5\""; export PERL_MB_OPT;
 PERL_MM_OPT="INSTALL_BASE=~/perl5"; export PERL_MM_OPT;
 
+export DISPLAY=:0
