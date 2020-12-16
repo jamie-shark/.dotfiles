@@ -1,4 +1,4 @@
-let mapleader = ","
+let mapleader = " "
 
 """ Plugins
 call plug#begin('~/.vim/plugged')
