@@ -32,7 +32,7 @@ Plug 'junegunn/limelight.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
-Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 Plug 'godlygeek/tabular'
 "Plug 'PProvost/vim-ps1', { 'for': 'ps1' }
 Plug 'mattn/emmet-vim', { 'for': ['html', 'jsx', 'erb', 'cshtml'] }
@@ -48,7 +48,9 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'posva/vim-vue'
 Plug 'mfukar/robotframework-vim', { 'for': 'robot' }
 Plug 'sophacles/vim-processing', { 'for': 'pde' }
-Plug 'liuchengxu/vim-clap'
+Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary!' }
+Plug 'Vimjas/vim-python-pep8-indent'
+Plug 'davidhalter/jedi'
 Plug 'arcticicestudio/nord-vim'
 
 call plug#end()
@@ -107,11 +109,13 @@ nno <F12> :ALEGoToDefinition<CR>
 nno <leader><F12> :ALEFindReferences<CR>
 let g:ale_linters = {
             \ 'javascript': ['eslint'],
-            \ 'cs': ['OmniSharp']
+            \ 'cs': ['OmniSharp'],
+            \ 'python': ['flake8', 'pylint'],
             \}
 let g:ale_fixers = {
             \ '*': ['remove_trailing_lines', 'trim_whitespace'],
-            \ 'javascript': ['eslint']
+            \ 'javascript': ['eslint'],
+            \ 'python': ['yapf'],
             \}
 
 " Over
@@ -329,10 +333,26 @@ set cmdheight=2
 set updatetime=100
 set shortmess+=c
 set signcolumn=yes
+set foldmethod=indent
+set foldnestmax=10
+set nofoldenable
+set foldlevel=2
 colorscheme nord
 
 """ CoC Settings
-let g:coc_global_extensions=[ 'coc-json', 'coc-tsserver', 'coc-react-refactor', 'coc-prettier', 'coc-powershell', 'coc-angular', 'coc-fsharp' ]
+let g:coc_global_extensions=[
+            \ 'coc-json',
+            \ 'coc-tsserver',
+            \ 'coc-react-refactor',
+            \ 'coc-prettier',
+            \ 'coc-powershell',
+            \ 'coc-angular',
+            \ 'coc-fsharp',
+            \ 'coc-yaml',
+            \ 'coc-xml',
+            \ 'coc-yank',
+            \ 'coc-jedi'
+            \ ]
 inoremap <silent><expr> <TAB>
     \ pumvisible() ? "\<C-n>" :
     \ <SID>check_back_space() ? "\<TAB>" :
@@ -379,9 +399,20 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
 
+nnoremap <silent> <space>y  :<C-u>CocList -A --normal yank<cr>
+if has('nvim-0.4.3') || has('patch-8.2.0750')
+    nnoremap <nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+    nnoremap <nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+    inoremap <nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
+    inoremap <nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
+endif
+
+
 """ File type specific settings
 au BufNewFile,BufRead *.js,*.html,*.css,*.vue,*.scss,*.hbs,*.jsx,*.ts,*.tsx,*.rb,*.clj,*.scala,*.lua,*.yaml,*.yml setlocal tabstop=2
 au BufNewFile,BufRead *.ps1,*.psd1,*.psm1,*.bat,*.cmd setlocal ft=ps1
+au BufNewFile,BufRead *.jsx setlocal ft=javascriptreact
+au BufNewFile,BufRead *.tsx setlocal ft=typescriptreact
 au BufNewFile,BufRead *.pde setlocal ft=java | let g:airline#extensions#tagbar#enabled = 0
 if &diff
     highlight! link DiffText MatchParen
