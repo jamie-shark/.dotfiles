@@ -55,7 +55,7 @@ cp fonts/* ~/.fonts/
 echo "### Installing Vim plugins ###"
 vim -c 'call InstallPlugins()' -c 'qa!'
 
-curl -fLo ~/.dir_colors https://raw.githubusercontent.com/seebi/dircolors-solarized/master/dircolors.256dark
+curl -fLo ~/.dir_colors https://raw.githubusercontent.com/arcticicestudio/nord-dircolors/develop/src/dir_colors
 
 echo "### Installing fzf"
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
@@ -97,4 +97,3 @@ if ! command -v bat > /dev/null ; then
     ln ~/bin/bat-v0.15.4-x86_64-unknown-linux-gnu/bat ~/bin
     rm bat-v0.15.4-x86_64-unknown-linux-gnu.tar.gz
 fi
-
