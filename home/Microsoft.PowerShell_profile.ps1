@@ -48,6 +48,9 @@ function prompt-old {
 }
 
 Import-Module posh-git
+Import-Module oh-my-posh
+Import-Module PSReadLine
+Set-Theme Avit
 
 function alias($name, $value) {
     if (Test-Path alias:$name) { del alias:$name -Force }

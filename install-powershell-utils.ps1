@@ -2,5 +2,7 @@ Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://cho
 $env:PATHi += "$ALLUSERSPROFILE\chocolatey\bin"
 choco install git microsoft-windows-terminal ripgrep fzf choco-cleaner -y
 Install-Module posh-git
+Install-Module oh-my-posh -Scope CurrentUser
+Install-Module PSReadLine -AllowPrerelease -Force
 Invoke-Expression (New-Object net.webclient).DownloadString('https://get.scoop.sh')
 scoop install psutils
