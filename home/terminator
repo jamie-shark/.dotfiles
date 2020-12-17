@@ -1,17 +1,22 @@
 [global_config]
   dbus = False
+  title_transmit_fg_color = "#2E3440"
+  title_transmit_bg_color = "#88C0D0"
+  title_receive_fg_color = "#2E3440"
+  title_receive_bg_color = "#8FBCBB"
+  title_inactive_fg_color = "#D8DEE9"
+  title_inactive_bg_color = "#4C566A"
 [keybindings]
   layout_launcher = <Shift><Alt>l
 [profiles]
   [[default]]
-    background_color = "#101010"
-    background_darkness = 0.8
+    background_color = "#2E3440"
     backspace_binding = automatic
-    cursor_color = "#9e9ecb"
+    cursor_color = "#D8DEE9"
     font = GoMono NF 9
-    foreground_color = "#999993"
+    foreground_color = "#D8DEE9"
+    palette = "#3B4252:#BF616A:#A3BE8C:#EBCB8B:#81A1C1:#B48EAD:#88C0D0:#E5E9F0:#4C566A:#BF616A:#A3BE8C:#EBCB8B:#81A1C1:#B48EAD:#8F  BCBB:#ECEFF4"
     scrollback_infinite = True
-    palette = "#333333:#8c4665:#287373:#7c7c99:#395573:#5e468c:#31658c:#899ca1:#3d3d3d:#bf4d80:#53a6a6:#9e9ecb:#477ab3:#7e62b3:#6096bf:#c0c0c0"
     use_system_font = False
 [layouts]
   [[default]]
