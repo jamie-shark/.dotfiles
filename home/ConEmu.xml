@@ -8,22 +8,22 @@
 			<value name="StartTasksName" type="string" data="{Shells::PowerShell (Admin)}"/>
 			<value name="StartFarFolders" type="hex" data="00"/>
 			<value name="StartFarEditors" type="hex" data="00"/>
-			<value name="ColorTable00" type="dword" data="00141414"/>
-			<value name="ColorTable01" type="dword" data="004c6acf"/>
-			<value name="ColorTable02" type="dword" data="00619083"/>
-			<value name="ColorTable03" type="dword" data="0069a8ce"/>
-			<value name="ColorTable04" type="dword" data="00a68775"/>
-			<value name="ColorTable05" type="dword" data="009d859b"/>
-			<value name="ColorTable06" type="dword" data="00b3a605"/>
-			<value name="ColorTable07" type="dword" data="00d7d7d7"/>
-			<value name="ColorTable08" type="dword" data="00666666"/>
-			<value name="ColorTable09" type="dword" data="00a68775"/>
-			<value name="ColorTable10" type="dword" data="004da459"/>
-			<value name="ColorTable11" type="dword" data="00e6e60a"/>
-			<value name="ColorTable12" type="dword" data="00520ad8"/>
-			<value name="ColorTable13" type="dword" data="008b00e6"/>
-			<value name="ColorTable14" type="dword" data="003eeee1"/>
-			<value name="ColorTable15" type="dword" data="00e6e6e6"/>
+			<value name="ColorTable00" type="dword" data="0040342e"/>
+			<value name="ColorTable01" type="dword" data="00926c47"/>
+			<value name="ColorTable02" type="dword" data="00518e6c"/>
+			<value name="ColorTable03" type="dword" data="008c8d54"/>
+			<value name="ColorTable04" type="dword" data="006a61bf"/>
+			<value name="ColorTable05" type="dword" data="00ad8eb4"/>
+			<value name="ColorTable06" type="dword" data="008bcbeb"/>
+			<value name="ColorTable07" type="dword" data="00e9ded8"/>
+			<value name="ColorTable08" type="dword" data="006a564c"/>
+			<value name="ColorTable09" type="dword" data="00c1a181"/>
+			<value name="ColorTable10" type="dword" data="008cbea3"/>
+			<value name="ColorTable11" type="dword" data="00bbbc8f"/>
+			<value name="ColorTable12" type="dword" data="003c3483"/>
+			<value name="ColorTable13" type="dword" data="007b5683"/>
+			<value name="ColorTable14" type="dword" data="0031a4db"/>
+			<value name="ColorTable15" type="dword" data="00f4efec"/>
 			<value name="ColorTable16" type="dword" data="00000000"/>
 			<value name="ColorTable17" type="dword" data="00800000"/>
 			<value name="ColorTable18" type="dword" data="00008000"/>
