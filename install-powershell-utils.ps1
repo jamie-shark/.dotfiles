@@ -1,6 +1,6 @@
 Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
 $env:PATHi += "$ALLUSERSPROFILE\chocolatey\bin"
-choco install git microsoft-windows-terminal ripgrep fzf choco-cleaner -y
+choco install git microsoft-windows-terminal ripgrep fzf choco-cleaner which -y
 Install-Module posh-git
 Install-Module oh-my-posh -Scope CurrentUser
 Install-Module PSReadLine -AllowPrerelease -Force
