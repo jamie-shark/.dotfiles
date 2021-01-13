@@ -63,14 +63,6 @@ git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 
 platform=$(uname -s)
 if [[ $platform = CYGWIN* ]] || [[ $platform = MINGW* ]] ; then
-    ln -fs ~/.dotfiles/home/.vimrc ~/_vimrc
-    echo "### Linking Powershell profile ###"
-    mkdir -p ~/Documents/WindowsPowerShell ~/Documents/PowerShell
-    ln -sf ~/.dotfiles/home/Microsoft.PowerShell_profile.ps1 ~/Documents/WindowsPowerShell/Microsoft.PowerShell_profile.ps1
-    ln -sf ~/.dotfiles/home/Microsoft.PowerShell_profile.ps1 ~/Documents/PowerShell/Microsoft.PowerShell_profile.ps1
-    ln -sf ~/.dotfiles/home/ConEmu.xml ~/AppData/Roaming/ConEmu.xml
-    mkdir -p ~/AppData/Local/Packages/Microsoft.WindowsTerminal_8wekyb3d8bbwe/LocalState/
-    ln -sf ~/.dotfiles/home/windows-terminal-settings.json ~/AppData/Local/Packages/Microsoft.WindowsTerminal_8wekyb3d8bbwe/LocalState/settings.json
     exit 0
 fi
 
