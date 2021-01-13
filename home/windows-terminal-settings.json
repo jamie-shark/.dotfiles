@@ -28,7 +28,9 @@
     "defaults": {
       "hidden": false,
       "fontFace": "GoMono NF",
-      "colorScheme": "nord"
+      "colorScheme": "nord",
+      "useAcrylic": true,
+      "acrylicOpacity": 0.85
     },
     "list": [
       {
