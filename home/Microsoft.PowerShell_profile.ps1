@@ -158,7 +158,8 @@ if (Test-Path($ChocolateyProfile)) {
 
 if (-not (Get-Process -Name vcxsrv -ErrorAction Ignore))
 {
-    &"C:\Program Files\VcXsrv\vcxsrv.exe" :0 -ac -terminate -lesspointer -multiwindow -clipboard -wgl -dpi auto
+    Write-Output "Launching X server"
+    &"C:\Program Files\VcXsrv\xlaunch.exe" -run "$HOME\.dotfiles\config.xlaunch"
 }
 
 if (-not (Get-Process -Name pulseaudio -ErrorAction Ignore))
