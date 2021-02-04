@@ -173,14 +173,14 @@ gitselect() {
         | sed 's/.* -> //'
 }
 
-gaf() { git add $(gitselect "diff") ;}
-gcf() { git checkout $(gitselect "diff") ;}
-gdf() { git diff $(gitselect "diff") ;}
-gdcf() { git diff --cached $(gitselect "diff --cached") ;}
-grf() { git reset $(gitselect "diff --cached") ;}
-rmf() { rm $(gitselect "diff") ;}
+gaf() { git add $@ $(gitselect "diff") ;}
+gcf() { git checkout $@ $(gitselect "diff") ;}
+gdf() { git diff $@ $(gitselect "diff") ;}
+gdcf() { git diff --cached $@ $(gitselect "diff --cached") ;}
+grf() { git reset $@ $(gitselect "diff --cached") ;}
+del() { rm $(gitselect "diff") ;}
 
-alias gi="curl -LSso .gitignore http://gitignore.io/api/vim,jetbrains,dotnetcore,visualstudio,visualstudiocode"
+alias gignore="curl -LSso .gitignore http://gitignore.io/api/vim,jetbrains,dotnetcore,visualstudio,visualstudiocode"
 
 alias copydiff="gdf --color=never | xclip"
 

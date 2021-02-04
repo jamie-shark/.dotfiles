@@ -115,7 +115,7 @@ stty -ixon
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 bindkey -s '^p' 'vim $(fzfi);\n'
-export FZF_DEFAULT_OPTS="--preview 'bat --color=always {}'"
+export FZF_DEFAULT_OPTS="--preview 'batcat --color=always {}'"
 
 cd ~
 
@@ -126,3 +126,6 @@ PERL_MB_OPT="--install_base \"~/perl5\""; export PERL_MB_OPT;
 PERL_MM_OPT="INSTALL_BASE=~/perl5"; export PERL_MM_OPT;
 
 export DISPLAY=:0
+
+reminders=~/Documents/reminders.txt
+[ -f $reminders ] && batcat $reminders

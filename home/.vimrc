@@ -407,6 +407,9 @@ if has('nvim-0.4.3') || has('patch-8.2.0750')
     inoremap <nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
 endif
 
+nno <F4> :Clap grep ++query=<cword><CR>
+ino <F4> :Clap grep ++query=<cword><CR>
+vno <F4> :Clap grep ++query=@visual<CR>
 
 """ File type specific settings
 au BufNewFile,BufRead *.js,*.html,*.css,*.vue,*.scss,*.hbs,*.jsx,*.ts,*.tsx,*.rb,*.clj,*.scala,*.lua,*.yaml,*.yml setlocal tabstop=2
@@ -464,7 +467,6 @@ xno <LeftMouse> m'<LeftMouse>
 vno // y/\V<C-r>=escape(@",'/\')<CR><CR>
 vno <C-C> "+y
 ino <C-V> <ESC>"+pa
-nno <F4> :noautocmd execute "vimgrep /" . expand("<cword>") . "/j **" <Bar> cw<CR>
 nno <M-L> <C-L>:!clear<CR><CR>
 vno <C-c> y:new ~/.vimbuffer<CR>VGp:x<CR> \| :!cat ~/.vimbuffer \| xclip <CR><CR>
 

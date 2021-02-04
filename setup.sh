@@ -68,25 +68,8 @@ fi
 
 sudo ln -fs /mnt/c /
 
-echo "### Installing xclip ###"
-sudo apt update && sudo apt install xclip -y
-
-echo "### Installing ripgrep ###"
-curl -LO https://github.com/BurntSushi/ripgrep/releases/download/0.10.0/ripgrep_0.10.0_amd64.deb
-sudo dpkg -i ripgrep_0.10.0_amd64.deb
-rm ripgrep_0.10.0_amd64.deb
+sudo apt update && sudo apt install -y xclip ripgrep ctags bat
 
 echo "### Installing zsh plugins"
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 
-echo "### Installing ctags"
-sudo apt install ctags -y
-
-if ! command -v bat > /dev/null ; then
-    echo "### Installing bat"
-    wget https://github.com/sharkdp/bat/releases/download/v0.15.4/bat-v0.15.4-x86_64-unknown-linux-gnu.tar.gz
-    tar -xzf bat-v0.15.4-x86_64-unknown-linux-gnu.tar.gz
-    mv bat-v0.15.4-x86_64-unknown-linux-gnu ~/bin
-    ln ~/bin/bat-v0.15.4-x86_64-unknown-linux-gnu/bat ~/bin
-    rm bat-v0.15.4-x86_64-unknown-linux-gnu.tar.gz
-fi
