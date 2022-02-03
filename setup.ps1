@@ -1,35 +1,50 @@
-Push-Location $HOME
+#! /usr/bin/env pwsh
 
-@(
-    "Documents\WindowsPowerShell"
-    "Documents\PowerShell"
-    "AppData\Local\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\"
-) | ForEach-Object { New-Item -ItemType Directory -Name $_ -Force }
+function Initialize-Configuration {
+    param ()
+    $directoriesToCreate = @(
+        "Documents\WindowsPowerShell"
+        "Documents\PowerShell"
+        "AppData\Local\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\"
+    )
 
-@(
-    @{
-        Name = "_vimrc"
-        Value = ".dotfiles\home\.vimrc"
-    }
-    @{
-        Name = "Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1"
-        Value = ".dotfiles\home\Microsoft.PowerShell_profile.ps1"
-    }
-    @{
-        Name = "Documents\PowerShell\Microsoft.PowerShell_profile.ps1"
-        Value = ".dotfiles\home\Microsoft.PowerShell_profile.ps1"
-    }
-    @{
-        Name = "AppData\Roaming\ConEmu.xml"
-        Value = ".dotfiles\home\ConEmu.xml"
-    }
-    @{
-        Name = "AppData\Local\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json"
-        Value = ".dotfiles\home\windows-terminal-settings.json"
-    }
-) |  ForEach-Object { New-Item -ItemType HardLink -Name $_.Name -Value $_.Value -Force }
+    $hardLinksToCreate = @(
+        @{
+            Name = "_vimrc"
+            Value = "home\.vimrc"
+        }
+        @{
+            Name = "Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1"
+            Value = "home\Microsoft.PowerShell_profile.ps1"
+        }
+        @{
+            Name = "Documents\PowerShell\Microsoft.PowerShell_profile.ps1"
+            Value = "home\Microsoft.PowerShell_profile.ps1"
+        }
+        @{
+            Name = "Documents\PowerShell\Microsoft.VSCode_profile.ps1"
+            Value = "home\Microsoft.PowerShell_profile.ps1"
+        }
+        @{
+            Name = "AppData\Roaming\ConEmu.xml"
+            Value = "home\ConEmu.xml"
+        }
+        @{
+            Name = "AppData\Local\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json"
+            Value = "home\windows-terminal-settings.json"
+        }
+    )
 
-Pop-Location
+    $cwd = Get-Location
+    Push-Location $HOME
+    $directoriesToCreate | ForEach-Object { New-Item -ItemType Directory -Name $_ -Force }
+    $hardLinksToCreate |  ForEach-Object { New-Item -ItemType HardLink -Name $_.Name -Value "$cwd\$($_.Value)" -Force }
+    Pop-Location
+}
+
+########
+
+Initialize-Configuration
 
 choco install -y `
     powertoys `

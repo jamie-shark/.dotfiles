@@ -1,168 +1,187 @@
-$env:Path += ";$home\bin"
+#! /usr/bin/env pwsh
+
+function Invoke-OnStatusSelection {
+    [CmdletBinding()]
+    param ([string] $Action, [string] $Preview)
+
+    $paths = @(
+        git -c color.status=always status --short `
+            | fzf --height 50% `
+                --min-height 20 `
+                --border `
+                --ansi `
+                --multi `
+                --ansi `
+                --nth 2..,.. `
+                --preview "(git $Preview --color=always -- {-1} | sed 1,4d; cat {-1}) | head -500" `
+            | ForEach-Object { $_.substring(3).replace(".* -> ", "") }
+    )
+    if ($paths) {
+        Invoke-Expression "$Action $(@($paths))"
+    }
+}
+
+function Trace-DirectoryChange {
+    if ($args[0] -eq '-') {
+        $oldDirectory = $OLDPWD
+    } else {
+        $oldDirectory = $args[0]
+    }
+
+    $temporaryDirectory = Get-Location;
+
+    if ($oldDirectory) {
+        Set-Location $oldDirectory;
+    }
+
+    Set-Variable -Name OLDPWD -Value $temporaryDirectory -Scope global;
+}
+
+function Get-l           { Get-ChildItem $args }
+function Get-ll          { Get-ChildItem $args }
+function Get-c           { Clear-Host $args }
+function Get-prerelease  { .\build.ps1 -Target Create-PreRelease-Packages $args }
+function Get-gh          { git h $args }
+function Get-gg          { git log --decorate --oneline --graph $args }
+function Get-gd          { git diff $args }
+function Get-gdc         { git diff --cached $args }
+function Get-gs          { git status -s $args }
+function Get-gf          { git fetch origin $args }
+function Get-gr          { git rebase origin/master $args }
+function Get-gri         { git rebase -i $args }
+function Get-ga          { git add -A $args }
+function Get-gap         { git add -p $args }
+function Get-gacd        { ga; Clear-Host; gdc }
+function Get-gca         { git commit --amend $args }
+function Get-gcan        { git commit --amend --no-edit $args }
+function Get-gco         { git commit -m $args }
+function Get-gni         { git diff -G "Compile Include" *.csproj $args }
+function Get-gsn         { git show --name-status $args }
+function Get-gcm         { git checkout - $args }
+function Get-gp          { git push $args }
+function Get-gc          { git commit -m $args }
+function Get-vi          { vim $args }
+function Get-cenv        { rundll32 sysdm.cpl, EditEnvironmentVariables }
+function Get-gaf         { Invoke-OnStatusSelection -Action "git add"            -Preview diff }
+function Get-gcf         { Invoke-OnStatusSelection -Action "git checkout"       -Preview diff }
+function Get-gdf         { Invoke-OnStatusSelection -Action "git diff"           -Preview diff }
+function Get-gdcf        { Invoke-OnStatusSelection -Action "git diff --cached"  -Preview "diff --cached" }
+function Get-grf         { Invoke-OnStatusSelection -Action "git reset"          -Preview "diff --cached" }
+function Get-reload      {
+    $directory = Get-Location
+    . $PROFILE
+    Set-Location $directory
+}
+
+function Set-Aliases {
+
+    function Set-DynamicAlias {
+        [CmdletBinding()]
+        param (
+            [Parameter(Mandatory=$true,Position=0)] [string] $Alias,
+            [Parameter(Mandatory=$true,Position=1)] [string] $Command
+        )
+
+        New-Item `
+            -Path function:\ `
+            -Name "global:$Alias" `
+            -Value "$Command `$args" `
+            -Force `
+                | Out-Null
+    }
+
+    function Set-FunctionAlias {
+        param (
+            [string] $name,
+            [string] $value
+        )
+
+        if (Test-Path alias:$name) {
+            Remove-Item alias:$name -Force
+        }
+
+        Set-Alias $name $value
+    }
+
+    ###########
+
+    Set-Alias python "C:\Python38\python.exe"
+
+    Set-FunctionAlias cd         Trace-DirectoryChange
+    Set-FunctionAlias l          Get-l
+    Set-FunctionAlias ll         Get-ll
+    Set-FunctionAlias c          Get-c
+    Set-FunctionAlias prerelease Get-prerelease
+    Set-FunctionAlias gh         Get-gh
+    Set-FunctionAlias gg         Get-gg
+    Set-FunctionAlias gd         Get-gd
+    Set-FunctionAlias gdc        Get-gdc
+    Set-FunctionAlias gs         Get-gs
+    Set-FunctionAlias gf         Get-gf
+    Set-FunctionAlias gr         Get-gr
+    Set-FunctionAlias gri        Get-gri
+    Set-FunctionAlias ga         Get-ga
+    Set-FunctionAlias gap        Get-gap
+    Set-FunctionAlias gacd       Get-gacd
+    Set-FunctionAlias gca        Get-gca
+    Set-FunctionAlias gcan       Get-gcan
+    Set-FunctionAlias gco        Get-gco
+    Set-FunctionAlias gni        Get-gni
+    Set-FunctionAlias gsn        Get-gsn
+    Set-FunctionAlias gcm        Get-gcm
+    Set-FunctionAlias gp         Get-gp
+    Set-FunctionAlias gc         Get-gc
+    Set-FunctionAlias vi         Get-vi
+    Set-FunctionAlias cenv       Get-cenv
+    Set-FunctionAlias gaf        Get-gaf
+    Set-FunctionAlias gcf        Get-gcf
+    Set-FunctionAlias gdf        Get-gdf
+    Set-FunctionAlias gdcf       Get-gdcf
+    Set-FunctionAlias grf        Get-grf
+    Set-FunctionAlias reload     Get-reload
+
+}
+
+function Import-ChocolateyProfile {
+    $ChocolateyProfile = "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
+    if (Test-Path($ChocolateyProfile)) {
+        Import-Module "$ChocolateyProfile"
+    }
+}
+
+function Start-WslServices {
+    if (-not (Get-Process -Name vcxsrv -ErrorAction Ignore)) {
+        Write-Host "Starting X server"
+        &"C:\Program Files\VcXsrv\xlaunch.exe" -run "$HOME\.dotfiles\config.xlaunch"
+    }
+
+    if (-not (Get-Process -Name pulseaudio -ErrorAction Ignore)) {
+        Write-Host "Starting pulseaudio server"
+        &"C:\pulseaudio-1.1\bin\pulseaudio.exe" --use-pid-file=false -D
+    }
+}
+
+#############
+
+$env:Path += ";$HOME\bin"
 $env:Path += ";C:\Program Files\Git\bin\"
 $env:Path += ";C:\Program Files\Git\usr\bin\"
 
-Set-Alias python "C:\Python38\python.exe"
-
-function Test-Administrator {
-    $user = [Security.Principal.WindowsIdentity]::GetCurrent();
-    (New-Object Security.Principal.WindowsPrincipal $user).IsInRole([Security.Principal.WindowsBuiltinRole]::Administrator)
-}
-
-function Write-Separator {
-    Write-Host " " -NoNewline -ForegroundColor DarkGray
-}
-
-function Write-Username {
-    Write-Host "$env:USERNAME@" -NoNewline -ForegroundColor Yellow
-    Write-Host "$env:COMPUTERNAME" -NoNewline -ForegroundColor Magenta
-}
-
-function Write-Location {
-    $curPath = $ExecutionContext.SessionState.Path.CurrentLocation.Path
-    if ($curPath.ToLower().StartsWith($Home.ToLower())) {
-        $curPath = "~" + $curPath.SubString($Home.Length)
-    }
-    Write-Host $curPath -NoNewline -ForegroundColor Cyan
-}
-
-function Get-Prompt {
-    if (Test-Administrator) {
-        return '#'
-    }
-    else {
-        return '$'
-    }
-}
-
-function prompt-old {
-    $origLastExitCode = $LastExitCode
-
-    Write-Username
-    Write-Separator
-    Write-Location
-    Write-VcsStatus
-
-    $LastExitCode = $origLastExitCode
-    "`n$(Get-Prompt * ($nestedPromptLevel + 1)) "
-}
-
 Import-Module posh-git
-Import-Module oh-my-posh
 Import-Module PSReadLine
-Set-Theme Avit
+Set-Aliases
+Import-ChocolateyProfile
+Start-WslServices
 
-function alias($name, $value) {
-    if (Test-Path alias:$name) { del alias:$name -Force }
-    Set-Alias $name $value
-}
+#############
 
-function Get-Parameters ([string] $command, [string[]]$outputFormat) {
-    (Get-Command $command).ParameterSets | Select -Expand Parameters | ft -a $outputFormat
-}
+function Get-Parameters {
+    param (
+        [string] $command,
+        [string[]] $outputFormat
+    )
 
-function get-l { ls $args }
-function get-ll { ls $args }
-function get-c { clear $args }
-function get-prerelease { .\build.ps1 -Target Create-PreRelease-Packages $args }
-function get-gh { git h $args }
-function get-gg { git log --decorate --oneline --graph $args }
-function get-gd { git diff $args }
-function get-gdc { git diff --cached $args }
-function get-gs { git status -s $args }
-function get-gf { git fetch origin $args }
-function get-gr { git rebase origin/master $args }
-function get-gri { git rebase -i $args }
-function get-ga { git add -A $args }
-function get-gap { git add -p $args }
-function get-gacd { ga; cls; gdc }
-function get-gca { git commit --amend $args }
-function get-gcan { git commit --amend --no-edit $args }
-function get-gco { git commit -m $args }
-function get-gni { git diff -G "Compile Include" *.csproj $args }
-function get-gsn { git show --name-status $args }
-function get-gcm { git checkout - $args }
-function get-gp { git push $args }
-function get-gc { git commit -m $args }
-function get-vi { vim $args }
-function get-reload {
-    $pwd = Get-Location
-    . ~\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1
-    Set-Location $pwd
-}
-function get-cenv { rundll32 sysdm.cpl, EditEnvironmentVariables }
-
-alias l get-l
-alias ll get-ll
-alias c get-c
-alias prerelease get-prerelease
-alias gh get-gh
-alias gg get-gg
-alias gd get-gd
-alias gdc get-gdc
-alias gs get-gs
-alias gf get-gf
-alias gr get-gr
-alias gri get-gri
-alias ga get-ga
-alias gap get-gap
-alias gacd get-gacd
-alias gca get-gca
-alias gcan get-gcan
-alias gco get-gco
-alias gni get-gni
-alias gsn get-gsn
-alias gcm get-gcm
-alias gp get-gp
-alias gc get-gc
-alias vi get-vi
-alias reload get-reload
-alias cenv get-cenv
-
-function Invoke-OnStatusSelection {
-    param([ScriptBlock]$action)
-    Invoke-Command $action $(git status -s | % { $_.substring(3) } | fzf -m)
-}
-function get-gaf { Invoke-OnStatusSelection { git add } }
-function get-gcf { Invoke-OnStatusSelection { git checkout } }
-function get-gdf { Invoke-OnStatusSelection { git diff } }
-function get-grf { Invoke-OnStatusSelection { git reset } }
-
-alias gaf get-gaf
-alias gcf get-gcf
-alias gdf get-gdf
-alias grf get-grf
-
-function cddash {
-    if ($args[0] -eq '-') {
-        $pwd = $OLDPWD;
-    }
-    else {
-        $pwd = $args[0];
-    }
-    $tmp = pwd;
-
-    if ($pwd) {
-        Set-Location $pwd;
-    }
-    Set-Variable -Name OLDPWD -Value $tmp -Scope global;
-}
-
-Set-Alias -Name cd -value cddash -Option AllScope
-
-# Chocolatey profile
-$ChocolateyProfile = "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
-if (Test-Path($ChocolateyProfile)) {
-    Import-Module "$ChocolateyProfile"
-}
-
-if (-not (Get-Process -Name vcxsrv -ErrorAction Ignore))
-{
-    Write-Output "Launching X server"
-    &"C:\Program Files\VcXsrv\xlaunch.exe" -run "$HOME\.dotfiles\config.xlaunch"
-}
-
-if (-not (Get-Process -Name pulseaudio -ErrorAction Ignore))
-{
-    &"C:\pulseaudio-1.1\bin\pulseaudio.exe" --use-pid-file=false -D
+    (Get-Command $command).ParameterSets `
+        | Select-Object -Expand Parameters `
+        | Format-Table -a $outputFormat
 }
