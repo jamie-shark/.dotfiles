@@ -42,11 +42,39 @@ function Initialize-Configuration {
     Pop-Location
 }
 
-########
+function Install-Choco {
+  param ()
+  Invoke-Expression (New-Object Net.WebClient).DownloadString('https://chocolatey.org/install.ps1')
+  $env:PATH += ";$ALLUSERSPROFILE\chocolatey\bin"
+}
 
+function Install-Scoop {
+  param ()
+  Invoke-Expression (New-Object Net.WebClient).DownloadString('https://get.scoop.sh')
+}
+
+function Initialize-Prompt {
+  param ()
+  Install-Module posh-git
+  Install-Module PSReadLine -AllowPrerelease -Force
+}
+
+###############
+
+Initialize-Prompt
 Initialize-Configuration
 
+Install-Choco
+Install-Scoop
+
 choco install -y `
+    git `
+    microsoft-windows-terminal `
+    ripgrep `
+    fzf `
+    choco-cleaner `
+    which `
+    bat `
     powertoys `
     sysinternals `
     eartrumpet `
@@ -56,3 +84,4 @@ choco install -y `
     sharex `
     quicklook `
     ditto
+scoop install psutils
